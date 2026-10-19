@@ -15,45 +15,6 @@
             color: #20372f;
         }
 
-        nav {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            min-height: 76px;
-            padding: 14px 7%;
-            border-bottom: 1px solid #d9ded3;
-            color: #20372f;
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 1.5px;
-        }
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            letter-spacing: 0;
-        }
-
-        .brand-mark {
-            display: grid;
-            width: 38px;
-            height: 38px;
-            place-items: center;
-            border-radius: 50%;
-            background: #d7ef72;
-            color: #20372f;
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 14px;
-        }
-
-        .nav-note {
-            color: #68776d;
-            font-size: 10px;
-            letter-spacing: 1.4px;
-            text-transform: uppercase;
-        }
-
         .hero {
             display: grid;
             grid-template-columns: minmax(0, .95fr) minmax(340px, 1.05fr);
@@ -72,27 +33,9 @@
             max-width: 590px;
         }
 
-        .label {
-            display: inline-flex;
-            align-items: center;
-            gap: 9px;
-            color: #476655;
-            letter-spacing: 2px;
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-
-        .label::before {
-            width: 8px;
-            height: 8px;
-            background: #c35d46;
-            content: "";
-        }
-
         h1 {
             max-width: 600px;
-            margin: 24px 0 18px;
+            margin: 0 0 18px;
             color: #20372f;
             font-family: 'Space Grotesk', sans-serif;
             font-size: clamp(54px, 7vw, 94px);
@@ -157,151 +100,6 @@
             font-weight: 600;
             letter-spacing: 1px;
             text-transform: uppercase;
-        }
-
-        .science-section {
-            padding: 0;
-            background: #fbfbf7;
-            color: #20372f;
-            font-family: 'DM Sans', sans-serif;
-        }
-
-        .science-heading {
-            max-width: 680px;
-            margin: 0 auto 45px;
-            text-align: center;
-        }
-
-        .science-section[hidden] {
-            display: none;
-        }
-
-        .back-button {
-            display: inline-block;
-            margin-bottom: 28px;
-            border: 0;
-            padding: 0;
-            background: none;
-            color: #49664e;
-            font: inherit;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .back-button:hover {
-            text-decoration: underline;
-        }
-
-        .eyebrow {
-            font-size: 12px;
-            letter-spacing: 3px;
-            color: #73866e;
-            font-weight: bold;
-        }
-
-        .science-heading h2 {
-            font-size: clamp(32px, 5vw, 52px);
-            margin: 16px 0;
-        }
-
-        .science-heading > p:last-child {
-            line-height: 1.8;
-            color: #657168;
-        }
-
-        .science-grid {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 22px;
-            max-width: 1100px;
-            margin: auto;
-        }
-
-        .science-card {
-            background: #fff;
-            padding: 30px;
-            border: 1px solid #dce2d8;
-            border-radius: 8px;
-            box-shadow: 0 8px 25px rgba(32, 55, 47, .04);
-            transition: transform .2s, box-shadow .2s;
-        }
-
-        .science-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 14px 30px rgba(32, 55, 47, .1);
-        }
-
-        .science-number {
-            color: #829579;
-            font-size: 13px;
-            letter-spacing: 2px;
-        }
-
-        .science-card h3 {
-            font-size: 23px;
-            margin-top: 24px;
-        }
-
-        .science-card p {
-            color: #657168;
-            line-height: 1.8;
-            font-size: 14px;
-        }
-
-        .science-card button,
-        .detail-section button {
-            display: inline-block;
-            margin-top: 12px;
-            color: #49664e;
-            font-weight: bold;
-            text-decoration: none;
-            font: inherit;
-            cursor: pointer;
-            border: 0;
-            background: none;
-            padding: 0;
-        }
-
-        .science-card button:hover,
-        .detail-section button:hover {
-            text-decoration: underline;
-        }
-
-        .detail-section {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 64px 8%;
-            scroll-margin-top: 24px;
-            border-top: 1px solid #e2e7dc;
-        }
-
-        .detail-section[hidden] {
-            display: none;
-        }
-
-        .detail-section h2 {
-            color: #24352d;
-        }
-
-        .detail-section p {
-            max-width: 720px;
-            color: #657168;
-        }
-
-        .detail-section a {
-            color: #49664e;
-            font-weight: bold;
-            text-decoration: none;
-        }
-
-        .detail-section a:hover {
-            text-decoration: underline;
-        }
-
-        @media (max-width: 700px) {
-            .science-grid {
-                grid-template-columns: 1fr;
-            }
         }
 
         .science-page {
@@ -530,8 +328,7 @@
         }
 
         .dna-explanation p,
-        .medical-card p,
-        .crispr-step p {
+        .medical-card p {
             color: var(--muted);
             font-size: 14px;
         }
@@ -573,9 +370,10 @@
 
         .crispr-sequence,
         .crispr-guide {
-            display: flex;
+            display: grid;
+            grid-template-columns: repeat(9, minmax(0, 1fr));
             align-items: center;
-            justify-content: center;
+            justify-items: center;
             gap: 4px;
         }
 
@@ -603,6 +401,14 @@
             font-size: 10px;
             font-weight: 700;
             text-align: center;
+        }
+
+        .crispr-guide-label::before {
+            display: block;
+            margin-bottom: 4px;
+            color: var(--forest);
+            content: "↓";
+            font-size: 18px;
         }
 
         .crispr-guide span {
@@ -698,15 +504,6 @@
             background: var(--cream);
             color: var(--forest);
             font-size: 25px;
-        }
-
-        .medical-status {
-            margin-top: auto;
-            padding-top: 15px;
-            color: var(--sage);
-            font-size: 9px;
-            font-weight: 700;
-            letter-spacing: 1px;
         }
 
         .medical-card h4 {
@@ -970,20 +767,50 @@
             font-size: 20px;
         }
 
+        .sources-footer {
+            padding: 40px 7%;
+            border-top: 1px solid var(--line);
+            background: #20372f;
+            color: #f7f7ef;
+        }
+
+        .sources-footer h3 {
+            margin: 0 0 16px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 22px;
+        }
+
+        .sources-footer ul {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px 28px;
+            max-width: 960px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .sources-footer li,
+        .sources-footer p {
+            color: #d5dfd6;
+            font-size: 12px;
+        }
+
+        .sources-footer a {
+            color: #d7ef72;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 3px;
+        }
+
+        .sources-footer a:hover {
+            color: white;
+        }
+
         .science-back-button {
             margin: 0 0 24px;
         }
 
         @media (max-width: 760px) {
-            nav {
-                min-height: 64px;
-                padding: 12px 6%;
-            }
-
-            .nav-note {
-                display: none;
-            }
-
             .hero {
                 grid-template-columns: 1fr;
                 gap: 34px;
@@ -1017,6 +844,10 @@
             }
 
             .medical-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .sources-footer ul {
                 grid-template-columns: 1fr;
             }
 
@@ -1063,18 +894,8 @@
 </head>
 
 <body>
-    <nav>
-        <div class="brand">
-            <span class="brand-mark" aria-hidden="true">G</span>
-            <span>GENETICA<br>IN BEELD</span>
-        </div>
-        <span class="nav-note">WETENSCHAP / MENS / MAATSCHAPPIJ</span>
-    </nav>
-
     <main class="hero">
         <div class="hero-copy">
-            <span class="label">Wetenschap & samenleving</span>
-
             <h1>Monster of medicijn?</h1>
 
             <p>
@@ -1093,7 +914,7 @@
         </figure>
     </main>
 
-    <section id="wetenschap" class="science-section science-page" hidden>
+    <section id="wetenschap" class="science-page" hidden>
         <header class="science-hero">
             <button class="science-button science-back-button" type="button" data-close-science>← Terug naar start</button>
             <span class="science-label">DE WETENSCHAP ACHTER DNA</span>
@@ -1113,7 +934,7 @@
         <section class="science-block" id="dna">
             <div class="science-intro">
                 <span class="science-number">01 / DE BASIS</span>
-                    <h3>DNA: de handleiding in je cellen.</h3>
+                <h3>DNA: de handleiding in je cellen.</h3>
                 <p>
                     DNA bevat instructies die je lichaam helpen werken.
                     Het bestaat uit vier bouwstenen: A, T, C en G. A past
@@ -1161,12 +982,12 @@
         <section class="science-block science-crispr" id="crispr">
             <div class="science-intro">
                 <span class="science-number">02 / DE TECHNIEK</span>
-                <h3>CRISPR-Cas9: een soort DNA-schaar.</h3>
+                <h3>CRISPR-Cas9</h3>
             </div>
 
             <div class="crispr-explainer">
                 <div class="crispr-visual" role="img" aria-label="Een klein gidsje zoekt een passend stukje DNA. Cas9 werkt als een schaar en knipt het DNA daar door.">
-                    <span class="crispr-visual-label">STUKJE DNA</span>
+                    <span class="crispr-visual-label">DNA — GROEN IS DE GEKOZEN PLEK</span>
                     <div class="crispr-sequence" aria-hidden="true">
                         <span class="crispr-base">A</span>
                         <span class="crispr-base">T</span>
@@ -1178,19 +999,21 @@
                         <span class="crispr-base">C</span>
                         <span class="crispr-base">A</span>
                     </div>
-                    <p class="crispr-guide-label">DE GIDS ZOEKT DIT STUKJE OP</p>
+                    <p class="crispr-guide-label">ZOEKCODE (GIDS-RNA) — PAST OP DE GROENE LETTERS</p>
                     <div class="crispr-guide" aria-hidden="true">
                         <span></span><span></span>
                         <span>C</span><span>U</span><span>U</span><span>G</span><span>A</span>
                         <span></span><span></span>
                     </div>
-                    <p class="crispr-cut-label">CAS9 KNIPT HET DNA OP DIE PLEK</p>
+                    <p class="crispr-cut-label">CAS9 KNIPT HET DNA BIJ DE GEKOZEN PLEK</p>
                 </div>
                 <p>
-                    Een klein gidsje zoekt een passend stukje DNA.
-                    Cas9 werkt daar als een schaar en knipt het DNA.
-                    Als de cel de knip herstelt, kan een stukje DNA veranderen
-                    of uitvallen. Soms wordt ook op een verkeerde plek geknipt.
+                    CRISPR-Cas9 is een manier om een gekozen stukje DNA te
+                    veranderen. Een gids-RNA is een klein molecuul met een code
+                    die past op dat stukje DNA. Het brengt Cas9 naar de juiste
+                    plek. Cas9 knipt het DNA; wanneer de cel die knip herstelt,
+                    kan een gen veranderen of worden uitgeschakeld. Soms knipt
+                    Cas9 ook op een verkeerde plek.
                 </p>
             </div>
 
@@ -1198,8 +1021,10 @@
                 <span class="note-symbol">i</span>
                 <p>
                     <strong>Belangrijk om te weten</strong><br>
-                    De DNA-schaar knipt niet altijd precies op de bedoelde plek.
-                    Daarom controleren onderzoekers op andere veranderingen.
+                    De groene letters in het plaatje zijn de doelcode. De gids
+                    zoekt die code op; Cas9 knipt het DNA daar door. Dat gaat
+                    niet altijd precies, dus onderzoekers controleren op andere
+                    veranderingen.
                 </p>
             </div>
         </section>
@@ -1221,27 +1046,25 @@
                     <div class="medical-symbol" aria-hidden="true">✳</div>
                     <h4>Sikkelcelziekte</h4>
                     <p>
-                        Casgevy past bloedstamcellen aan: cellen waar nieuwe
-                        bloedcellen uit groeien. Daarna maakt het lichaam meer
-                        van een stof die zuurstof vervoert. Hierdoor kunnen rode
-                        bloedcellen minder snel sikkelvormig worden en kunnen
-                        pijnklachten afnemen.
+                        Casgevy is een behandeling voor sommige mensen met
+                        sikkelcelziekte. Artsen halen bloedstamcellen uit het
+                        lichaam, passen die aan met CRISPR-Cas9 en geven ze
+                        terug. De aangepaste cellen kunnen meer foetaal
+                        hemoglobine maken, waardoor pijnaanvallen kunnen afnemen.
                     </p>
-                    <span class="medical-status">GOEDGEKEURDE BEHANDELING</span>
                 </article>
 
                 <article class="medical-card">
                     <img class="medical-photo" src="https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=900&q=80" alt="Onderzoeker werkt met monsters in een laboratorium" loading="lazy">
                     <span class="medical-tag">VOORBEELD 02</span>
                     <div class="medical-symbol" aria-hidden="true">◎</div>
-                        <h4>Een erfelijke spierziekte</h4>
+                    <h4>Spinale spieratrofie (SMA)</h4>
                     <p>
-                        Deze erfelijke ziekte maakt spieren steeds zwakker.
-                        Zolgensma geeft cellen een werkende versie van de
-                        erfelijke informatie die niet goed werkt. Dit kan de
-                        ziekte bij jonge kinderen afremmen.
+                        SMA is een erfelijke ziekte die spieren steeds zwakker
+                        maakt. Zolgensma geeft cellen een werkende versie van
+                        het gen dat bij SMA niet goed werkt. Dit kan de ziekte
+                        bij jonge kinderen afremmen.
                     </p>
-                    <span class="medical-status">BEHANDELING MET EEN GEN</span>
                 </article>
 
                 <article class="medical-card">
@@ -1255,7 +1078,6 @@
                         herkennen en aanvallen. Daarna gaan de cellen terug het
                         lichaam in. Deze behandeling heet CAR-T.
                     </p>
-                    <span class="medical-status">BEHANDELING MET CELLEN</span>
                 </article>
             </div>
         </section>
@@ -1266,16 +1088,16 @@
             <p>Lees de situatie en kies wat jij zou doen. Er zijn geen goede of foute antwoorden. Na je keuze zie je wat de mogelijke gevolgen zijn.</p>
 
             <div class="decision-model" data-decision-model>
-                <p class="decision-kicker" data-question-progress>VRAAG 1 / 6</p>
-                <h4 data-question tabindex="-1">Sikkelcelziekte: wel behandelen?</h4>
+                <p class="decision-kicker" data-question-progress>VRAAG 1 / 3</p>
+                <h4 data-question tabindex="-1">De genen van een mens beïnvloeden</h4>
                 <p class="decision-description" data-question-context>
-                    Een 17-jarige heeft vaak ernstige pijn en moet geregeld naar het ziekenhuis. Casgevy verandert eigen bloedcellen waar nieuwe bloedcellen uit ontstaan. Vooraf krijgt de patiënt sterke medicijnen. Die kunnen de vruchtbaarheid blijvend aantasten; er is geen vast percentage dat voor iedereen geldt.
+                    Zou jij het DNA van een embryo aanpassen om te voorkomen dat het kind een ernstige erfelijke ziekte krijgt, als de risico's hierbij onbekend zijn?
                 </p>
                 <p class="decision-question">Wat kies je?</p>
 
                 <div class="decision-options">
-                    <button class="decision-option" type="button" data-choice="0" aria-pressed="false">Wel behandelen</button>
-                    <button class="decision-option" type="button" data-choice="1" aria-pressed="false">Niet behandelen</button>
+                    <button class="decision-option" type="button" data-choice="0" aria-pressed="false">Ja</button>
+                    <button class="decision-option" type="button" data-choice="1" aria-pressed="false">Nee</button>
                 </div>
 
                 <div class="decision-result" data-decision-result role="status" aria-live="polite" hidden>
@@ -1291,7 +1113,7 @@
                 </p>
             </div>
             <p class="decision-caveat">
-                Casgevy is een bestaande behandeling. IVF betekent dat een eicel buiten het lichaam wordt bevrucht. DNA van een embryo aanpassen is geen beschikbare behandeling. Dit model is geen persoonlijk medisch advies.
+                Dit beslismodel is geen persoonlijk medisch advies.
             </p>
         </section>
 
@@ -1321,67 +1143,65 @@
 
             <div class="dilemma-list">
                 <article class="debate-dilemma">
-                    <h4>Moet deze patiënt DNA-aanpassing kunnen krijgen?</h4>
+                    <h4>Moet het behandelteam Casgevy aanbevelen?</h4>
                     <p class="debate-situation">
                         <strong>De situatie</strong><br>
-                        Een 17-jarige heeft sikkelcelziekte, een erfelijke aandoening die ernstige pijn kan veroorzaken.
-                        Casgevy verandert het DNA in cellen waar nieuwe bloedcellen uit ontstaan. De behandeling kan de
-                        klachten verminderen, maar is zwaar, kent risico's en is erg duur. De patiënt wil de behandeling
-                        graag; de ouders twijfelen door de risico's en onzekerheid over de gevolgen op lange termijn.
+                        Een 17-jarige met sikkelcelziekte heeft vaak ernstige pijn, ondanks gewone zorg. Casgevy kan de
+                        pijnaanvallen verminderen, maar vraagt een zware voorbereiding en een ziekenhuisopname. De
+                        patiënt wil de behandeling; de ouders maken zich zorgen over de risico's en gevolgen op lange termijn.
                     </p>
                     <div class="debate-pair">
                         <div class="debate-side">
                             <span class="debate-person" aria-hidden="true"></span>
                             <span class="debate-label">PATIËNT</span>
-                            <p class="debate-argument">"Ik wil minder pijn en zelf meepraten over mijn behandeling."</p>
+                            <p class="debate-argument">"Ik wil minder pijnaanvallen en serieus meepraten over mijn behandeling."</p>
                         </div>
                         <div class="debate-side debate-side--against">
                             <span class="debate-person" aria-hidden="true"></span>
                             <span class="debate-label">OUDERS</span>
-                            <p class="debate-argument">"We maken ons zorgen over de zware behandeling en onbekende gevolgen."</p>
+                            <p class="debate-argument">"We willen haar beschermen tegen zware risico's die nog niet helemaal bekend zijn."</p>
                         </div>
                     </div>
                 </article>
                 <article class="debate-dilemma">
-                    <h4>Mag je embryo-DNA aanpassen om een erfelijke ziekte te voorkomen?</h4>
+                    <h4>Moet onderzoek naar embryo-aanpassing doorgaan?</h4>
                     <p class="debate-situation">
                         <strong>De situatie</strong><br>
-                        Beide ouders hebben een verandering in hetzelfde stukje DNA. Zelf zijn ze niet ziek, maar ze
-                        kunnen die verandering doorgeven. Bij elke zwangerschap is er 1 op 4 kans dat hun kind
-                        taaislijmziekte krijgt. Bij IVF (een eicel buiten het lichaam bevruchten) kunnen artsen een
-                        embryo, een heel vroege vorm na bevruchting, testen. DNA van embryo's aanpassen kan nog niet.
+                        Beide ouders dragen een verandering die taaislijmziekte kan veroorzaken. Per zwangerschap
+                        is er 1 op 4 kans dat hun kind de ziekte krijgt. IVF met een embryotest kan een optie zijn.
+                        DNA van embryo's aanpassen is geen beschikbare behandeling. Moet onderzoek daarnaar doorgaan?
                     </p>
                     <div class="debate-pair">
                         <div class="debate-side">
                             <span class="debate-person" aria-hidden="true"></span>
-                            <span class="debate-label">VOORSTANDER</span>
-                            <p class="debate-argument">"Zo zou je een ernstige ziekte bij het kind kunnen voorkomen."</p>
+                            <span class="debate-label">ONDERZOEKER</span>
+                            <p class="debate-argument">"Onderzoek kan kennis opleveren en misschien later ernstige ziekte voorkomen."</p>
                         </div>
                         <div class="debate-side debate-side--against">
                             <span class="debate-person" aria-hidden="true"></span>
-                            <span class="debate-label">TEGENSTANDER</span>
-                            <p class="debate-argument">"Fouten kunnen erfelijk zijn; het toekomstige kind kan niet instemmen."</p>
+                            <span class="debate-label">OUDER</span>
+                            <p class="debate-argument">"Een fout kan worden doorgegeven aan volgende generaties; zij kunnen niet instemmen."</p>
                         </div>
                     </div>
                 </article>
                 <article class="debate-dilemma">
-                    <h4>Wie krijgt een dure DNA-behandeling?</h4>
+                    <h4>Wie krijgt de laatste vergoede behandelplek?</h4>
                     <p class="debate-situation">
                         <strong>De situatie</strong><br>
-                        Een ziekenhuis beoordeelt patiënten die mogelijk baat hebben bij een dure behandeling die DNA verandert.
-                        Het beschikbare budget is beperkt. Een besluit over vergoeding kan bepalen wie de behandeling
-                        krijgt en welke andere zorg met hetzelfde geld betaald kan worden.
+                        Twee patiënten kunnen baat hebben bij dezelfde dure behandeling,
+                        maar er is geld voor één plek. De ene patiënt is zieker; bij allebei verwachten artsen ongeveer
+                        evenveel kans op verbetering. Wie krijgt de plek?
                     </p>
                     <div class="debate-pair">
                         <div class="debate-side">
                             <span class="debate-person" aria-hidden="true"></span>
                             <span class="debate-label">PATIËNT</span>
-                            <p class="debate-argument">"Als de behandeling mij kan helpen, moet ik er toegang toe hebben."</p>
+                            <p class="debate-argument">"Geef voorrang aan wie nu het ziekst is; wachten kan mijn gezondheid schaden."</p>
                         </div>
                         <div class="debate-side debate-side--against">
                             <span class="debate-person" aria-hidden="true"></span>
                             <span class="debate-label">ZORGVERLENER</span>
-                            <p class="debate-argument">"We moeten het budget eerlijk verdelen over alle patiënten."</p>
+                            <p class="debate-argument">"Gebruik dezelfde eerlijke regels voor iedereen; anders telt urgentie zwaarder dan gelijke kansen."</p>
                         </div>
                     </div>
                 </article>
@@ -1392,6 +1212,16 @@
                 De samenleving moet blijven nadenken over wat verantwoord is.
             </p>
         </section>
+
+        <footer class="sources-footer">
+            <h3>Bronnen</h3>
+            <ul>
+                <li><a href="https://www.fda.gov/news-events/press-announcements/fda-approves-first-gene-therapies-treat-patients-sickle-cell-disease" target="_blank" rel="noopener">FDA: goedkeuring van Casgevy voor sikkelcelziekte</a></li>
+                <li><a href="https://www.accessdata.fda.gov/drugsatfda_docs/label/2023/125787s000lbl.pdf" target="_blank" rel="noopener">FDA: productinformatie en risico's van Casgevy</a></li>
+                <li><a href="https://www.who.int/publications/i/item/9789240030381" target="_blank" rel="noopener">WHO: aanbevelingen voor onderzoek naar menselijk DNA</a></li>
+                <li><a href="https://medlineplus.gov/genetics/understanding/inheritance/inheritancepatterns/" target="_blank" rel="noopener">MedlinePlus: uitleg over erfelijkheid en kansen per zwangerschap</a></li>
+            </ul>
+        </footer>
     </section>
 
     <script>
@@ -1417,86 +1247,50 @@
         const restartButton = decisionModel.querySelector("[data-restart]");
         const decisionQuestions = [
             {
-                prompt: "Sikkelcelziekte: wel behandelen?",
-                context: "Een 17-jarige heeft vaak ernstige pijn doordat rode bloedcellen een afwijkende vorm hebben. Casgevy verandert bloedcellen waar nieuwe bloedcellen uit ontstaan. Vooraf krijgt de patiënt sterke medicijnen. Die kunnen de vruchtbaarheid blijvend aantasten; de kans verschilt per persoon.",
-                outcomes: [
+                prompt: "De genen van een mens beïnvloeden",
+                context: "Zou jij het DNA van een embryo aanpassen om te voorkomen dat het kind een ernstige erfelijke ziekte krijgt, als de risico's hierbij onbekend zijn?",
+                choices: [
                     {
-                        consequence: "De behandeling kan ernstige pijnaanvallen verminderen. De sterke medicijnen vooraf kunnen ook ernstige bijwerkingen geven, zoals infecties en problemen met vruchtbaarheid.",
-                        tradeoff: "Weeg minder pijn en ziekenhuisbezoeken af tegen de zware behandeling en mogelijke gevolgen voor later."
+                        label: "Ja",
+                        consequence: "Een ernstige erfelijke ziekte zou mogelijk voorkomen kunnen worden. Tegelijk is de techniek onzeker: er kunnen onbedoelde veranderingen ontstaan en het toekomstige kind kan niet zelf instemmen.",
+                        tradeoff: "Je kiest voor de kans om ziekte te voorkomen, maar neemt onbekende risico's voor het kind en mogelijk volgende generaties mee."
                     },
                     {
-                        consequence: "De patiënt krijgt de risico's van de behandeling niet, maar de pijnaanvallen en ziekenhuisbezoeken kunnen doorgaan. De ziekte kan ook organen beschadigen.",
-                        tradeoff: "Weeg het vermijden van een zware behandeling af tegen de klachten en mogelijke schade door de ziekte."
+                        label: "Nee",
+                        consequence: "Je voorkomt dat het embryo wordt blootgesteld aan onbekende veranderingen. De erfelijke ziekte kan daardoor wel bij het kind ontstaan.",
+                        tradeoff: "Je beschermt het kind tegen een onzekere ingreep, maar laat de kans op de ernstige ziekte bestaan."
                     }
                 ]
             },
             {
-                prompt: "Kinderwens: toch behandelen?",
-                context: "De patiënt wil later misschien kinderen. De sterke medicijnen vóór Casgevy kunnen eicellen of zaadcellen beschadigen. Die vooraf laten bewaren kan soms helpen, maar is niet voor iedereen mogelijk.",
-                outcomes: [
+                prompt: "Het uiterlijk van een mens beïnvloeden",
+                context: "Zou jij erfelijke eigenschappen van een embryo, zoals oogkleur en haarkleur, aanpassen als dit beschikbaar is?",
+                choices: [
                     {
-                        consequence: "De pijn kan afnemen, maar de behandeling kan de mogelijkheid om later zelf kinderen te krijgen verkleinen. Eicellen of zaadcellen bewaren kan extra tijd kosten.",
-                        tradeoff: "Weeg de gezondheid van nu af tegen de kinderwens van later. De patiënt moet zelf mee kunnen beslissen."
+                        label: "Ja",
+                        consequence: "Ouders krijgen meer invloed op eigenschappen van hun toekomstige kind. Zulke keuzes kunnen ook maatschappelijke druk vergroten om aan één ideaal uiterlijk te voldoen.",
+                        tradeoff: "Je kiest voor ouderlijke keuzevrijheid, maar moet ook meewegen dat het kind niet zelf kiest en dat niet iedereen toegang tot zulke technieken zou hebben."
                     },
                     {
-                        consequence: "De patiënt stelt het risico voor de vruchtbaarheid uit, maar kan pijncrises en ziekenhuisbezoeken blijven houden.",
-                        tradeoff: "Weeg de kinderwens af tegen de klachten van de ziekte en bespreek andere mogelijkheden met het behandelteam."
+                        label: "Nee",
+                        consequence: "Je voorkomt dat medische technieken worden gebruikt om uiterlijk te kiezen en beperkt de druk op kinderen om aan bepaalde schoonheidsidealen te voldoen.",
+                        tradeoff: "Je beschermt toekomstige kinderen tegen keuzes die anderen voor hen maken, maar beperkt ook wat ouders met nieuwe technieken zouden mogen kiezen."
                     }
                 ]
             },
             {
-                prompt: "Onzekerheid: toch behandelen?",
-                context: "De patiënt heeft nog steeds ernstige pijn ondanks de zorg die al beschikbaar is. Casgevy kan helpen, maar artsen weten nog niet alles over de gevolgen op lange termijn. Na de behandeling zijn controles nodig.",
-                outcomes: [
+                prompt: "Genetische modificatie bij toekomstige generaties",
+                context: "Zou jij aanpassingen aan embryo-DNA toestaan als die veranderingen ook aan toekomstige generaties worden doorgegeven?",
+                choices: [
                     {
-                        consequence: "De patiënt kan minder pijncrises krijgen, maar moet controles blijven volgen. Sommige gevolgen worden misschien pas later duidelijk.",
-                        tradeoff: "Weeg mogelijke verlichting nu af tegen onzekerheid over later. Welke informatie zou de patiënt nodig hebben om te kiezen?"
+                        label: "Ja",
+                        consequence: "Een verandering zou een erfelijke ziekte mogelijk uit families kunnen halen. Een onbedoelde verandering kan ook worden doorgegeven aan kinderen en kleinkinderen.",
+                        tradeoff: "Je kiest voor mogelijke gezondheidswinst over generaties, maar ook voor risico's die toekomstige mensen niet zelf kunnen accepteren of weigeren."
                     },
                     {
-                        consequence: "De patiënt vermijdt voorlopig een nieuwe behandeling, maar bestaande zorg helpt onvoldoende en de pijn kan doorgaan.",
-                        tradeoff: "Weeg voorzichtig afwachten af tegen de klachten van nu. Zijn er andere behandelingen die wel passend zijn?"
-                    }
-                ]
-            },
-            {
-                prompt: "Erfelijke ziekte: embryo aanpassen?",
-                context: "Beide ouders hebben dezelfde verandering in hun DNA. Zelf zijn ze niet ziek, maar ze kunnen die doorgeven. Bij elke zwangerschap is er 1 op 4 kans op een kind met taaislijmziekte. Een embryo is een bevruchte eicel in een heel vroeg stadium. DNA daarin aanpassen kan nu niet als behandeling.",
-                outcomes: [
-                    {
-                        consequence: "De ziekte zou misschien voorkomen kunnen worden. Maar er kan ook iets anders in het DNA veranderen. Die verandering kan later worden doorgegeven aan kinderen.",
-                        tradeoff: "Weeg ziekte voorkomen af tegen onbekende gevolgen en het feit dat het toekomstige kind niet zelf kan kiezen."
-                    },
-                    {
-                        consequence: "Er wordt geen DNA aangepast. De kans op taaislijmziekte blijft bestaan. Sommige ouders kunnen bij IVF embryo's laten testen voordat er één wordt teruggeplaatst.",
-                        tradeoff: "Weeg voorzichtigheid af tegen de wens om de ziekte te voorkomen en de belasting van een IVF-behandeling."
-                    }
-                ]
-            },
-            {
-                prompt: "Onbedoelde verandering: toch aanpassen?",
-                context: "Bij het aanpassen van DNA in een embryo kan soms ook een ander stukje DNA veranderen. Artsen weten niet altijd vooraf wat dat betekent voor de gezondheid. De verandering kan worden doorgegeven aan kinderen van later.",
-                outcomes: [
-                    {
-                        consequence: "Taaislijmziekte kan misschien worden voorkomen, maar een onverwachte verandering kan gezondheidsproblemen geven en worden doorgegeven aan volgende generaties.",
-                        tradeoff: "Weeg ziekte voorkomen af tegen mogelijke gevolgen voor het kind en diens toekomstige familie."
-                    },
-                    {
-                        consequence: "Je vermijdt de risico's van de DNA-aanpassing, maar de kans op taaislijmziekte verdwijnt daarmee niet.",
-                        tradeoff: "Weeg onbekende risico's af tegen de kans op de ziekte en andere mogelijkheden voor ouders."
-                    }
-                ]
-            },
-            {
-                prompt: "IVF met embryotest: toch aanpassen?",
-                context: "Bij IVF wordt een eicel buiten het lichaam bevrucht. Artsen kunnen het embryo daarna testen op taaislijmziekte en een embryo zonder de ziekte terugplaatsen. Dit verandert het DNA niet. IVF kan zwaar zijn en lukt niet altijd.",
-                outcomes: [
-                    {
-                        consequence: "DNA aanpassen zou een extra mogelijkheid kunnen lijken als er geen geschikt embryo is. Maar deze behandeling bestaat nog niet en kan veranderingen veroorzaken die worden doorgegeven.",
-                        tradeoff: "Weeg de wens voor een extra mogelijkheid af tegen onbekende risico's en de bestaande, maar zware IVF-behandeling."
-                    },
-                    {
-                        consequence: "Je kiest voor testen zonder het DNA te veranderen. IVF kan lichamelijk en emotioneel zwaar zijn en lukt niet altijd.",
-                        tradeoff: "Weeg het vermijden van erfelijke DNA-aanpassing af tegen de belasting en onzekerheid van IVF."
+                        label: "Nee",
+                        consequence: "Toekomstige generaties worden beschermd tegen onbekende veranderingen die zij zouden erven. Een erfelijke ziekte kan wel in de familie blijven voorkomen.",
+                        tradeoff: "Je vermijdt risico's voor mensen die nog niet geboren zijn, maar laat mogelijke voordelen van erfelijke ziektepreventie onbenut."
                     }
                 ]
             }
@@ -1510,7 +1304,8 @@
             decisionModel.querySelector("[data-question]").textContent = question.prompt;
             decisionModel.querySelector("[data-question-context]").textContent = question.context;
 
-            choiceButtons.forEach((button) => {
+            choiceButtons.forEach((button, index) => {
+                button.textContent = question.choices[index].label;
                 button.setAttribute("aria-pressed", "false");
             });
 
@@ -1522,7 +1317,7 @@
         choiceButtons.forEach((button) => {
             button.addEventListener("click", () => {
                 const question = decisionQuestions[questionIndex];
-                const outcome = question.outcomes[Number(button.dataset.choice)];
+                const outcome = question.choices[Number(button.dataset.choice)];
 
                 choiceButtons.forEach((choiceButton) => {
                     choiceButton.setAttribute("aria-pressed", String(choiceButton === button));
