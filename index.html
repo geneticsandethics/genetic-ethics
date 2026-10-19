@@ -1,0 +1,1553 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monster of medicijn?</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+        body {
+            margin: 0;
+            font-family: 'DM Sans', sans-serif;
+            background: #f5f5ef;
+            color: #20372f;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 76px;
+            padding: 14px 7%;
+            border-bottom: 1px solid #d9ded3;
+            color: #20372f;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            letter-spacing: 0;
+        }
+
+        .brand-mark {
+            display: grid;
+            width: 38px;
+            height: 38px;
+            place-items: center;
+            border-radius: 50%;
+            background: #d7ef72;
+            color: #20372f;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 14px;
+        }
+
+        .nav-note {
+            color: #68776d;
+            font-size: 10px;
+            letter-spacing: 1.4px;
+            text-transform: uppercase;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: minmax(0, .95fr) minmax(340px, 1.05fr);
+            align-items: center;
+            gap: clamp(36px, 7vw, 100px);
+            max-width: 1440px;
+            min-height: 610px;
+            margin: 0 auto;
+            padding: 62px 8%;
+            background-color: #e9eee4;
+            background-image: linear-gradient(rgba(32, 55, 47, .035) 1px, transparent 1px), linear-gradient(90deg, rgba(32, 55, 47, .035) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+
+        .hero-copy {
+            max-width: 590px;
+        }
+
+        .label {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            color: #476655;
+            letter-spacing: 2px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .label::before {
+            width: 8px;
+            height: 8px;
+            background: #c35d46;
+            content: "";
+        }
+
+        h1 {
+            max-width: 600px;
+            margin: 24px 0 18px;
+            color: #20372f;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(54px, 7vw, 94px);
+            font-weight: 600;
+            line-height: .99;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.7;
+            color: #56675e;
+        }
+
+        .button {
+            display: inline-block;
+            margin-top: 14px;
+            padding: 15px 22px;
+            background: #244a3a;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            border: 0;
+            font: inherit;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform .2s, background-color .2s;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+            background: #17392b;
+        }
+
+        .hero-image {
+            position: relative;
+            min-height: 430px;
+            margin: 0;
+            overflow: hidden;
+            background: #d5ddd0;
+            box-shadow: 14px 14px 0 #c5d480;
+        }
+
+        .hero-image img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            min-height: 430px;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .hero-image figcaption {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            padding: 16px 20px;
+            background: rgba(22, 44, 35, .86);
+            color: white;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .science-section {
+            padding: 0;
+            background: #fbfbf7;
+            color: #20372f;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .science-heading {
+            max-width: 680px;
+            margin: 0 auto 45px;
+            text-align: center;
+        }
+
+        .science-section[hidden] {
+            display: none;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-bottom: 28px;
+            border: 0;
+            padding: 0;
+            background: none;
+            color: #49664e;
+            font: inherit;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .back-button:hover {
+            text-decoration: underline;
+        }
+
+        .eyebrow {
+            font-size: 12px;
+            letter-spacing: 3px;
+            color: #73866e;
+            font-weight: bold;
+        }
+
+        .science-heading h2 {
+            font-size: clamp(32px, 5vw, 52px);
+            margin: 16px 0;
+        }
+
+        .science-heading > p:last-child {
+            line-height: 1.8;
+            color: #657168;
+        }
+
+        .science-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .science-card {
+            background: #fff;
+            padding: 30px;
+            border: 1px solid #dce2d8;
+            border-radius: 8px;
+            box-shadow: 0 8px 25px rgba(32, 55, 47, .04);
+            transition: transform .2s, box-shadow .2s;
+        }
+
+        .science-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 30px rgba(32, 55, 47, .1);
+        }
+
+        .science-number {
+            color: #829579;
+            font-size: 13px;
+            letter-spacing: 2px;
+        }
+
+        .science-card h3 {
+            font-size: 23px;
+            margin-top: 24px;
+        }
+
+        .science-card p {
+            color: #657168;
+            line-height: 1.8;
+            font-size: 14px;
+        }
+
+        .science-card button,
+        .detail-section button {
+            display: inline-block;
+            margin-top: 12px;
+            color: #49664e;
+            font-weight: bold;
+            text-decoration: none;
+            font: inherit;
+            cursor: pointer;
+            border: 0;
+            background: none;
+            padding: 0;
+        }
+
+        .science-card button:hover,
+        .detail-section button:hover {
+            text-decoration: underline;
+        }
+
+        .detail-section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 64px 8%;
+            scroll-margin-top: 24px;
+            border-top: 1px solid #e2e7dc;
+        }
+
+        .detail-section[hidden] {
+            display: none;
+        }
+
+        .detail-section h2 {
+            color: #24352d;
+        }
+
+        .detail-section p {
+            max-width: 720px;
+            color: #657168;
+        }
+
+        .detail-section a {
+            color: #49664e;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .detail-section a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 700px) {
+            .science-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .science-page {
+            --forest: #244a3a;
+            --sage: #64806d;
+            --cream: #edf1e8;
+            --paper: #fbfbf7;
+            --ink: #20372f;
+            --muted: #586b60;
+            --line: #dce2d8;
+            padding: 0;
+            background: var(--paper);
+            color: var(--ink);
+            font-family: 'DM Sans', sans-serif;
+            line-height: 1.75;
+        }
+
+        .science-page[hidden] {
+            display: none;
+        }
+
+        .science-page * {
+            box-sizing: border-box;
+        }
+
+        .science-page h2,
+        .science-page h3,
+        .science-page h4,
+        .science-page p {
+            margin-top: 0;
+        }
+
+        .science-hero {
+            position: relative;
+            background: #e9eee4;
+            padding: 88px 8% 76px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .science-label,
+        .science-number {
+            color: #52745f;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+        }
+
+        .science-hero h2 {
+            margin: 24px 0;
+            color: var(--ink);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(46px, 7vw, 84px);
+            font-weight: 600;
+            line-height: 1.08;
+        }
+
+        .science-hero h2 em {
+            color: #bd5c45;
+            font-weight: 500;
+        }
+
+        .science-hero > p {
+            max-width: 610px;
+            margin: 0 auto 30px;
+            color: var(--muted);
+            font-size: 16px;
+        }
+
+        .science-button {
+            display: inline-block;
+            padding: 13px 23px;
+            border: 1px solid var(--forest);
+            border-radius: 4px;
+            background: var(--forest);
+            color: white;
+            font: inherit;
+            font-size: 13px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background .2s, color .2s;
+        }
+
+        .science-button:hover {
+            background: transparent;
+            color: var(--forest);
+        }
+
+        .science-hero-note {
+            margin-top: 45px;
+            color: var(--muted);
+            font-size: 10px;
+            letter-spacing: 2px;
+        }
+
+        .science-dot {
+            display: inline-block;
+            width: 7px;
+            height: 7px;
+            margin-right: 8px;
+            border-radius: 50%;
+            background: var(--sage);
+        }
+
+        .science-block {
+            max-width: 1120px;
+            margin: auto;
+            padding: 85px 7%;
+            scroll-margin-top: 25px;
+        }
+
+        .science-intro {
+            max-width: 700px;
+            margin-bottom: 38px;
+        }
+
+        .science-intro h3,
+        .science-quiz h3,
+        .ethics-bridge h3 {
+            margin: 15px 0;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(29px, 4vw, 43px);
+            line-height: 1.2;
+            font-weight: 400;
+        }
+
+        .science-intro > p,
+        .science-quiz > p,
+        .ethics-bridge > p {
+            color: var(--muted);
+            font-size: 15px;
+        }
+
+        .dna-panel {
+            display: grid;
+            grid-template-columns: .75fr 1.25fr;
+            align-items: center;
+            gap: 45px;
+            padding: 38px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: var(--cream);
+            box-shadow: 0 15px 35px rgba(32, 55, 47, .06);
+        }
+
+        .dna-illustration {
+            padding: 12px 0;
+        }
+
+        .dna-comparison {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+            align-items: center;
+            gap: 8px;
+        }
+
+        .dna-sequence {
+            display: grid;
+            gap: 9px;
+        }
+
+        .dna-sequence-label {
+            color: var(--muted);
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        .dna-rung {
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            justify-items: center;
+            gap: 3px;
+        }
+
+        .dna-rung::before {
+            position: absolute;
+            top: 50%;
+            right: 7px;
+            left: 7px;
+            border-top: 1px solid #9aab91;
+            content: "";
+        }
+
+        .dna-base {
+            display: grid;
+            z-index: 1;
+            width: 32px;
+            height: 32px;
+            place-items: center;
+            border: 1px solid #9aab91;
+            border-radius: 50%;
+            background: var(--paper);
+            color: var(--forest);
+            font-family: Georgia, serif;
+            font-size: 20px;
+        }
+
+        .dna-rung.is-mutated .dna-base {
+            border-color: #a85345;
+            background: #fff1ec;
+            color: #873d33;
+        }
+
+        .dna-mutation-arrow {
+            color: #a85345;
+            font-size: 18px;
+        }
+
+        .dna-visual-caption {
+            margin: 12px 0 0;
+            color: #873d33;
+            font-size: 11px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .dna-explanation h4,
+        .medical-card h4 {
+            margin: 12px 0;
+            font-family: Georgia, serif;
+            font-size: 24px;
+            line-height: 1.3;
+        }
+
+        .dna-explanation p,
+        .medical-card p,
+        .crispr-step p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .science-crispr {
+            max-width: none;
+            padding-right: max(7%, calc((100% - 960px) / 2));
+            padding-left: max(7%, calc((100% - 960px) / 2));
+            background: var(--cream);
+        }
+
+        .crispr-explainer {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 36px;
+        }
+
+        .crispr-explainer p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .crispr-visual {
+            padding: 24px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: var(--paper);
+        }
+
+        .crispr-visual-label {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--muted);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .crispr-sequence,
+        .crispr-guide {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+
+        .crispr-base {
+            display: grid;
+            width: 26px;
+            height: 32px;
+            place-items: center;
+            border: 1px solid var(--line);
+            border-radius: 4px;
+            background: white;
+            color: var(--ink);
+            font-weight: 700;
+        }
+
+        .crispr-base.is-target {
+            border-color: var(--sage);
+            background: #e8eee4;
+            color: var(--forest);
+        }
+
+        .crispr-guide-label {
+            margin: 12px 0 5px;
+            color: var(--sage);
+            font-size: 10px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .crispr-guide span {
+            width: 26px;
+            color: var(--forest);
+            font-size: 13px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .crispr-cut-label {
+            margin: 14px 0 0;
+            color: #873d33;
+            font-size: 11px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .science-note {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-top: 30px;
+            padding: 22px;
+            border: 1px solid #dce3d5;
+            border-radius: 6px;
+            background: var(--paper);
+        }
+
+        .note-symbol {
+            display: grid;
+            flex: 0 0 25px;
+            width: 25px;
+            height: 25px;
+            place-items: center;
+            border: 1px solid var(--sage);
+            border-radius: 50%;
+            color: var(--sage);
+            font-family: Georgia, serif;
+        }
+
+        .science-note p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .science-note strong {
+            color: var(--ink);
+        }
+
+        .medical-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .medical-card {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 22px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: white;
+            overflow: hidden;
+            box-shadow: 0 10px 28px rgba(32, 55, 47, .06);
+        }
+
+        .medical-photo {
+            display: block;
+            width: calc(100% + 44px);
+            max-width: none;
+            height: 160px;
+            margin: -22px -22px 18px;
+            object-fit: cover;
+        }
+
+        .medical-tag {
+            color: var(--sage);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+        }
+
+        .medical-symbol {
+            display: grid;
+            width: 48px;
+            height: 48px;
+            margin: 18px 0 8px;
+            place-items: center;
+            border-radius: 50%;
+            background: var(--cream);
+            color: var(--forest);
+            font-size: 25px;
+        }
+
+        .medical-status {
+            margin-top: auto;
+            padding-top: 15px;
+            color: var(--sage);
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .medical-card h4 {
+            font-size: 21px;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .science-quiz {
+            padding: 70px 8%;
+            background: var(--forest);
+            color: white;
+            text-align: center;
+        }
+
+        .science-quiz .science-number {
+            color: #c3d2b9;
+        }
+
+        .science-quiz > p {
+            max-width: 550px;
+            margin: 0 auto 30px;
+            color: #d6e0d5;
+        }
+
+        .decision-model {
+            max-width: 780px;
+            margin: 30px auto 0;
+            padding: 28px;
+            border-radius: 8px;
+            background: var(--paper);
+            color: var(--ink);
+            text-align: left;
+            box-shadow: 0 18px 50px rgba(0, 0, 0, .12);
+        }
+
+        .decision-kicker {
+            margin-bottom: 8px;
+            color: var(--sage);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+        }
+
+        .decision-model h4 {
+            margin: 0 0 12px;
+            font-family: Georgia, serif;
+            font-size: 24px;
+            line-height: 1.3;
+        }
+
+        .decision-description,
+        .decision-question {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .decision-question {
+            margin: 24px 0 12px;
+            color: var(--ink);
+            font-weight: 700;
+        }
+
+        .decision-options {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+        }
+
+        .decision-option {
+            min-height: 72px;
+            padding: 16px;
+            border: 1px solid var(--line);
+            border-radius: 5px;
+            background: white;
+            color: var(--forest);
+            font: inherit;
+            font-weight: 700;
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .decision-option:hover,
+        .decision-option[aria-pressed="true"] {
+            border-color: var(--sage);
+            background: var(--cream);
+        }
+
+        .decision-next {
+            margin-top: 18px;
+        }
+
+        .decision-complete {
+            margin-top: 22px;
+            padding: 16px;
+            border: 1px solid var(--line);
+            background: var(--cream);
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .decision-complete[hidden] {
+            display: none;
+        }
+
+        .decision-result {
+            margin-top: 22px;
+            padding: 20px;
+            border-left: 3px solid var(--sage);
+            background: var(--cream);
+        }
+
+        .decision-result[hidden] {
+            display: none;
+        }
+
+        .decision-result h4 {
+            margin: 0 0 8px;
+            font-family: Arial, sans-serif;
+            font-size: 15px;
+        }
+
+        .decision-result p {
+            margin: 0 0 18px;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .decision-result p:last-child {
+            margin-bottom: 0;
+        }
+
+        .decision-caveat {
+            max-width: 780px;
+            margin: 20px auto 0;
+            color: #d6e0d5;
+            font-size: 12px;
+        }
+
+        .ethics-bridge {
+            padding: 85px 8%;
+            background: #e9ede4;
+            text-align: center;
+        }
+
+        .ethics-bridge > p {
+            max-width: 700px;
+            margin: 0 auto 25px;
+        }
+
+        .dilemma-list {
+            display: grid;
+            gap: 26px;
+        }
+
+        .debate-dilemma {
+            padding: 24px 0;
+            border-top: 1px solid var(--line);
+        }
+
+        .debate-dilemma h4 {
+            margin: 0 0 16px;
+            color: var(--forest);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 23px;
+        }
+
+        .debate-situation {
+            max-width: 850px;
+            margin: 0 0 18px;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .debate-situation strong {
+            color: var(--ink);
+        }
+
+        .debate-pair {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .debate-side {
+            display: grid;
+            grid-template-columns: 42px 1fr;
+            grid-template-rows: auto 1fr;
+            align-items: center;
+            gap: 4px 12px;
+            min-height: 110px;
+            padding: 16px;
+            border-top: 3px solid var(--forest);
+            background: var(--cream);
+        }
+
+        .debate-side--against {
+            border-color: #a85345;
+            background: #fbf1ed;
+        }
+
+        .debate-person {
+            position: relative;
+            grid-row: 1 / span 2;
+            width: 40px;
+            height: 54px;
+            color: var(--forest);
+        }
+
+        .debate-side--against .debate-person {
+            color: #a85345;
+        }
+
+        .debate-person::before,
+        .debate-person::after {
+            position: absolute;
+            content: "";
+        }
+
+        .debate-person::before {
+            top: 2px;
+            left: 11px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: currentColor;
+        }
+
+        .debate-person::after {
+            top: 23px;
+            left: 4px;
+            width: 32px;
+            height: 30px;
+            background: currentColor;
+            clip-path: polygon(35% 0, 65% 0, 100% 100%, 0 100%);
+        }
+
+        .debate-label {
+            color: var(--forest);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .debate-side--against .debate-label {
+            color: #873d33;
+        }
+
+        .debate-argument {
+            grid-column: 2;
+            margin: 0;
+            color: var(--ink);
+            font-size: 13px;
+        }
+
+        .science-closing {
+            margin: 35px 0 0;
+            padding: 25px 0 0;
+            border-top: 1px solid var(--line);
+            color: var(--forest);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 20px;
+        }
+
+        .science-back-button {
+            margin: 0 0 24px;
+        }
+
+        @media (max-width: 760px) {
+            nav {
+                min-height: 64px;
+                padding: 12px 6%;
+            }
+
+            .nav-note {
+                display: none;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 34px;
+                min-height: 0;
+                padding: 54px 7% 48px;
+            }
+
+            h1 {
+                font-size: clamp(50px, 13vw, 72px);
+            }
+
+            .hero-image,
+            .hero-image img {
+                min-height: 300px;
+            }
+
+            .science-hero {
+                padding: 70px 7% 50px;
+            }
+
+            .dna-panel {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 24px;
+            }
+
+            .crispr-explainer,
+            .debate-pair {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+
+            .medical-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .medical-photo {
+                height: 190px;
+            }
+
+            .science-block {
+                padding: 60px 7%;
+            }
+
+            .science-quiz,
+            .ethics-bridge {
+                padding: 60px 7%;
+            }
+
+            .decision-model {
+                padding: 20px;
+            }
+
+            .decision-options {
+                grid-template-columns: 1fr;
+            }
+
+            .crispr-visual {
+                padding: 18px 10px;
+            }
+
+            .crispr-base,
+            .crispr-guide span {
+                width: 23px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                transition-duration: .01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="brand">
+            <span class="brand-mark" aria-hidden="true">G</span>
+            <span>GENETICA<br>IN BEELD</span>
+        </div>
+        <span class="nav-note">WETENSCHAP / MENS / MAATSCHAPPIJ</span>
+    </nav>
+
+    <main class="hero">
+        <div class="hero-copy">
+            <span class="label">Wetenschap & samenleving</span>
+
+            <h1>Monster of medicijn?</h1>
+
+            <p>
+                Kunnen artsen ziekten die in families voorkomen behandelen door DNA te veranderen?
+                Ontdek hoe zulke behandelingen werken, wat ze kunnen betekenen
+                en welke lastige keuzes erbij horen.
+            </p>
+
+            <button class="button" type="button" data-show-science aria-controls="wetenschap">
+                Ontdek de wetenschap <span aria-hidden="true">→</span>
+            </button>
+        </div>
+        <figure class="hero-image">
+            <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1400&q=85" alt="Laboratoriumonderzoeker werkt met medische onderzoeksapparatuur" fetchpriority="high">
+            <figcaption>Onderzoek naar nieuwe medische mogelijkheden</figcaption>
+        </figure>
+    </main>
+
+    <section id="wetenschap" class="science-section science-page" hidden>
+        <header class="science-hero">
+            <button class="science-button science-back-button" type="button" data-close-science>← Terug naar start</button>
+            <span class="science-label">DE WETENSCHAP ACHTER DNA</span>
+            <h2>DNA veranderen,<br><em>levens veranderen.</em></h2>
+            <p>
+                DNA is een soort handleiding in onze cellen. Soms zorgt een
+                verandering in die handleiding voor ziekte. Bekijk hoe artsen
+                proberen te helpen en welke keuzes daarbij komen kijken.
+            </p>
+            <a class="science-button" href="#dna">Begin met ontdekken <span>↓</span></a>
+            <div class="science-hero-note">
+                <span class="science-dot"></span>
+                DNA · BEHANDELING · KEUZES
+            </div>
+        </header>
+
+        <section class="science-block" id="dna">
+            <div class="science-intro">
+                <span class="science-number">01 / DE BASIS</span>
+                    <h3>DNA: de handleiding in je cellen.</h3>
+                <p>
+                    DNA bevat instructies die je lichaam helpen werken.
+                    Het bestaat uit vier bouwstenen: A, T, C en G. A past
+                    altijd tegenover T, en C tegenover G. Zo'n paar heet een
+                    basenpaar: twee bouwstenen die samen een sport van de
+                    DNA-ladder vormen.
+                </p>
+            </div>
+
+            <div class="dna-panel">
+                <div class="dna-illustration" role="img" aria-label="DNA bestaat uit letterparen: A staat tegenover T en C tegenover G. In het voorbeeld verandert een paar van T-A naar C-G.">
+                    <div class="dna-comparison" aria-hidden="true">
+                        <div class="dna-sequence">
+                            <span class="dna-sequence-label">VOOR</span>
+                            <span class="dna-rung"><span class="dna-base">A</span><span class="dna-base">T</span></span>
+                            <span class="dna-rung"><span class="dna-base">C</span><span class="dna-base">G</span></span>
+                            <span class="dna-rung"><span class="dna-base">T</span><span class="dna-base">A</span></span>
+                            <span class="dna-rung"><span class="dna-base">G</span><span class="dna-base">C</span></span>
+                        </div>
+                        <span class="dna-mutation-arrow">→</span>
+                        <div class="dna-sequence">
+                            <span class="dna-sequence-label">NA VERANDERING</span>
+                            <span class="dna-rung"><span class="dna-base">A</span><span class="dna-base">T</span></span>
+                            <span class="dna-rung"><span class="dna-base">C</span><span class="dna-base">G</span></span>
+                            <span class="dna-rung is-mutated"><span class="dna-base">C</span><span class="dna-base">G</span></span>
+                            <span class="dna-rung"><span class="dna-base">G</span><span class="dna-base">C</span></span>
+                        </div>
+                    </div>
+                    <p class="dna-visual-caption">Eén paar verandert: T-A wordt C-G</p>
+                </div>
+                <div class="dna-explanation">
+                    <span class="science-label">DNA: INFORMATIE DIE JE ERFT</span>
+                    <h4>Wat kan een verandering doen?</h4>
+                    <p>
+                        Hier is één bouwsteenpaar veranderd. Daardoor kan de
+                        cel een andere instructie krijgen. Soms merk je daar
+                        niets van; soms werkt een deel van het lichaam anders
+                        en kan iemand ziek worden. De uitkomst hangt af van
+                        waar de verandering zit.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="science-block science-crispr" id="crispr">
+            <div class="science-intro">
+                <span class="science-number">02 / DE TECHNIEK</span>
+                <h3>CRISPR-Cas9: een soort DNA-schaar.</h3>
+            </div>
+
+            <div class="crispr-explainer">
+                <div class="crispr-visual" role="img" aria-label="Een klein gidsje zoekt een passend stukje DNA. Cas9 werkt als een schaar en knipt het DNA daar door.">
+                    <span class="crispr-visual-label">STUKJE DNA</span>
+                    <div class="crispr-sequence" aria-hidden="true">
+                        <span class="crispr-base">A</span>
+                        <span class="crispr-base">T</span>
+                        <span class="crispr-base is-target">G</span>
+                        <span class="crispr-base is-target">A</span>
+                        <span class="crispr-base is-target">A</span>
+                        <span class="crispr-base is-target">C</span>
+                        <span class="crispr-base is-target">T</span>
+                        <span class="crispr-base">C</span>
+                        <span class="crispr-base">A</span>
+                    </div>
+                    <p class="crispr-guide-label">DE GIDS ZOEKT DIT STUKJE OP</p>
+                    <div class="crispr-guide" aria-hidden="true">
+                        <span></span><span></span>
+                        <span>C</span><span>U</span><span>U</span><span>G</span><span>A</span>
+                        <span></span><span></span>
+                    </div>
+                    <p class="crispr-cut-label">CAS9 KNIPT HET DNA OP DIE PLEK</p>
+                </div>
+                <p>
+                    Een klein gidsje zoekt een passend stukje DNA.
+                    Cas9 werkt daar als een schaar en knipt het DNA.
+                    Als de cel de knip herstelt, kan een stukje DNA veranderen
+                    of uitvallen. Soms wordt ook op een verkeerde plek geknipt.
+                </p>
+            </div>
+
+            <div class="science-note">
+                <span class="note-symbol">i</span>
+                <p>
+                    <strong>Belangrijk om te weten</strong><br>
+                    De DNA-schaar knipt niet altijd precies op de bedoelde plek.
+                    Daarom controleren onderzoekers op andere veranderingen.
+                </p>
+            </div>
+        </section>
+
+        <section class="science-block" id="medisch">
+            <div class="science-intro">
+                <span class="science-number">03 / IN DE GENEESKUNDE</span>
+                <h3>Hoe helpen behandelingen mensen?</h3>
+                <p>
+                    Deze voorbeelden laten zien hoe artsen cellen of informatie
+                    in het lichaam proberen te gebruiken om ziekten te behandelen.
+                </p>
+            </div>
+
+            <div class="medical-grid">
+                <article class="medical-card">
+                    <img class="medical-photo" src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=900&q=80" alt="Arts bespreekt medische zorg met een patiënt" loading="lazy">
+                    <span class="medical-tag">VOORBEELD 01</span>
+                    <div class="medical-symbol" aria-hidden="true">✳</div>
+                    <h4>Sikkelcelziekte</h4>
+                    <p>
+                        Casgevy past bloedstamcellen aan: cellen waar nieuwe
+                        bloedcellen uit groeien. Daarna maakt het lichaam meer
+                        van een stof die zuurstof vervoert. Hierdoor kunnen rode
+                        bloedcellen minder snel sikkelvormig worden en kunnen
+                        pijnklachten afnemen.
+                    </p>
+                    <span class="medical-status">GOEDGEKEURDE BEHANDELING</span>
+                </article>
+
+                <article class="medical-card">
+                    <img class="medical-photo" src="https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=900&q=80" alt="Onderzoeker werkt met monsters in een laboratorium" loading="lazy">
+                    <span class="medical-tag">VOORBEELD 02</span>
+                    <div class="medical-symbol" aria-hidden="true">◎</div>
+                        <h4>Een erfelijke spierziekte</h4>
+                    <p>
+                        Deze erfelijke ziekte maakt spieren steeds zwakker.
+                        Zolgensma geeft cellen een werkende versie van de
+                        erfelijke informatie die niet goed werkt. Dit kan de
+                        ziekte bij jonge kinderen afremmen.
+                    </p>
+                    <span class="medical-status">BEHANDELING MET EEN GEN</span>
+                </article>
+
+                <article class="medical-card">
+                    <img class="medical-photo" src="https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=900&q=80" alt="Zorgprofessional in een medische onderzoeksomgeving" loading="lazy">
+                    <span class="medical-tag">VOORBEELD 03</span>
+                    <div class="medical-symbol" aria-hidden="true">⌘</div>
+                    <h4>Afweercellen tegen kanker</h4>
+                    <p>
+                        Afweercellen beschermen het lichaam tegen ziekte.
+                        Artsen passen ze aan zodat ze bepaalde bloedkankers
+                        herkennen en aanvallen. Daarna gaan de cellen terug het
+                        lichaam in. Deze behandeling heet CAR-T.
+                    </p>
+                    <span class="medical-status">BEHANDELING MET CELLEN</span>
+                </article>
+            </div>
+        </section>
+
+        <section class="science-quiz" aria-labelledby="decision-title">
+            <span class="science-number">INTERACTIEF BESLISMODEL</span>
+            <h3 id="decision-title">Een keuze, verschillende gevolgen.</h3>
+            <p>Lees de situatie en kies wat jij zou doen. Er zijn geen goede of foute antwoorden. Na je keuze zie je wat de mogelijke gevolgen zijn.</p>
+
+            <div class="decision-model" data-decision-model>
+                <p class="decision-kicker" data-question-progress>VRAAG 1 / 6</p>
+                <h4 data-question tabindex="-1">Sikkelcelziekte: wel behandelen?</h4>
+                <p class="decision-description" data-question-context>
+                    Een 17-jarige heeft vaak ernstige pijn en moet geregeld naar het ziekenhuis. Casgevy verandert eigen bloedcellen waar nieuwe bloedcellen uit ontstaan. Vooraf krijgt de patiënt sterke medicijnen. Die kunnen de vruchtbaarheid blijvend aantasten; er is geen vast percentage dat voor iedereen geldt.
+                </p>
+                <p class="decision-question">Wat kies je?</p>
+
+                <div class="decision-options">
+                    <button class="decision-option" type="button" data-choice="0" aria-pressed="false">Wel behandelen</button>
+                    <button class="decision-option" type="button" data-choice="1" aria-pressed="false">Niet behandelen</button>
+                </div>
+
+                <div class="decision-result" data-decision-result role="status" aria-live="polite" hidden>
+                    <h4>Mogelijke gevolgen</h4>
+                    <p data-consequence></p>
+                    <h4>Afweging</h4>
+                    <p data-tradeoff></p>
+                </div>
+                <button class="science-button decision-next" type="button" data-next-question hidden>Volgende vraag →</button>
+                <p class="decision-complete" data-decision-complete role="status" hidden>
+                    Je hebt alle casussen doorlopen. Denk na over wat voor jou het zwaarst woog; er is geen goed of fout antwoord.
+                    <br><button class="science-button decision-next" type="button" data-restart>Opnieuw beginnen</button>
+                </p>
+            </div>
+            <p class="decision-caveat">
+                Casgevy is een bestaande behandeling. IVF betekent dat een eicel buiten het lichaam wordt bevrucht. DNA van een embryo aanpassen is geen beschikbare behandeling. Dit model is geen persoonlijk medisch advies.
+            </p>
+        </section>
+
+        <section class="ethics-bridge" id="ethiek">
+            <span class="science-label">DE VOLGENDE VRAAG</span>
+            <h3>Maar kunnen we alles veranderen wat we kunnen veranderen?</h3>
+            <p>
+                Dat een techniek medisch mogelijk is, betekent niet
+                automatisch dat iedere toepassing wenselijk of
+                verantwoord is. Wie bepaalt waar de grens ligt?
+                En wat gebeurt er als genetische aanpassingen niet
+                alleen worden gebruikt om ziekten te behandelen,
+                maar ook om erfelijke eigenschappen te veranderen?
+            </p>
+            <a class="science-button" href="#ethische-dilemma">Ontdek de ethische dilemma's →</a>
+        </section>
+
+        <section class="science-block" id="ethische-dilemma">
+            <div class="science-intro">
+                <span class="science-number">04 / ETHIEK EN SAMENLEVING</span>
+                <h3>Twee mensen, twee meningen.</h3>
+                <p>
+                    Lees wat beide mensen belangrijk vinden. Welke kant begrijp
+                    jij het best?
+                </p>
+            </div>
+
+            <div class="dilemma-list">
+                <article class="debate-dilemma">
+                    <h4>Moet deze patiënt DNA-aanpassing kunnen krijgen?</h4>
+                    <p class="debate-situation">
+                        <strong>De situatie</strong><br>
+                        Een 17-jarige heeft sikkelcelziekte, een erfelijke aandoening die ernstige pijn kan veroorzaken.
+                        Casgevy verandert het DNA in cellen waar nieuwe bloedcellen uit ontstaan. De behandeling kan de
+                        klachten verminderen, maar is zwaar, kent risico's en is erg duur. De patiënt wil de behandeling
+                        graag; de ouders twijfelen door de risico's en onzekerheid over de gevolgen op lange termijn.
+                    </p>
+                    <div class="debate-pair">
+                        <div class="debate-side">
+                            <span class="debate-person" aria-hidden="true"></span>
+                            <span class="debate-label">PATIËNT</span>
+                            <p class="debate-argument">"Ik wil minder pijn en zelf meepraten over mijn behandeling."</p>
+                        </div>
+                        <div class="debate-side debate-side--against">
+                            <span class="debate-person" aria-hidden="true"></span>
+                            <span class="debate-label">OUDERS</span>
+                            <p class="debate-argument">"We maken ons zorgen over de zware behandeling en onbekende gevolgen."</p>
+                        </div>
+                    </div>
+                </article>
+                <article class="debate-dilemma">
+                    <h4>Mag je embryo-DNA aanpassen om een erfelijke ziekte te voorkomen?</h4>
+                    <p class="debate-situation">
+                        <strong>De situatie</strong><br>
+                        Beide ouders hebben een verandering in hetzelfde stukje DNA. Zelf zijn ze niet ziek, maar ze
+                        kunnen die verandering doorgeven. Bij elke zwangerschap is er 1 op 4 kans dat hun kind
+                        taaislijmziekte krijgt. Bij IVF (een eicel buiten het lichaam bevruchten) kunnen artsen een
+                        embryo, een heel vroege vorm na bevruchting, testen. DNA van embryo's aanpassen kan nog niet.
+                    </p>
+                    <div class="debate-pair">
+                        <div class="debate-side">
+                            <span class="debate-person" aria-hidden="true"></span>
+                            <span class="debate-label">VOORSTANDER</span>
+                            <p class="debate-argument">"Zo zou je een ernstige ziekte bij het kind kunnen voorkomen."</p>
+                        </div>
+                        <div class="debate-side debate-side--against">
+                            <span class="debate-person" aria-hidden="true"></span>
+                            <span class="debate-label">TEGENSTANDER</span>
+                            <p class="debate-argument">"Fouten kunnen erfelijk zijn; het toekomstige kind kan niet instemmen."</p>
+                        </div>
+                    </div>
+                </article>
+                <article class="debate-dilemma">
+                    <h4>Wie krijgt een dure DNA-behandeling?</h4>
+                    <p class="debate-situation">
+                        <strong>De situatie</strong><br>
+                        Een ziekenhuis beoordeelt patiënten die mogelijk baat hebben bij een dure behandeling die DNA verandert.
+                        Het beschikbare budget is beperkt. Een besluit over vergoeding kan bepalen wie de behandeling
+                        krijgt en welke andere zorg met hetzelfde geld betaald kan worden.
+                    </p>
+                    <div class="debate-pair">
+                        <div class="debate-side">
+                            <span class="debate-person" aria-hidden="true"></span>
+                            <span class="debate-label">PATIËNT</span>
+                            <p class="debate-argument">"Als de behandeling mij kan helpen, moet ik er toegang toe hebben."</p>
+                        </div>
+                        <div class="debate-side debate-side--against">
+                            <span class="debate-person" aria-hidden="true"></span>
+                            <span class="debate-label">ZORGVERLENER</span>
+                            <p class="debate-argument">"We moeten het budget eerlijk verdelen over alle patiënten."</p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <p class="science-closing">
+                De wetenschap laat zien wat mogelijk kan zijn.
+                De samenleving moet blijven nadenken over wat verantwoord is.
+            </p>
+        </section>
+    </section>
+
+    <script>
+        const scienceButton = document.querySelector("[data-show-science]");
+        const scienceSection = document.getElementById("wetenschap");
+
+        scienceButton.addEventListener("click", () => {
+            scienceSection.hidden = false;
+            scienceSection.querySelector("[data-close-science]").focus({ preventScroll: true });
+            scienceSection.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+
+        document.querySelector("[data-close-science]").addEventListener("click", () => {
+            scienceSection.hidden = true;
+            scienceButton.focus();
+        });
+
+        const decisionModel = document.querySelector("[data-decision-model]");
+        const choiceButtons = decisionModel.querySelectorAll("[data-choice]");
+        const resultPanel = decisionModel.querySelector("[data-decision-result]");
+        const nextQuestionButton = decisionModel.querySelector("[data-next-question]");
+        const completionMessage = decisionModel.querySelector("[data-decision-complete]");
+        const restartButton = decisionModel.querySelector("[data-restart]");
+        const decisionQuestions = [
+            {
+                prompt: "Sikkelcelziekte: wel behandelen?",
+                context: "Een 17-jarige heeft vaak ernstige pijn doordat rode bloedcellen een afwijkende vorm hebben. Casgevy verandert bloedcellen waar nieuwe bloedcellen uit ontstaan. Vooraf krijgt de patiënt sterke medicijnen. Die kunnen de vruchtbaarheid blijvend aantasten; de kans verschilt per persoon.",
+                outcomes: [
+                    {
+                        consequence: "De behandeling kan ernstige pijnaanvallen verminderen. De sterke medicijnen vooraf kunnen ook ernstige bijwerkingen geven, zoals infecties en problemen met vruchtbaarheid.",
+                        tradeoff: "Weeg minder pijn en ziekenhuisbezoeken af tegen de zware behandeling en mogelijke gevolgen voor later."
+                    },
+                    {
+                        consequence: "De patiënt krijgt de risico's van de behandeling niet, maar de pijnaanvallen en ziekenhuisbezoeken kunnen doorgaan. De ziekte kan ook organen beschadigen.",
+                        tradeoff: "Weeg het vermijden van een zware behandeling af tegen de klachten en mogelijke schade door de ziekte."
+                    }
+                ]
+            },
+            {
+                prompt: "Kinderwens: toch behandelen?",
+                context: "De patiënt wil later misschien kinderen. De sterke medicijnen vóór Casgevy kunnen eicellen of zaadcellen beschadigen. Die vooraf laten bewaren kan soms helpen, maar is niet voor iedereen mogelijk.",
+                outcomes: [
+                    {
+                        consequence: "De pijn kan afnemen, maar de behandeling kan de mogelijkheid om later zelf kinderen te krijgen verkleinen. Eicellen of zaadcellen bewaren kan extra tijd kosten.",
+                        tradeoff: "Weeg de gezondheid van nu af tegen de kinderwens van later. De patiënt moet zelf mee kunnen beslissen."
+                    },
+                    {
+                        consequence: "De patiënt stelt het risico voor de vruchtbaarheid uit, maar kan pijncrises en ziekenhuisbezoeken blijven houden.",
+                        tradeoff: "Weeg de kinderwens af tegen de klachten van de ziekte en bespreek andere mogelijkheden met het behandelteam."
+                    }
+                ]
+            },
+            {
+                prompt: "Onzekerheid: toch behandelen?",
+                context: "De patiënt heeft nog steeds ernstige pijn ondanks de zorg die al beschikbaar is. Casgevy kan helpen, maar artsen weten nog niet alles over de gevolgen op lange termijn. Na de behandeling zijn controles nodig.",
+                outcomes: [
+                    {
+                        consequence: "De patiënt kan minder pijncrises krijgen, maar moet controles blijven volgen. Sommige gevolgen worden misschien pas later duidelijk.",
+                        tradeoff: "Weeg mogelijke verlichting nu af tegen onzekerheid over later. Welke informatie zou de patiënt nodig hebben om te kiezen?"
+                    },
+                    {
+                        consequence: "De patiënt vermijdt voorlopig een nieuwe behandeling, maar bestaande zorg helpt onvoldoende en de pijn kan doorgaan.",
+                        tradeoff: "Weeg voorzichtig afwachten af tegen de klachten van nu. Zijn er andere behandelingen die wel passend zijn?"
+                    }
+                ]
+            },
+            {
+                prompt: "Erfelijke ziekte: embryo aanpassen?",
+                context: "Beide ouders hebben dezelfde verandering in hun DNA. Zelf zijn ze niet ziek, maar ze kunnen die doorgeven. Bij elke zwangerschap is er 1 op 4 kans op een kind met taaislijmziekte. Een embryo is een bevruchte eicel in een heel vroeg stadium. DNA daarin aanpassen kan nu niet als behandeling.",
+                outcomes: [
+                    {
+                        consequence: "De ziekte zou misschien voorkomen kunnen worden. Maar er kan ook iets anders in het DNA veranderen. Die verandering kan later worden doorgegeven aan kinderen.",
+                        tradeoff: "Weeg ziekte voorkomen af tegen onbekende gevolgen en het feit dat het toekomstige kind niet zelf kan kiezen."
+                    },
+                    {
+                        consequence: "Er wordt geen DNA aangepast. De kans op taaislijmziekte blijft bestaan. Sommige ouders kunnen bij IVF embryo's laten testen voordat er één wordt teruggeplaatst.",
+                        tradeoff: "Weeg voorzichtigheid af tegen de wens om de ziekte te voorkomen en de belasting van een IVF-behandeling."
+                    }
+                ]
+            },
+            {
+                prompt: "Onbedoelde verandering: toch aanpassen?",
+                context: "Bij het aanpassen van DNA in een embryo kan soms ook een ander stukje DNA veranderen. Artsen weten niet altijd vooraf wat dat betekent voor de gezondheid. De verandering kan worden doorgegeven aan kinderen van later.",
+                outcomes: [
+                    {
+                        consequence: "Taaislijmziekte kan misschien worden voorkomen, maar een onverwachte verandering kan gezondheidsproblemen geven en worden doorgegeven aan volgende generaties.",
+                        tradeoff: "Weeg ziekte voorkomen af tegen mogelijke gevolgen voor het kind en diens toekomstige familie."
+                    },
+                    {
+                        consequence: "Je vermijdt de risico's van de DNA-aanpassing, maar de kans op taaislijmziekte verdwijnt daarmee niet.",
+                        tradeoff: "Weeg onbekende risico's af tegen de kans op de ziekte en andere mogelijkheden voor ouders."
+                    }
+                ]
+            },
+            {
+                prompt: "IVF met embryotest: toch aanpassen?",
+                context: "Bij IVF wordt een eicel buiten het lichaam bevrucht. Artsen kunnen het embryo daarna testen op taaislijmziekte en een embryo zonder de ziekte terugplaatsen. Dit verandert het DNA niet. IVF kan zwaar zijn en lukt niet altijd.",
+                outcomes: [
+                    {
+                        consequence: "DNA aanpassen zou een extra mogelijkheid kunnen lijken als er geen geschikt embryo is. Maar deze behandeling bestaat nog niet en kan veranderingen veroorzaken die worden doorgegeven.",
+                        tradeoff: "Weeg de wens voor een extra mogelijkheid af tegen onbekende risico's en de bestaande, maar zware IVF-behandeling."
+                    },
+                    {
+                        consequence: "Je kiest voor testen zonder het DNA te veranderen. IVF kan lichamelijk en emotioneel zwaar zijn en lukt niet altijd.",
+                        tradeoff: "Weeg het vermijden van erfelijke DNA-aanpassing af tegen de belasting en onzekerheid van IVF."
+                    }
+                ]
+            }
+        ];
+        let questionIndex = 0;
+
+        function showQuestion() {
+            const question = decisionQuestions[questionIndex];
+
+            decisionModel.querySelector("[data-question-progress]").textContent = `VRAAG ${questionIndex + 1} / ${decisionQuestions.length}`;
+            decisionModel.querySelector("[data-question]").textContent = question.prompt;
+            decisionModel.querySelector("[data-question-context]").textContent = question.context;
+
+            choiceButtons.forEach((button) => {
+                button.setAttribute("aria-pressed", "false");
+            });
+
+            resultPanel.hidden = true;
+            nextQuestionButton.hidden = true;
+            completionMessage.hidden = true;
+        }
+
+        choiceButtons.forEach((button) => {
+            button.addEventListener("click", () => {
+                const question = decisionQuestions[questionIndex];
+                const outcome = question.outcomes[Number(button.dataset.choice)];
+
+                choiceButtons.forEach((choiceButton) => {
+                    choiceButton.setAttribute("aria-pressed", String(choiceButton === button));
+                });
+
+                decisionModel.querySelector("[data-consequence]").textContent = outcome.consequence;
+                decisionModel.querySelector("[data-tradeoff]").textContent = outcome.tradeoff;
+                resultPanel.hidden = false;
+                const isLastQuestion = questionIndex === decisionQuestions.length - 1;
+                nextQuestionButton.hidden = isLastQuestion;
+                completionMessage.hidden = !isLastQuestion;
+            });
+        });
+
+        nextQuestionButton.addEventListener("click", () => {
+            questionIndex += 1;
+            showQuestion();
+            decisionModel.querySelector("[data-question]").focus();
+        });
+
+        restartButton.addEventListener("click", () => {
+            questionIndex = 0;
+            showQuestion();
+            decisionModel.querySelector("[data-question]").focus();
+        });
+    </script>
+</body>
+</html>
