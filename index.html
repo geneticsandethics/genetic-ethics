@@ -3,10 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monster of medicijn?</title>
+    <title>Monster of medicijn? De wereld van genetische modificatie</title>
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+        html {
+            scroll-padding-top: 80px;
+        }
 
         body {
             margin: 0;
@@ -31,6 +35,14 @@
 
         .hero-copy {
             max-width: 590px;
+        }
+
+        .research-question {
+            margin: 0 0 16px;
+            color: #52745f;
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 1.5;
         }
 
         h1 {
@@ -70,6 +82,13 @@
             background: #17392b;
         }
 
+        .button:focus-visible,
+        .science-page button:focus-visible,
+        .science-page a:focus-visible {
+            outline: 3px solid #d7ef72;
+            outline-offset: 3px;
+        }
+
         .hero-image {
             position: relative;
             min-height: 430px;
@@ -86,6 +105,14 @@
             min-height: 430px;
             object-fit: cover;
             object-position: center;
+        }
+
+        .hero-image svg {
+            display: block;
+            width: 100%;
+            height: 100%;
+            min-height: 430px;
+            background: #edf1e8;
         }
 
         .hero-image figcaption {
@@ -117,12 +144,139 @@
             line-height: 1.75;
         }
 
-        .science-page[hidden] {
-            display: none;
-        }
-
         .science-page * {
             box-sizing: border-box;
+        }
+
+        .site-nav {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            background: #20372f;
+            color: white;
+        }
+
+        .site-nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            max-width: 1240px;
+            min-height: 58px;
+            margin: auto;
+            padding: 0 7%;
+        }
+
+        .site-nav-brand,
+        .site-nav a {
+            color: white;
+            font-size: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .site-nav-brand {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 14px;
+        }
+
+        .site-nav-links a {
+            position: relative;
+            padding: 8px 0;
+        }
+
+        .site-nav-links a::after {
+            position: absolute;
+            right: 0;
+            bottom: 3px;
+            left: 0;
+            height: 2px;
+            background: #d7ef72;
+            content: "";
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform .2s ease;
+        }
+
+        .site-nav-links a:hover::after,
+        .site-nav-links a:focus-visible::after {
+            transform: scaleX(1);
+        }
+
+        .site-nav-links {
+            display: flex;
+            align-items: center;
+            gap: clamp(12px, 2vw, 26px);
+            overflow-x: auto;
+            scrollbar-width: thin;
+        }
+
+        .site-nav a:hover,
+        .site-nav a:focus-visible {
+            color: #d7ef72;
+        }
+
+        .site-nav a:focus-visible {
+            outline: 2px solid #d7ef72;
+            outline-offset: 4px;
+        }
+
+        .term-help {
+            position: relative;
+            display: inline-block;
+            padding-right: 1.2em;
+            white-space: nowrap;
+        }
+
+        .term-help-button {
+            position: absolute;
+            top: -.45em;
+            right: 0;
+            display: grid;
+            width: 17px;
+            height: 17px;
+            padding: 0;
+            place-items: center;
+            border: 1px solid currentColor;
+            border-radius: 50%;
+            background: var(--paper);
+            color: var(--forest);
+            font: inherit;
+            font-size: 11px;
+            font-weight: 700;
+            line-height: 1;
+            cursor: pointer;
+        }
+
+        .term-help-button:hover,
+        .term-help-button[aria-expanded="true"] {
+            background: var(--forest);
+            color: white;
+        }
+
+        .term-help-tooltip {
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 0;
+            z-index: 10;
+            width: max-content;
+            max-width: min(280px, calc(100vw - 48px));
+            padding: 12px 14px;
+            border: 1px solid var(--line);
+            border-radius: 5px;
+            background: white;
+            color: var(--ink);
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 1.5;
+            text-align: left;
+            white-space: normal;
+            box-shadow: 0 8px 24px rgba(32, 55, 47, .16);
+        }
+
+        .term-help-tooltip[hidden] {
+            display: none;
         }
 
         .science-page h2,
@@ -162,6 +316,52 @@
             font-weight: 500;
         }
 
+        .science-hero-sequence {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            width: fit-content;
+            margin: -8px auto 22px;
+            padding: 7px 11px;
+            border: 1px solid rgba(82, 116, 95, .18);
+            border-radius: 99px;
+            background: rgba(251, 251, 247, .7);
+            color: var(--forest);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: .5px;
+        }
+
+        .science-hero-sequence span {
+            display: grid;
+            width: 20px;
+            height: 20px;
+            place-items: center;
+            border-radius: 50%;
+            background: var(--cream);
+        }
+
+        .science-hero-sequence span:nth-of-type(2) {
+            background: #f5e9df;
+            color: #873d33;
+        }
+
+        .science-hero-sequence span:nth-of-type(3) {
+            background: #e4effa;
+            color: #285b91;
+        }
+
+        .science-hero-sequence span:nth-of-type(4) {
+            background: #f3ead5;
+            color: #80602f;
+        }
+
+        .science-hero-sequence i {
+            width: 10px;
+            border-top: 1px solid #9aab91;
+        }
+
         .science-hero > p {
             max-width: 610px;
             margin: 0 auto 30px;
@@ -180,12 +380,14 @@
             font-size: 13px;
             text-decoration: none;
             cursor: pointer;
-            transition: background .2s, color .2s;
+            transition: background .2s, color .2s, transform .2s, box-shadow .2s;
         }
 
         .science-button:hover {
             background: transparent;
             color: var(--forest);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 12px rgba(32, 55, 47, .12);
         }
 
         .science-hero-note {
@@ -298,6 +500,13 @@
             color: var(--forest);
             font-family: Georgia, serif;
             font-size: 20px;
+            transition: transform .18s ease, box-shadow .18s ease;
+        }
+
+        .dna-base:hover {
+            z-index: 2;
+            transform: translateY(-3px) scale(1.08);
+            box-shadow: 0 4px 10px rgba(32, 55, 47, .14);
         }
 
         .dna-rung.is-mutated .dna-base {
@@ -342,26 +551,86 @@
 
         .crispr-explainer {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            align-items: center;
-            gap: 36px;
+            gap: 22px;
         }
 
-        .crispr-explainer p {
+        .crispr-intro {
+            max-width: 760px;
+            margin: 0;
             color: var(--muted);
             font-size: 14px;
         }
 
-        .crispr-visual {
+        .crispr-demo {
             padding: 24px;
             border: 1px solid var(--line);
             border-radius: 8px;
             background: var(--paper);
         }
 
+        .crispr-step-buttons {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 10px;
+            margin-bottom: 22px;
+        }
+
+        .crispr-step-button {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-height: 54px;
+            padding: 10px 12px;
+            border: 1px solid var(--line);
+            border-radius: 5px;
+            background: white;
+            color: var(--forest);
+            font: inherit;
+            font-size: 13px;
+            font-weight: 700;
+            text-align: left;
+            cursor: pointer;
+            transition: border-color .2s ease, background .2s ease, transform .2s ease;
+        }
+
+        .crispr-step-button:hover,
+        .crispr-step-button[aria-pressed="true"] {
+            border-color: var(--forest);
+            background: var(--cream);
+        }
+
+        .crispr-step-button:hover {
+            transform: translateY(-2px);
+        }
+
+        .crispr-step-number {
+            display: grid;
+            flex: 0 0 26px;
+            width: 26px;
+            height: 26px;
+            place-items: center;
+            border-radius: 50%;
+            background: var(--cream);
+            color: var(--forest);
+            font-size: 12px;
+            transition: transform .2s ease, background .2s ease;
+        }
+
+        .crispr-step-button[aria-pressed="true"] .crispr-step-number {
+            background: var(--forest);
+            color: white;
+            transform: scale(1.08);
+        }
+
+        .crispr-stage {
+            padding: 20px;
+            border-radius: 6px;
+            background: #f2f4ee;
+        }
+
         .crispr-visual-label {
             display: block;
-            margin-bottom: 10px;
+            margin-bottom: 14px;
             color: var(--muted);
             font-size: 10px;
             font-weight: 700;
@@ -374,57 +643,163 @@
             grid-template-columns: repeat(9, minmax(0, 1fr));
             align-items: center;
             justify-items: center;
-            gap: 4px;
+            gap: 5px;
+            max-width: 460px;
+            margin: auto;
+        }
+
+        .crispr-sequence {
+            position: relative;
         }
 
         .crispr-base {
             display: grid;
-            width: 26px;
-            height: 32px;
+            width: 100%;
+            max-width: 34px;
+            height: 36px;
             place-items: center;
             border: 1px solid var(--line);
             border-radius: 4px;
             background: white;
             color: var(--ink);
+            font-size: 14px;
             font-weight: 700;
         }
 
         .crispr-base.is-target {
-            border-color: var(--sage);
-            background: #e8eee4;
-            color: var(--forest);
+            border-color: #648b49;
+            background: #e4efd9;
+            color: #355c2d;
         }
 
         .crispr-guide-label {
-            margin: 12px 0 5px;
-            color: var(--sage);
+            margin: 16px 0 7px;
+            color: #3569a8;
             font-size: 10px;
             font-weight: 700;
             text-align: center;
         }
 
-        .crispr-guide-label::before {
-            display: block;
-            margin-bottom: 4px;
-            color: var(--forest);
-            content: "↓";
-            font-size: 18px;
-        }
-
         .crispr-guide span {
-            width: 26px;
-            color: var(--forest);
+            display: grid;
+            width: 100%;
+            max-width: 34px;
+            height: 30px;
+            place-items: center;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            color: transparent;
             font-size: 13px;
             font-weight: 700;
             text-align: center;
         }
 
-        .crispr-cut-label {
-            margin: 14px 0 0;
+        .crispr-guide span.is-guide-base {
+            border-color: #a9c5e4;
+            background: #e4effa;
+            color: #285b91;
+        }
+
+        .crispr-cut-marker {
+            position: absolute;
+            top: -3px;
+            bottom: -3px;
+            left: 55.55%;
+            visibility: hidden;
+            opacity: 0;
+            border-left: 2px dashed #b55342;
+            transform: scaleY(.6);
+            transition: opacity .18s ease, transform .18s ease;
+            pointer-events: none;
+        }
+
+        .crispr-cut-marker::before {
+            position: absolute;
+            top: -17px;
+            left: -18px;
+            padding: 1px 4px;
+            background: var(--paper);
             color: #873d33;
-            font-size: 11px;
+            content: "CAS9";
+            font-size: 9px;
             font-weight: 700;
-            text-align: center;
+            letter-spacing: .5px;
+        }
+
+        .crispr-stage[data-step="1"] .crispr-cut-marker {
+            visibility: visible;
+            opacity: 1;
+            transform: scaleY(1);
+        }
+
+        .crispr-repair-label {
+            display: none;
+            width: fit-content;
+            margin: 14px auto 0;
+            padding: 5px 10px;
+            border: 1px solid #b9c99d;
+            border-radius: 20px;
+            background: #e8eee4;
+            color: #355c2d;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .5px;
+        }
+
+        .crispr-stage[data-step="2"] .crispr-repair-label {
+            display: block;
+        }
+
+        .crispr-legend {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px 22px;
+            margin: 18px 0 0;
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        .crispr-legend-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .crispr-legend-swatch {
+            width: 12px;
+            height: 12px;
+            border-radius: 3px;
+            background: #dcebd0;
+        }
+
+        .crispr-legend-swatch--guide {
+            background: #d8e8f7;
+        }
+
+        .crispr-step-status {
+            min-height: 48px;
+            margin: 18px 0 0;
+            color: var(--ink);
+            font-size: 14px;
+        }
+
+        .crispr-step-navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            margin-top: 14px;
+        }
+
+        .crispr-step-navigation .science-button:disabled {
+            border-color: var(--line);
+            background: var(--line);
+            color: var(--muted);
+            cursor: not-allowed;
+        }
+
+        .crispr-note {
+            border-left: 3px solid #b55342;
         }
 
         .science-note {
@@ -476,15 +851,349 @@
             background: white;
             overflow: hidden;
             box-shadow: 0 10px 28px rgba(32, 55, 47, .06);
+            transition: transform .22s ease, box-shadow .22s ease;
         }
 
-        .medical-photo {
+        .medical-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 34px rgba(32, 55, 47, .12);
+        }
+
+        .medical-image-figure {
             display: block;
             width: calc(100% + 44px);
             max-width: none;
-            height: 160px;
             margin: -22px -22px 18px;
+            overflow: hidden;
+        }
+
+        .medical-image {
+            display: block;
+            width: 100%;
+            height: 160px;
             object-fit: cover;
+            background: #e9eee4;
+            transition: transform .35s ease;
+        }
+
+        .medical-image-illustration {
+            height: 160px;
+            background: #e9eee4;
+        }
+
+        .medical-card:hover .medical-image {
+            transform: scale(1.025);
+        }
+
+        .medical-image-caption {
+            margin: 0;
+            padding: 7px 12px;
+            background: #f3f4ef;
+            color: var(--muted);
+            font-size: 10px;
+            line-height: 1.4;
+        }
+
+        .medical-open {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            width: 100%;
+            min-height: 48px;
+            margin-top: auto;
+            padding: 12px 14px;
+            border: 1px solid var(--forest);
+            border-radius: 4px;
+            background: var(--forest);
+            color: white;
+            font: inherit;
+            font-size: 12px;
+            font-weight: 700;
+            text-align: left;
+            cursor: pointer;
+            transition: background .2s, color .2s, transform .2s;
+        }
+
+        .medical-open:hover {
+            transform: translateY(-2px);
+            background: transparent;
+            color: var(--forest);
+        }
+
+        body.is-treatment-detail #top,
+        body.is-treatment-detail #wetenschap {
+            display: none;
+        }
+
+        .treatment-page[hidden] {
+            display: none;
+        }
+
+        .treatment-page {
+            --forest: #244a3a;
+            --sage: #64806d;
+            --cream: #edf1e8;
+            --paper: #fbfbf7;
+            --ink: #20372f;
+            --muted: #586b60;
+            --line: #dce2d8;
+            min-height: calc(100vh - 58px);
+            padding: clamp(34px, 6vw, 76px) 7%;
+            background: var(--paper);
+            color: var(--ink);
+        }
+
+        .treatment-page,
+        .treatment-page * {
+            box-sizing: border-box;
+        }
+
+        .treatment-page-inner {
+            max-width: 1040px;
+            margin: 0 auto;
+        }
+
+        .treatment-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            min-height: 44px;
+            margin-bottom: 34px;
+            padding: 9px 14px;
+            border: 1px solid var(--forest);
+            border-radius: 4px;
+            background: transparent;
+            color: var(--forest);
+            font: inherit;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .treatment-back:hover {
+            background: var(--cream);
+        }
+
+        .treatment-page button:focus-visible {
+            outline: 3px solid #d7ef72;
+            outline-offset: 3px;
+        }
+
+        .treatment-page-heading {
+            max-width: 760px;
+            margin-bottom: 32px;
+        }
+
+        .treatment-page-heading h1 {
+            margin: 12px 0;
+            font-size: clamp(36px, 6vw, 58px);
+            line-height: 1.05;
+        }
+
+        .treatment-page-heading p {
+            max-width: 680px;
+            margin: 0;
+            font-size: 15px;
+        }
+
+        .treatment-detail-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1.15fr) minmax(260px, .85fr);
+            gap: 24px;
+            align-items: start;
+        }
+
+        .treatment-interactive {
+            padding: clamp(18px, 3vw, 28px);
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: white;
+            box-shadow: 0 12px 34px rgba(32, 55, 47, .07);
+        }
+
+        .treatment-step-tabs {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 9px;
+            margin-bottom: 22px;
+        }
+
+        .treatment-step-tabs--four {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+
+        .treatment-step-tab {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            min-height: 48px;
+            padding: 8px;
+            border: 1px solid var(--line);
+            border-radius: 5px;
+            background: var(--paper);
+            color: var(--forest);
+            font: inherit;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .treatment-step-tab[aria-pressed="true"] {
+            border-color: var(--forest);
+            background: var(--cream);
+        }
+
+        .treatment-step-tab span {
+            display: grid;
+            flex: 0 0 22px;
+            width: 22px;
+            height: 22px;
+            place-items: center;
+            border-radius: 50%;
+            background: white;
+            font-size: 11px;
+        }
+
+        .treatment-step-tab[aria-pressed="true"] span {
+            background: var(--forest);
+            color: white;
+        }
+
+        .treatment-visual {
+            min-height: 225px;
+            padding: 22px 16px;
+            border-radius: 6px;
+            background: #f2f4ee;
+        }
+
+        .treatment-visual-label {
+            display: block;
+            margin-bottom: 24px;
+            color: var(--muted);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        .treatment-flow {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 24px minmax(0, 1fr) 24px minmax(0, 1fr);
+            align-items: center;
+            gap: 5px;
+            max-width: 560px;
+            margin: 0 auto;
+        }
+
+        .treatment-flow--four {
+            grid-template-columns: minmax(0, 1fr) 18px minmax(0, 1fr) 18px minmax(0, 1fr) 18px minmax(0, 1fr);
+        }
+
+        .treatment-flow-node {
+            display: grid;
+            justify-items: center;
+            gap: 9px;
+            color: var(--muted);
+            font-size: 11px;
+            font-weight: 700;
+            text-align: center;
+            transition: color .2s, transform .2s;
+        }
+
+        .treatment-flow-node.is-active {
+            color: var(--forest);
+            transform: translateY(-4px);
+        }
+
+        .treatment-flow-icon {
+            display: grid;
+            width: clamp(48px, 8vw, 68px);
+            height: clamp(48px, 8vw, 68px);
+            place-items: center;
+            border: 1px solid #cdd8c7;
+            border-radius: 50%;
+            background: white;
+            color: var(--forest);
+            font-size: clamp(20px, 3vw, 28px);
+            box-shadow: 0 4px 12px rgba(32, 55, 47, .06);
+        }
+
+        .treatment-flow-node.is-active .treatment-flow-icon {
+            border-color: #648b49;
+            background: #e4efd9;
+            box-shadow: 0 0 0 5px rgba(100, 139, 73, .12);
+            animation: treatment-node-arrive .3s ease both;
+        }
+
+        @keyframes treatment-node-arrive {
+            from {
+                opacity: .7;
+                transform: scale(.88);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .treatment-flow-arrow {
+            color: #9aaa91;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        .treatment-step-description {
+            min-height: 70px;
+            margin: 18px 0 0;
+            color: var(--ink);
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .treatment-step-controls {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .treatment-step-controls .science-button:disabled {
+            border-color: var(--line);
+            background: var(--line);
+            color: var(--muted);
+            cursor: not-allowed;
+        }
+
+        .treatment-facts {
+            display: grid;
+            gap: 14px;
+        }
+
+        .treatment-fact {
+            padding: 18px;
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            background: white;
+        }
+
+        .treatment-fact h2 {
+            margin: 0 0 6px;
+            color: var(--forest);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 16px;
+        }
+
+        .treatment-fact p {
+            margin: 0;
+            font-size: 13px;
+        }
+
+        .treatment-fact--risk {
+            border-left: 3px solid #b55342;
+            background: #fbf7f4;
         }
 
         .medical-tag {
@@ -494,16 +1203,23 @@
             letter-spacing: 1.5px;
         }
 
-        .medical-symbol {
-            display: grid;
-            width: 48px;
-            height: 48px;
-            margin: 18px 0 8px;
-            place-items: center;
-            border-radius: 50%;
-            background: var(--cream);
+        .medical-method-tag {
+            display: inline-block;
+            margin: -3px 0 10px;
+            padding: 4px 8px;
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            background: #f2f4ee;
             color: var(--forest);
-            font-size: 25px;
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        .medical-source-cite {
+            color: var(--forest);
+            font-size: 11px;
+            font-weight: 700;
+            text-underline-offset: 2px;
         }
 
         .medical-card h4 {
@@ -547,6 +1263,52 @@
             letter-spacing: 1.5px;
         }
 
+        .decision-progress-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 22px;
+        }
+
+        .decision-progress-row .decision-kicker {
+            flex: 0 0 auto;
+            margin: 0;
+        }
+
+        .decision-progress-track {
+            flex: 1 1 auto;
+            height: 8px;
+            overflow: hidden;
+            border-radius: 99px;
+            background: var(--line);
+        }
+
+        .decision-progress-fill {
+            width: 33.333%;
+            height: 100%;
+            border-radius: inherit;
+            background: #648b49;
+            transition: width .25s ease;
+        }
+
+        .decision-restart {
+            flex: 0 0 auto;
+            padding: 8px 12px;
+            border: 1px solid var(--forest);
+            border-radius: 4px;
+            background: transparent;
+            color: var(--forest);
+            font: inherit;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .decision-restart:hover {
+            background: var(--cream);
+        }
+
         .decision-model h4 {
             margin: 0 0 12px;
             font-family: Georgia, serif;
@@ -573,8 +1335,9 @@
         }
 
         .decision-option {
+            position: relative;
             min-height: 72px;
-            padding: 16px;
+            padding: 16px 48px 16px 16px;
             border: 1px solid var(--line);
             border-radius: 5px;
             background: white;
@@ -583,12 +1346,32 @@
             font-weight: 700;
             text-align: left;
             cursor: pointer;
+            transition: border-color .18s ease, background .18s ease, transform .18s ease;
         }
 
         .decision-option:hover,
         .decision-option[aria-pressed="true"] {
             border-color: var(--sage);
             background: var(--cream);
+        }
+
+        .decision-option:hover {
+            transform: translateY(-2px);
+        }
+
+        .decision-option[aria-pressed="true"]::after {
+            position: absolute;
+            top: 50%;
+            right: 16px;
+            display: grid;
+            width: 24px;
+            height: 24px;
+            place-items: center;
+            border-radius: 50%;
+            background: var(--forest);
+            color: white;
+            content: "✓";
+            transform: translateY(-50%);
         }
 
         .decision-next {
@@ -780,6 +1563,13 @@
             font-size: 22px;
         }
 
+        .sources-footer h4 {
+            margin: 28px 0 12px;
+            color: #f7f7ef;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 16px;
+        }
+
         .sources-footer ul {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -790,10 +1580,26 @@
             list-style: none;
         }
 
+        .sources-footer .image-sources {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px 28px;
+            max-width: 1050px;
+        }
+
         .sources-footer li,
         .sources-footer p {
             color: #d5dfd6;
             font-size: 12px;
+        }
+
+        .sources-footer .survey-note {
+            max-width: 960px;
+            margin: 20px 0 0;
+            line-height: 1.6;
+        }
+
+        .sources-footer .image-sources li {
+            line-height: 1.6;
         }
 
         .sources-footer a {
@@ -806,11 +1612,22 @@
             color: white;
         }
 
-        .science-back-button {
-            margin: 0 0 24px;
-        }
-
         @media (max-width: 760px) {
+            .site-nav-inner {
+                display: block;
+                padding: 10px 5% 8px;
+            }
+
+            .site-nav-brand {
+                display: block;
+                margin-bottom: 7px;
+            }
+
+            .site-nav-links {
+                gap: 18px;
+                padding-bottom: 2px;
+            }
+
             .hero {
                 grid-template-columns: 1fr;
                 gap: 34px;
@@ -823,7 +1640,8 @@
             }
 
             .hero-image,
-            .hero-image img {
+            .hero-image img,
+            .hero-image svg {
                 min-height: 300px;
             }
 
@@ -847,11 +1665,82 @@
                 grid-template-columns: 1fr;
             }
 
-            .sources-footer ul {
+            .treatment-page {
+                min-height: calc(100vh - 82px);
+                padding: 30px 6% 48px;
+            }
+
+            .treatment-back {
+                margin-bottom: 24px;
+            }
+
+            .treatment-detail-layout {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .treatment-step-tabs {
+                gap: 5px;
+            }
+
+            .treatment-step-tabs--four {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+            }
+
+            .treatment-step-tab {
+                flex-direction: column;
+                gap: 4px;
+                min-height: 64px;
+                padding: 6px 3px;
+                font-size: 10px;
+                text-align: center;
+            }
+
+            .treatment-step-tabs--four .treatment-step-tab {
+                min-height: 76px;
+                padding: 6px 2px;
+                font-size: 9px;
+            }
+
+            .treatment-visual {
+                min-height: 200px;
+                padding: 18px 8px;
+            }
+
+            .treatment-flow {
+                grid-template-columns: minmax(0, 1fr) 16px minmax(0, 1fr) 16px minmax(0, 1fr);
+                gap: 2px;
+            }
+
+            .treatment-flow--four {
+                grid-template-columns: minmax(0, 1fr) 9px minmax(0, 1fr) 9px minmax(0, 1fr) 9px minmax(0, 1fr);
+                gap: 1px;
+            }
+
+            .treatment-flow-node {
+                font-size: 10px;
+            }
+
+            .treatment-flow--four .treatment-flow-node {
+                font-size: 9px;
+            }
+
+            .treatment-flow--four .treatment-flow-icon {
+                width: 42px;
+                height: 42px;
+                font-size: 17px;
+            }
+
+            .treatment-step-description {
+                min-height: 0;
+            }
+
+            .sources-footer ul,
+            .sources-footer .image-sources {
                 grid-template-columns: 1fr;
             }
 
-            .medical-photo {
+            .medical-image {
                 height: 190px;
             }
 
@@ -868,17 +1757,55 @@
                 padding: 20px;
             }
 
+            .decision-progress-row {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .decision-progress-track {
+                order: 3;
+                flex-basis: 100%;
+            }
+
             .decision-options {
                 grid-template-columns: 1fr;
             }
 
-            .crispr-visual {
-                padding: 18px 10px;
+            .crispr-demo {
+                padding: 16px 12px;
             }
 
-            .crispr-base,
+            .crispr-stage {
+                padding: 16px 10px;
+            }
+
+            .crispr-sequence,
+            .crispr-guide {
+                gap: 3px;
+            }
+
+            .crispr-base {
+                height: 32px;
+                font-size: 12px;
+            }
+
             .crispr-guide span {
-                width: 23px;
+                height: 28px;
+                font-size: 12px;
+            }
+
+            .crispr-step-button {
+                flex-direction: column;
+                justify-content: center;
+                gap: 5px;
+                min-height: 72px;
+                padding: 8px 4px;
+                font-size: 11px;
+                text-align: center;
+            }
+
+            .crispr-step-status {
+                min-height: 0;
             }
         }
 
@@ -888,36 +1815,78 @@
             *::after {
                 scroll-behavior: auto !important;
                 transition-duration: .01ms !important;
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
             }
+
         }
     </style>
 </head>
 
 <body>
-    <main class="hero">
+    <nav class="site-nav" aria-label="Hoofdnavigatie">
+        <div class="site-nav-inner">
+            <a class="site-nav-brand" href="#top">Monster of medicijn?</a>
+            <div class="site-nav-links">
+                <a href="#dna">DNA</a>
+                <a href="#crispr">CRISPR-Cas9</a>
+                <a href="#medisch">Behandelingen</a>
+                <a href="#beslismodel">Beslismodel</a>
+                <a href="#ethische-dilemma">Dilemma's</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="hero" id="top">
         <div class="hero-copy">
             <h1>Monster of medicijn?</h1>
 
+            <p class="research-question">De wereld van genetische modificatie</p>
             <p>
-                Kunnen artsen ziekten die in families voorkomen behandelen door DNA te veranderen?
-                Ontdek hoe zulke behandelingen werken, wat ze kunnen betekenen
-                en welke lastige keuzes erbij horen.
+                Hoe wordt genetische modificatie in de medische sector toegepast,
+                en hoe wordt dit maatschappelijk en ethisch beoordeeld? Ontdek
+                hoe behandelingen werken, wat ze kunnen betekenen en welke
+                lastige keuzes erbij horen.
             </p>
 
-            <button class="button" type="button" data-show-science aria-controls="wetenschap">
-                Ontdek de wetenschap <span aria-hidden="true">→</span>
-            </button>
+            <a class="button" href="#wetenschap">
+                Scroll om te ontdekken <span aria-hidden="true">↓</span>
+            </a>
         </div>
         <figure class="hero-image">
-            <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1400&q=85" alt="Laboratoriumonderzoeker werkt met medische onderzoeksapparatuur" fetchpriority="high">
-            <figcaption>Onderzoek naar nieuwe medische mogelijkheden</figcaption>
+            <svg viewBox="0 0 640 480" role="img" aria-labelledby="hero-illustration-title hero-illustration-description">
+                <title id="hero-illustration-title">Vereenvoudigde illustratie van CRISPR-Cas9</title>
+                <desc id="hero-illustration-description">Een blauw gids-RNA past bij een groen gemarkeerd doelstuk in het DNA. Cas9 knipt het DNA op die plek.</desc>
+                <rect width="640" height="480" fill="#edf1e8"/>
+                <path d="M0 110H640M0 370H640" stroke="#dce2d8" stroke-width="1"/>
+                <text x="40" y="55" fill="#52745f" font-family="Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="2">DNA-BEWERKING · VEREENVOUDIGD</text>
+                <path d="M105 143C230 143 230 192 355 192S480 241 555 241" fill="none" stroke="#244a3a" stroke-width="8" stroke-linecap="round"/>
+                <path d="M105 241C230 241 230 192 355 192S480 143 555 143" fill="none" stroke="#64806d" stroke-width="8" stroke-linecap="round"/>
+                <path d="M153 157L153 227M210 169L210 215M267 184L267 200M324 193L324 191M381 184L381 200M438 169L438 215M495 157L495 227" stroke="#9aab91" stroke-width="3"/>
+                <rect x="247" y="164" width="150" height="56" rx="10" fill="#e4efd9" stroke="#648b49" stroke-width="2"/>
+                <text x="322" y="198" fill="#355c2d" font-family="Arial, sans-serif" font-size="17" font-weight="700" text-anchor="middle">DOELVOLGORDE</text>
+                <path d="M256 258C285 232 351 232 383 258" fill="none" stroke="#3569a8" stroke-width="8" stroke-linecap="round"/>
+                <path d="M319 245V281" stroke="#3569a8" stroke-width="3" stroke-dasharray="5 5"/>
+                <circle cx="320" cy="315" r="43" fill="#fff" stroke="#244a3a" stroke-width="3"/>
+                <text x="320" y="322" fill="#244a3a" font-family="Arial, sans-serif" font-size="21" font-weight="700" text-anchor="middle">Cas9</text>
+                <path d="M320 272V235" stroke="#b55342" stroke-width="3" stroke-dasharray="5 5"/>
+                <text x="94" y="315" fill="#3569a8" font-family="Arial, sans-serif" font-size="15" font-weight="700">GIDS-RNA</text>
+                <text x="383" y="326" fill="#873d33" font-family="Arial, sans-serif" font-size="15" font-weight="700">KNIPT HIER</text>
+                <rect x="40" y="398" width="560" height="42" rx="6" fill="#fff" opacity=".82"/>
+                <text x="320" y="424" fill="#586b60" font-family="Arial, sans-serif" font-size="14" text-anchor="middle">Een gericht hulpmiddel; de cel herstelt daarna de DNA-knip.</text>
+            </svg>
+            <figcaption>Eigen, vereenvoudigde illustratie · geen echte celopname</figcaption>
         </figure>
     </main>
 
-    <section id="wetenschap" class="science-page" hidden>
+    <section id="wetenschap" class="science-page">
         <header class="science-hero">
-            <button class="science-button science-back-button" type="button" data-close-science>← Terug naar start</button>
             <span class="science-label">DE WETENSCHAP ACHTER DNA</span>
+            <div class="science-hero-sequence" aria-hidden="true">
+                <span>A</span><i aria-hidden="true"></i><span>T</span>
+                <b aria-hidden="true">·</b>
+                <span>C</span><i aria-hidden="true"></i><span>G</span>
+            </div>
             <h2>DNA veranderen,<br><em>levens veranderen.</em></h2>
             <p>
                 DNA is een soort handleiding in onze cellen. Soms zorgt een
@@ -925,10 +1894,6 @@
                 proberen te helpen en welke keuzes daarbij komen kijken.
             </p>
             <a class="science-button" href="#dna">Begin met ontdekken <span>↓</span></a>
-            <div class="science-hero-note">
-                <span class="science-dot"></span>
-                DNA · BEHANDELING · KEUZES
-            </div>
         </header>
 
         <section class="science-block" id="dna">
@@ -936,11 +1901,11 @@
                 <span class="science-number">01 / DE BASIS</span>
                 <h3>DNA: de handleiding in je cellen.</h3>
                 <p>
-                    DNA bevat instructies die je lichaam helpen werken.
+                    DNA bevat de instructies die je lichaam nodig heeft om te werken.
                     Het bestaat uit vier bouwstenen: A, T, C en G. A past
                     altijd tegenover T, en C tegenover G. Zo'n paar heet een
-                    basenpaar: twee bouwstenen die samen een sport van de
-                    DNA-ladder vormen.
+                    basenpaar. De basenparen verbinden de twee kanten van het
+                    DNA en vormen samen de sporten van een gedraaide ladder.
                 </p>
             </div>
 
@@ -986,45 +1951,87 @@
             </div>
 
             <div class="crispr-explainer">
-                <div class="crispr-visual" role="img" aria-label="Een klein gidsje zoekt een passend stukje DNA. Cas9 werkt als een schaar en knipt het DNA daar door.">
-                    <span class="crispr-visual-label">DNA — GROEN IS DE GEKOZEN PLEK</span>
-                    <div class="crispr-sequence" aria-hidden="true">
-                        <span class="crispr-base">A</span>
-                        <span class="crispr-base">T</span>
-                        <span class="crispr-base is-target">G</span>
-                        <span class="crispr-base is-target">A</span>
-                        <span class="crispr-base is-target">A</span>
-                        <span class="crispr-base is-target">C</span>
-                        <span class="crispr-base is-target">T</span>
-                        <span class="crispr-base">C</span>
-                        <span class="crispr-base">A</span>
-                    </div>
-                    <p class="crispr-guide-label">ZOEKCODE (GIDS-RNA) — PAST OP DE GROENE LETTERS</p>
-                    <div class="crispr-guide" aria-hidden="true">
-                        <span></span><span></span>
-                        <span>C</span><span>U</span><span>U</span><span>G</span><span>A</span>
-                        <span></span><span></span>
-                    </div>
-                    <p class="crispr-cut-label">CAS9 KNIPT HET DNA BIJ DE GEKOZEN PLEK</p>
-                </div>
-                <p>
-                    CRISPR-Cas9 is een manier om een gekozen stukje DNA te
-                    veranderen. Een gids-RNA is een klein molecuul met een code
-                    die past op dat stukje DNA. Het brengt Cas9 naar de juiste
-                    plek. Cas9 knipt het DNA; wanneer de cel die knip herstelt,
-                    kan een gen veranderen of worden uitgeschakeld. Soms knipt
-                    Cas9 ook op een verkeerde plek.
+                <p class="crispr-intro">
+                    CRISPR-Cas9 kan een gekozen stukje DNA aanpassen. Het
+                    gids-RNA herkent de bijpassende code en helpt Cas9 de juiste
+                    plek te vinden. Cas9 knipt daar het DNA. Daarna repareert
+                    de cel de knip. Door die reparatie kan het DNA veranderen
+                    en kan een gen anders werken of uitgaan. Cas9 knipt alleen
+                    naast een kort DNA-signaal; dat signaal heet PAM en is in
+                    deze vereenvoudigde animatie niet getekend.
                 </p>
+
+                <div class="crispr-demo" data-crispr-demo>
+                    <div class="crispr-step-buttons" role="group" aria-label="Kies een stap van CRISPR-Cas9">
+                        <button class="crispr-step-button" type="button" data-crispr-step="0" aria-pressed="true">
+                            <span class="crispr-step-number">1</span>
+                            <span>Herkennen</span>
+                        </button>
+                        <button class="crispr-step-button" type="button" data-crispr-step="1" aria-pressed="false">
+                            <span class="crispr-step-number">2</span>
+                            <span>Knippen</span>
+                        </button>
+                        <button class="crispr-step-button" type="button" data-crispr-step="2" aria-pressed="false">
+                            <span class="crispr-step-number">3</span>
+                            <span>Herstellen</span>
+                        </button>
+                    </div>
+
+                    <div class="crispr-stage" data-crispr-stage data-step="0">
+                        <span class="crispr-visual-label">ZOEK DE DOELVOLGORDE IN HET DNA</span>
+                        <div class="crispr-sequence" aria-hidden="true">
+                            <span class="crispr-base">A</span>
+                            <span class="crispr-base">T</span>
+                            <span class="crispr-base is-target">G</span>
+                            <span class="crispr-base is-target">A</span>
+                            <span class="crispr-base is-target">A</span>
+                            <span class="crispr-base is-target">C</span>
+                            <span class="crispr-base is-target">T</span>
+                            <span class="crispr-base">C</span>
+                            <span class="crispr-base">A</span>
+                            <span class="crispr-cut-marker"></span>
+                        </div>
+                        <p class="crispr-guide-label">GIDS-RNA</p>
+                        <div class="crispr-guide" aria-hidden="true">
+                            <span></span><span></span>
+                            <span class="is-guide-base">C</span>
+                            <span class="is-guide-base">U</span>
+                            <span class="is-guide-base">U</span>
+                            <span class="is-guide-base">G</span>
+                            <span class="is-guide-base">A</span>
+                            <span></span><span></span>
+                        </div>
+                        <p class="crispr-repair-label">✓ DE CEL HEEFT HET DNA GEREPAREERD</p>
+                    </div>
+
+                    <div class="crispr-legend" aria-label="Legenda">
+                        <span class="crispr-legend-item"><span class="crispr-legend-swatch" aria-hidden="true"></span>Doelvolgorde in het DNA</span>
+                        <span class="crispr-legend-item"><span class="crispr-legend-swatch crispr-legend-swatch--guide" aria-hidden="true"></span>Gids-RNA</span>
+                    </div>
+
+                    <p class="crispr-step-status" data-crispr-status role="status" aria-live="polite">
+                        Herkennen: het blauwe gids-RNA past bij de groene doelvolgorde en helpt Cas9 de plek te vinden.
+                    </p>
+
+                    <div class="crispr-step-navigation">
+                        <button class="science-button" type="button" data-crispr-previous disabled>← Vorige</button>
+                        <button class="science-button" type="button" data-crispr-next>Volgende →</button>
+                    </div>
+                </div>
             </div>
 
-            <div class="science-note">
+            <div class="science-note crispr-note">
                 <span class="note-symbol">i</span>
                 <p>
-                    <strong>Belangrijk om te weten</strong><br>
-                    De groene letters in het plaatje zijn de doelcode. De gids
-                    zoekt die code op; Cas9 knipt het DNA daar door. Dat gaat
-                    niet altijd precies, dus onderzoekers controleren op andere
-                    veranderingen.
+                    <strong>Wat kan er misgaan?</strong><br>
+                    Soms knipt Cas9 op een andere plek die op de doelvolgorde
+                    lijkt. Dat heet een
+                    <span class="term-help">
+                        off-target-effect
+                        <button class="term-help-button" type="button" aria-label="Leg off-target-effect uit" aria-expanded="false" aria-describedby="tooltip-off-target" data-term-help>?</button>
+                        <span class="term-help-tooltip" id="tooltip-off-target" role="tooltip" hidden>Een onbedoelde knip op een andere plek in het DNA dan de gekozen doelplek.</span>
+                    </span>. Daardoor kan er
+                    onbedoeld iets veranderen in het DNA.
                 </p>
             </div>
         </section>
@@ -1034,61 +2041,153 @@
                 <span class="science-number">03 / IN DE GENEESKUNDE</span>
                 <h3>Hoe helpen behandelingen mensen?</h3>
                 <p>
-                    Deze voorbeelden laten zien hoe artsen cellen of informatie
-                    in het lichaam proberen te gebruiken om ziekten te behandelen.
+                    De voorbeelden gebruiken verschillende technieken: Casgevy
+                    bewerkt cellen met CRISPR-Cas9, Zolgensma voegt een werkende
+                    genkopie toe en CAR-T past afweercellen aan. Geen van deze
+                    behandelingen is bedoeld om erfelijk DNA in embryo's of
+                    voortplantingscellen te veranderen.
                 </p>
             </div>
 
             <div class="medical-grid">
                 <article class="medical-card">
-                    <img class="medical-photo" src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=900&q=80" alt="Arts bespreekt medische zorg met een patiënt" loading="lazy">
+                    <figure class="medical-image-figure">
+                        <svg class="medical-image medical-image-illustration" viewBox="0 0 480 200" role="img" aria-labelledby="casgevy-card-title casgevy-card-description">
+                            <title id="casgevy-card-title">Schematische weergave van Casgevy</title>
+                            <desc id="casgevy-card-description">Een bloedstamcel wordt met CRISPR aangepast en kan daarna meer foetaal hemoglobine maken.</desc>
+                            <rect width="480" height="200" fill="#edf1e8"/>
+                            <circle cx="76" cy="82" r="31" fill="#f8e4dc" stroke="#b55342" stroke-width="3"/>
+                            <circle cx="76" cy="82" r="11" fill="#d98a79"/>
+                            <text x="76" y="139" fill="#20372f" font-family="Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">STAMCEL</text>
+                            <path d="M123 82H178" stroke="#64806d" stroke-width="3"/>
+                            <path d="M169 74L179 82L169 90" fill="none" stroke="#64806d" stroke-width="3"/>
+                            <path d="M211 57C230 74 230 90 211 107M253 57C234 74 234 90 253 107M215 63L249 101M249 63L215 101" fill="none" stroke="#244a3a" stroke-width="3" stroke-linecap="round"/>
+                            <rect x="222" y="76" width="20" height="14" rx="3" fill="#d7ef72"/>
+                            <text x="232" y="139" fill="#20372f" font-family="Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">CRISPR-Cas9</text>
+                            <path d="M276 82H332" stroke="#64806d" stroke-width="3"/>
+                            <path d="M323 74L333 82L323 90" fill="none" stroke="#64806d" stroke-width="3"/>
+                            <circle cx="387" cy="82" r="29" fill="#fff" stroke="#b55342" stroke-width="3"/>
+                            <circle cx="387" cy="82" r="10" fill="#d98a79"/>
+                            <circle cx="420" cy="64" r="8" fill="#fff" stroke="#b55342" stroke-width="2"/>
+                            <circle cx="423" cy="96" r="8" fill="#fff" stroke="#b55342" stroke-width="2"/>
+                            <text x="394" y="139" fill="#20372f" font-family="Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">MEER HbF</text>
+                        </svg>
+                        <figcaption class="medical-image-caption">Stamcellen aanpassen om HbF te verhogen · schematisch</figcaption>
+                    </figure>
                     <span class="medical-tag">VOORBEELD 01</span>
-                    <div class="medical-symbol" aria-hidden="true">✳</div>
                     <h4>Sikkelcelziekte</h4>
+                    <span class="medical-method-tag">CRISPR-Cas9 · eigen stamcellen</span>
                     <p>
-                        Casgevy is een behandeling voor sommige mensen met
-                        sikkelcelziekte. Artsen halen bloedstamcellen uit het
-                        lichaam, passen die aan met CRISPR-Cas9 en geven ze
-                        terug. De aangepaste cellen kunnen meer foetaal
-                        hemoglobine maken, waardoor pijnaanvallen kunnen afnemen.
+                        Casgevy is in de EU een behandeling voor bepaalde patiënten
+                        vanaf 12 jaar met ernstige sikkelcelziekte. Artsen halen bloedstamcellen
+                        uit het lichaam en veranderen met CRISPR-Cas9 een
+                        regelgebied bij het BCL11A-gen. Daardoor kunnen de
+                        aangepaste cellen meer foetaal hemoglobine (HbF) maken.
+                        De behandeling kan pijnaanvallen verminderen.
+                        <a class="medical-source-cite" href="https://www.ema.europa.eu/en/medicines/human/EPAR/casgevy" target="_blank" rel="noopener">Bron: EMA</a>
+                        <a class="medical-source-cite" href="https://www.fda.gov/news-events/press-announcements/fda-approves-first-gene-therapies-treat-patients-sickle-cell-disease" target="_blank" rel="noopener">FDA</a>
+                        <a class="medical-source-cite" href="https://doi.org/10.1056/NEJMoa2031054" target="_blank" rel="noopener">Onderzoek</a>
                     </p>
+                    <button class="medical-open" type="button" data-treatment-open="treatment-casgevy">
+                        <span>Bekijk Casgevy stap voor stap</span><span aria-hidden="true">→</span>
+                    </button>
                 </article>
 
                 <article class="medical-card">
-                    <img class="medical-photo" src="https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=900&q=80" alt="Onderzoeker werkt met monsters in een laboratorium" loading="lazy">
+                    <figure class="medical-image-figure">
+                        <svg class="medical-image medical-image-illustration" viewBox="0 0 480 200" role="img" aria-labelledby="zolgensma-card-title zolgensma-card-description">
+                            <title id="zolgensma-card-title">Schematische weergave van Zolgensma</title>
+                            <desc id="zolgensma-card-description">Een aangepaste virusvector vervoert een werkende SMN1-genkopie naar een cel, zonder het oorspronkelijke DNA te vervangen.</desc>
+                            <rect width="480" height="200" fill="#edf1e8"/>
+                            <circle cx="86" cy="82" r="31" fill="#fff" stroke="#3569a8" stroke-width="3"/>
+                            <path d="M86 45V35M86 129V119M49 82H39M133 82H123M60 56L52 48M120 116L112 108M112 56L120 48M52 116L60 108" stroke="#3569a8" stroke-width="4" stroke-linecap="round"/>
+                            <text x="86" y="87" fill="#285b91" font-family="Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle">SMN1</text>
+                            <text x="86" y="139" fill="#20372f" font-family="Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">GENKOPIE</text>
+                            <path d="M136 82H208" stroke="#64806d" stroke-width="3"/>
+                            <path d="M199 74L209 82L199 90" fill="none" stroke="#64806d" stroke-width="3"/>
+                            <circle cx="250" cy="82" r="34" fill="#dceaf7" stroke="#3569a8" stroke-width="3"/>
+                            <path d="M250 48V36M250 128V116M216 82H204M296 82H284M226 58L217 49M283 115L274 106M274 58L283 49M217 115L226 106" stroke="#3569a8" stroke-width="4" stroke-linecap="round"/>
+                            <text x="250" y="87" fill="#285b91" font-family="Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle">VECTOR</text>
+                            <text x="250" y="139" fill="#20372f" font-family="Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">AANGEPAST VIRUS</text>
+                            <path d="M300 82H342" stroke="#64806d" stroke-width="3"/>
+                            <path d="M333 74L343 82L333 90" fill="none" stroke="#64806d" stroke-width="3"/>
+                            <circle cx="389" cy="82" r="39" fill="#fff" stroke="#64806d" stroke-width="3"/>
+                            <circle cx="389" cy="82" r="10" fill="#d7ef72"/>
+                            <path d="M389 71V93M378 82H400" stroke="#244a3a" stroke-width="2"/>
+                            <text x="389" y="139" fill="#20372f" font-family="Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">CEL MAAKT SMN</text>
+                        </svg>
+                        <figcaption class="medical-image-caption">Een virusvector brengt een genkopie naar cellen · schematisch</figcaption>
+                    </figure>
                     <span class="medical-tag">VOORBEELD 02</span>
-                    <div class="medical-symbol" aria-hidden="true">◎</div>
                     <h4>Spinale spieratrofie (SMA)</h4>
+                    <span class="medical-method-tag">Gentherapie · genkopie toevoegen</span>
                     <p>
-                        SMA is een erfelijke ziekte die spieren steeds zwakker
-                        maakt. Zolgensma geeft cellen een werkende versie van
-                        het gen dat bij SMA niet goed werkt. Dit kan de ziekte
-                        bij jonge kinderen afremmen.
+                        SMA is een erfelijke ziekte waarbij het lichaam te
+                        weinig SMN-eiwit maakt. Zolgensma brengt met een
+                        aangepast virus een werkende kopie van het SMN1-gen
+                        naar cellen. Het is bedoeld voor bepaalde patiënten
+                        met SMA. Het herstelt of vervangt het oorspronkelijke
+                        DNA niet en gebruikt geen CRISPR-Cas9.
+                        <a class="medical-source-cite" href="https://www.ema.europa.eu/en/medicines/human/EPAR/zolgensma" target="_blank" rel="noopener">Bron: EMA</a>
                     </p>
+                    <button class="medical-open" type="button" data-treatment-open="treatment-zolgensma">
+                        <span>Bekijk Zolgensma stap voor stap</span><span aria-hidden="true">→</span>
+                    </button>
                 </article>
 
                 <article class="medical-card">
-                    <img class="medical-photo" src="https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=900&q=80" alt="Zorgprofessional in een medische onderzoeksomgeving" loading="lazy">
+                    <figure class="medical-image-figure">
+                        <svg class="medical-image medical-image-illustration" viewBox="0 0 480 200" role="img" aria-labelledby="cart-card-title cart-card-description">
+                            <title id="cart-card-title">Schematische weergave van CAR-T-cellen</title>
+                            <desc id="cart-card-description">Een aangepaste T-cel gebruikt een receptor om een doelwit op een kankercel te herkennen.</desc>
+                            <rect width="480" height="200" fill="#edf1e8"/>
+                            <circle cx="106" cy="82" r="34" fill="#dceaf7" stroke="#3569a8" stroke-width="3"/>
+                            <text x="106" y="88" fill="#285b91" font-family="Arial, sans-serif" font-size="17" font-weight="700" text-anchor="middle">T</text>
+                            <path d="M106 47V32M97 32H115" stroke="#3569a8" stroke-width="4" stroke-linecap="round"/>
+                            <text x="106" y="139" fill="#20372f" font-family="Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">CAR-T-CEL</text>
+                            <path d="M154 82H287" stroke="#64806d" stroke-width="3"/>
+                            <path d="M278 74L288 82L278 90" fill="none" stroke="#64806d" stroke-width="3"/>
+                            <circle cx="357" cy="82" r="38" fill="#f8e4dc" stroke="#b55342" stroke-width="3"/>
+                            <circle cx="357" cy="82" r="12" fill="#d98a79"/>
+                            <path d="M319 82H296" stroke="#b55342" stroke-width="3" stroke-dasharray="4 4"/>
+                            <text x="357" y="139" fill="#20372f" font-family="Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">KANKERCEL</text>
+                            <rect x="183" y="150" width="114" height="25" rx="12" fill="#fff" stroke="#dce2d8"/>
+                            <text x="240" y="167" fill="#586b60" font-family="Arial, sans-serif" font-size="11" font-weight="700" text-anchor="middle">HERKENNEN → AANVALLEN</text>
+                        </svg>
+                        <figcaption class="medical-image-caption">Een aangepaste T-cel herkent een doelwit · schematisch</figcaption>
+                    </figure>
                     <span class="medical-tag">VOORBEELD 03</span>
-                    <div class="medical-symbol" aria-hidden="true">⌘</div>
                     <h4>Afweercellen tegen kanker</h4>
+                    <span class="medical-method-tag">CAR-T · genetisch aangepaste cellen</span>
                     <p>
-                        Afweercellen beschermen het lichaam tegen ziekte.
-                        Artsen passen ze aan zodat ze bepaalde bloedkankers
-                        herkennen en aanvallen. Daarna gaan de cellen terug het
-                        lichaam in. Deze behandeling heet CAR-T.
+                        Bij CAR-T krijgen T-cellen van de patiënt een
+                        genetische instructie om een herkenningsreceptor te
+                        maken. De cellen worden vermeerderd en teruggegeven om
+                        bepaalde bloedkankercellen te herkennen en aan te vallen.
+                        Dit is genetisch aangepaste celtherapie; CRISPR-Cas9 is
+                        hiervoor niet noodzakelijk.
+                        <a class="medical-source-cite" href="https://www.cancer.gov/about-cancer/treatment/research/car-t-cells" target="_blank" rel="noopener">Bron: NCI</a>
                     </p>
+                    <button class="medical-open" type="button" data-treatment-open="treatment-car-t">
+                        <span>Bekijk CAR-T stap voor stap</span><span aria-hidden="true">→</span>
+                    </button>
                 </article>
             </div>
         </section>
 
-        <section class="science-quiz" aria-labelledby="decision-title">
+        <section class="science-quiz" id="beslismodel" aria-labelledby="decision-title">
             <span class="science-number">INTERACTIEF BESLISMODEL</span>
             <h3 id="decision-title">Een keuze, verschillende gevolgen.</h3>
             <p>Lees de situatie en kies wat jij zou doen. Er zijn geen goede of foute antwoorden. Na je keuze zie je wat de mogelijke gevolgen zijn.</p>
 
             <div class="decision-model" data-decision-model>
-                <p class="decision-kicker" data-question-progress>VRAAG 1 / 3</p>
+                <div class="decision-progress-row">
+                    <p class="decision-kicker" data-question-progress>VRAAG 1 / 3</p>
+                    <div class="decision-progress-track" role="progressbar" aria-label="Voortgang beslismodel" aria-valuemin="1" aria-valuemax="3" aria-valuenow="1" data-progress-bar>
+                        <div class="decision-progress-fill" data-progress-fill></div>
+                    </div>
+                    <button class="decision-restart" type="button" data-restart>Opnieuw starten</button>
+                </div>
                 <h4 data-question tabindex="-1">De genen van een mens beïnvloeden</h4>
                 <p class="decision-description" data-question-context>
                     Zou jij het DNA van een embryo aanpassen om te voorkomen dat het kind een ernstige erfelijke ziekte krijgt, als de risico's hierbij onbekend zijn?
@@ -1103,13 +2202,10 @@
                 <div class="decision-result" data-decision-result role="status" aria-live="polite" hidden>
                     <h4>Mogelijke gevolgen</h4>
                     <p data-consequence></p>
-                    <h4>Afweging</h4>
-                    <p data-tradeoff></p>
                 </div>
                 <button class="science-button decision-next" type="button" data-next-question hidden>Volgende vraag →</button>
                 <p class="decision-complete" data-decision-complete role="status" hidden>
                     Je hebt alle casussen doorlopen. Denk na over wat voor jou het zwaarst woog; er is geen goed of fout antwoord.
-                    <br><button class="science-button decision-next" type="button" data-restart>Opnieuw beginnen</button>
                 </p>
             </div>
             <p class="decision-caveat">
@@ -1119,14 +2215,18 @@
 
         <section class="ethics-bridge" id="ethiek">
             <span class="science-label">DE VOLGENDE VRAAG</span>
-            <h3>Maar kunnen we alles veranderen wat we kunnen veranderen?</h3>
+            <h3>Maar moeten we alles veranderen wat we kunnen veranderen?</h3>
             <p>
                 Dat een techniek medisch mogelijk is, betekent niet
                 automatisch dat iedere toepassing wenselijk of
                 verantwoord is. Wie bepaalt waar de grens ligt?
-                En wat gebeurt er als genetische aanpassingen niet
-                alleen worden gebruikt om ziekten te behandelen,
-                maar ook om erfelijke eigenschappen te veranderen?
+                En wat gebeurt er als een aanpassing in embryo-DNA ook
+                aan kinderen kan worden doorgegeven? Dat heet
+                <span class="term-help">
+                    kiembaanmodificatie
+                    <button class="term-help-button" type="button" aria-label="Leg kiembaanmodificatie uit" aria-expanded="false" aria-describedby="tooltip-kiembaan" data-term-help>?</button>
+                    <span class="term-help-tooltip" id="tooltip-kiembaan" role="tooltip" hidden>Een verandering in DNA van een embryo of voortplantingscel die ook aan volgende generaties kan worden doorgegeven.</span>
+                </span>.
             </p>
             <a class="science-button" href="#ethische-dilemma">Ontdek de ethische dilemma's →</a>
         </section>
@@ -1169,7 +2269,7 @@
                         <strong>De situatie</strong><br>
                         Beide ouders dragen een verandering die taaislijmziekte kan veroorzaken. Per zwangerschap
                         is er 1 op 4 kans dat hun kind de ziekte krijgt. IVF met een embryotest kan een optie zijn.
-                        DNA van embryo's aanpassen is geen beschikbare behandeling. Moet onderzoek daarnaar doorgaan?
+                        DNA van embryo's aanpassen is geen beschikbare reguliere behandeling. Moet onderzoek daarnaar doorgaan?
                     </p>
                     <div class="debate-pair">
                         <div class="debate-side">
@@ -1216,27 +2316,364 @@
         <footer class="sources-footer">
             <h3>Bronnen</h3>
             <ul>
+                <li><a href="https://www.ema.europa.eu/en/medicines/human/EPAR/casgevy" target="_blank" rel="noopener">EMA: Casgevy — werking, gebruik en risico's</a></li>
                 <li><a href="https://www.fda.gov/news-events/press-announcements/fda-approves-first-gene-therapies-treat-patients-sickle-cell-disease" target="_blank" rel="noopener">FDA: goedkeuring van Casgevy voor sikkelcelziekte</a></li>
-                <li><a href="https://www.accessdata.fda.gov/drugsatfda_docs/label/2023/125787s000lbl.pdf" target="_blank" rel="noopener">FDA: productinformatie en risico's van Casgevy</a></li>
+                <li><a href="https://doi.org/10.1056/NEJMoa2031054" target="_blank" rel="noopener">Frangoul et al. (2021): CRISPR-Cas9 en sikkelcelziekte, New England Journal of Medicine</a></li>
+                <li><a href="https://www.ema.europa.eu/en/medicines/human/EPAR/zolgensma" target="_blank" rel="noopener">EMA: Zolgensma — werking, gebruik en risico's</a></li>
+                <li><a href="https://www.cancer.gov/about-cancer/treatment/research/car-t-cells" target="_blank" rel="noopener">National Cancer Institute: CAR-T-celtherapie en lopend onderzoek</a></li>
+                <li><a href="https://www.ema.europa.eu/en/medicines/human/EPAR/yescarta" target="_blank" rel="noopener">EMA: Yescarta — een CAR-T-behandeling en patiëntinformatie</a></li>
                 <li><a href="https://www.who.int/publications/i/item/9789240030381" target="_blank" rel="noopener">WHO: aanbevelingen voor onderzoek naar menselijk DNA</a></li>
                 <li><a href="https://medlineplus.gov/genetics/understanding/inheritance/inheritancepatterns/" target="_blank" rel="noopener">MedlinePlus: uitleg over erfelijkheid en kansen per zwangerschap</a></li>
+            </ul>
+            <p class="survey-note">Enquête: er zijn nog geen eigen enquêtegegevens op deze website verwerkt. Voeg resultaten pas toe nadat de antwoorden zijn verzameld en gecontroleerd.</p>
+            <h4>Beeldverantwoording</h4>
+            <ul class="image-sources">
+                <li>De voorpagina- en medische afbeeldingen zijn zelfgemaakte SVG-illustraties. Ze zijn vereenvoudigd en schematisch, geen echte microscopische of medische beelden.</li>
             </ul>
         </footer>
     </section>
 
-    <script>
-        const scienceButton = document.querySelector("[data-show-science]");
-        const scienceSection = document.getElementById("wetenschap");
+    <main class="treatment-page" id="treatment-casgevy" data-treatment-page hidden>
+        <div class="treatment-page-inner">
+            <button class="treatment-back" type="button" data-treatment-back>← Terug naar de voorbeelden</button>
+            <header class="treatment-page-heading">
+                <span class="science-number">BEHANDELING 01 / SIKKELCELZIEKTE</span>
+                <h1 tabindex="-1">Casgevy</h1>
+                <p>Casgevy is CRISPR-Cas9-gentherapie op eigen bloedstamcellen. Het richt zich op een regelgebied bij BCL11A, niet op de sikkelcelmutatie zelf. Kies een stap om te zien wat er gebeurt.</p>
+            </header>
+            <div class="treatment-detail-layout">
+                <section class="treatment-interactive" data-treatment-animation aria-label="Stappen van de behandeling met Casgevy">
+                    <div class="treatment-step-tabs" role="group" aria-label="Kies een behandelstap">
+                        <button class="treatment-step-tab" type="button" data-treatment-step="0" aria-pressed="true"><span>1</span>Verzamelen</button>
+                        <button class="treatment-step-tab" type="button" data-treatment-step="1" aria-pressed="false"><span>2</span>Aanpassen</button>
+                        <button class="treatment-step-tab" type="button" data-treatment-step="2" aria-pressed="false"><span>3</span>Teruggeven</button>
+                    </div>
+                    <div class="treatment-visual" data-treatment-visual data-step="0">
+                        <span class="treatment-visual-label" data-visual-label>STAP 1 · STAMCELLEN UIT HET BLOED</span>
+                        <div class="treatment-flow" aria-hidden="true">
+                            <div class="treatment-flow-node is-active" data-flow-node><span class="treatment-flow-icon">●</span><span>Bloedstamcel</span></div>
+                            <span class="treatment-flow-arrow">→</span>
+                            <div class="treatment-flow-node" data-flow-node><span class="treatment-flow-icon">✂</span><span>CRISPR-Cas9</span></div>
+                            <span class="treatment-flow-arrow">→</span>
+                            <div class="treatment-flow-node" data-flow-node><span class="treatment-flow-icon">HbF</span><span>Terug: meer HbF</span></div>
+                        </div>
+                    </div>
+                    <p class="treatment-step-description" data-treatment-status role="status" aria-live="polite">Artsen verzamelen bloedstamcellen van de patiënt. Deze cellen worden buiten het lichaam aangepast.</p>
+                    <div class="treatment-step-controls">
+                        <button class="science-button" type="button" data-treatment-previous disabled>← Vorige</button>
+                        <button class="science-button" type="button" data-treatment-next>Volgende →</button>
+                    </div>
+                </section>
+                <aside class="treatment-facts">
+                    <section class="treatment-fact">
+                        <h2>Het doel</h2>
+                        <p>De aanpassing verlaagt BCL11A-activiteit in voorlopers van rode bloedcellen. Daardoor kan de aanmaak van foetaal hemoglobine (HbF) stijgen. HbF kan de gevolgen van afwijkend hemoglobine opvangen en pijnaanvallen verminderen, maar het resultaat verschilt per patiënt. De onderzoeken lopen nog; langetermijngegevens worden verzameld.</p>
+                    </section>
+                    <section class="treatment-fact treatment-fact--risk">
+                        <h2>Belangrijke risico's</h2>
+                        <p>Vooraf is zware chemotherapie nodig om ruimte te maken in het beenmerg. Die kan onder meer infecties, vruchtbaarheidsproblemen en een lange ziekenhuisopname veroorzaken. Er is ook een theoretisch risico op onbedoelde genetische veranderingen; mogelijke gevolgen op lange termijn worden gevolgd.</p>
+                    </section>
+                </aside>
+            </div>
+        </div>
+    </main>
 
-        scienceButton.addEventListener("click", () => {
-            scienceSection.hidden = false;
-            scienceSection.querySelector("[data-close-science]").focus({ preventScroll: true });
-            scienceSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    <main class="treatment-page" id="treatment-zolgensma" data-treatment-page hidden>
+        <div class="treatment-page-inner">
+            <button class="treatment-back" type="button" data-treatment-back>← Terug naar de voorbeelden</button>
+            <header class="treatment-page-heading">
+                <span class="science-number">BEHANDELING 02 / SPINALE MUSCULAIRE ATROFIE</span>
+                <h1 tabindex="-1">Zolgensma</h1>
+                <p>Bekijk hoe een aangepast virus een werkende kopie van het SMN1-gen naar cellen brengt. Dit is gentherapie, geen CRISPR-Cas9.</p>
+            </header>
+            <div class="treatment-detail-layout">
+                <section class="treatment-interactive" data-treatment-animation aria-label="Stappen van de gentherapie met Zolgensma">
+                    <div class="treatment-step-tabs" role="group" aria-label="Kies een behandelstap">
+                        <button class="treatment-step-tab" type="button" data-treatment-step="0" aria-pressed="true"><span>1</span>Genkopie inpakken</button>
+                        <button class="treatment-step-tab" type="button" data-treatment-step="1" aria-pressed="false"><span>2</span>Naar de cel</button>
+                        <button class="treatment-step-tab" type="button" data-treatment-step="2" aria-pressed="false"><span>3</span>Eiwit maken</button>
+                    </div>
+                    <div class="treatment-visual" data-treatment-visual data-step="0">
+                        <span class="treatment-visual-label" data-visual-label>STAP 1 · EEN WERKENDE SMN1-KOPIE REIST MEE</span>
+                        <div class="treatment-flow" aria-hidden="true">
+                            <div class="treatment-flow-node is-active" data-flow-node><span class="treatment-flow-icon">SMN1</span><span>Genkopie</span></div>
+                            <span class="treatment-flow-arrow">→</span>
+                            <div class="treatment-flow-node" data-flow-node><span class="treatment-flow-icon">◈</span><span>Aangepast virus</span></div>
+                            <span class="treatment-flow-arrow">→</span>
+                            <div class="treatment-flow-node" data-flow-node><span class="treatment-flow-icon">◎</span><span>Zenuwcel + SMN</span></div>
+                        </div>
+                    </div>
+                    <p class="treatment-step-description" data-treatment-status role="status" aria-live="polite">Een aangepast, onschadelijk gemaakt virus vervoert een werkende kopie van het SMN1-gen.</p>
+                    <div class="treatment-step-controls">
+                        <button class="science-button" type="button" data-treatment-previous disabled>← Vorige</button>
+                        <button class="science-button" type="button" data-treatment-next>Volgende →</button>
+                    </div>
+                </section>
+                <aside class="treatment-facts">
+                    <section class="treatment-fact">
+                        <h2>Het doel</h2>
+                        <p>De behandeling is bedoeld voor bepaalde patiënten met SMA type 1 of een beperkt aantal SMN2-kopieën. Cellen kunnen de toegevoegde SMN1-kopie gebruiken om SMN-eiwit te maken. Dit kan het verloop van SMA afremmen, maar herstelt de bestaande SMN1-mutatie niet.</p>
+                    </section>
+                    <section class="treatment-fact treatment-fact--risk">
+                        <h2>Belangrijke risico's</h2>
+                        <p>Zolgensma kan ernstige leverschade veroorzaken; daarom worden leverwaarden gecontroleerd en krijgen patiënten corticosteroïden. Andere belangrijke risico's zijn een laag aantal bloedplaatjes en verhoogde troponinewaarden, die controle nodig maken.</p>
+                    </section>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <main class="treatment-page" id="treatment-car-t" data-treatment-page hidden>
+        <div class="treatment-page-inner">
+            <button class="treatment-back" type="button" data-treatment-back>← Terug naar de voorbeelden</button>
+            <header class="treatment-page-heading">
+                <span class="science-number">BEHANDELING 03 / BLOEDKANKER</span>
+                <h1 tabindex="-1">CAR-T</h1>
+                <p>Bij CAR-T worden eigen T-cellen genetisch aangepast om bepaalde bloedkankercellen te herkennen. Dit is genetisch aangepaste celtherapie; de gebruikte methode is niet per se CRISPR-Cas9.</p>
+            </header>
+            <div class="treatment-detail-layout">
+                <section class="treatment-interactive" data-treatment-animation aria-label="Stappen van CAR-T-celtherapie">
+                    <div class="treatment-step-tabs treatment-step-tabs--four" role="group" aria-label="Kies een behandelstap">
+                        <button class="treatment-step-tab" type="button" data-treatment-step="0" aria-pressed="true"><span>1</span>Verzamelen</button>
+                        <button class="treatment-step-tab" type="button" data-treatment-step="1" aria-pressed="false"><span>2</span>Aanpassen</button>
+                        <button class="treatment-step-tab" type="button" data-treatment-step="2" aria-pressed="false"><span>3</span>Vermeerderen</button>
+                        <button class="treatment-step-tab" type="button" data-treatment-step="3" aria-pressed="false"><span>4</span>Teruggeven</button>
+                    </div>
+                    <div class="treatment-visual" data-treatment-visual data-step="0">
+                        <span class="treatment-visual-label" data-visual-label>STAP 1 · T-CELLEN UIT HET BLOED</span>
+                        <div class="treatment-flow treatment-flow--four" aria-hidden="true">
+                            <div class="treatment-flow-node is-active" data-flow-node><span class="treatment-flow-icon">T</span><span>T-cel patiënt</span></div>
+                            <span class="treatment-flow-arrow">→</span>
+                            <div class="treatment-flow-node" data-flow-node><span class="treatment-flow-icon">CAR</span><span>Receptor maken</span></div>
+                            <span class="treatment-flow-arrow">→</span>
+                            <div class="treatment-flow-node" data-flow-node><span class="treatment-flow-icon">T+</span><span>Cellen groeien</span></div>
+                            <span class="treatment-flow-arrow">→</span>
+                            <div class="treatment-flow-node" data-flow-node><span class="treatment-flow-icon">◎</span><span>Doelwit herkennen</span></div>
+                        </div>
+                    </div>
+                    <p class="treatment-step-description" data-treatment-status role="status" aria-live="polite">Artsen verzamelen T-cellen uit het bloed van de patiënt. Dit zijn afweercellen die kunnen worden aangepast.</p>
+                    <div class="treatment-step-controls">
+                        <button class="science-button" type="button" data-treatment-previous disabled>← Vorige</button>
+                        <button class="science-button" type="button" data-treatment-next>Volgende →</button>
+                    </div>
+                </section>
+                <aside class="treatment-facts">
+                    <section class="treatment-fact">
+                        <h2>Het doel</h2>
+                        <p>De CAR-receptor herkent een bepaald eiwit op sommige kankercellen. De aangepaste T-cellen kunnen zich aan dat doelwit binden en de kankercel aanvallen. CAR-T is bedoeld voor specifieke bloedkankers, werkt niet bij iedereen en de ziekte kan terugkomen.</p>
+                    </section>
+                    <section class="treatment-fact treatment-fact--risk">
+                        <h2>Belangrijke risico's</h2>
+                        <p>De afweerreactie kan te sterk worden. Het cytokine-release-syndroom kan hoge koorts en lage bloeddruk geven; ook kunnen verwardheid of andere neurologische klachten ontstaan. Lage bloedcellen en infecties zijn eveneens mogelijke risico's. Behandeling en controle in het ziekenhuis zijn nodig.</p>
+                    </section>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const crisprDemo = document.querySelector("[data-crispr-demo]");
+        const crisprStage = crisprDemo.querySelector("[data-crispr-stage]");
+        const crisprStepButtons = crisprDemo.querySelectorAll("[data-crispr-step]");
+        const crisprStatus = crisprDemo.querySelector("[data-crispr-status]");
+        const crisprPreviousButton = crisprDemo.querySelector("[data-crispr-previous]");
+        const crisprNextButton = crisprDemo.querySelector("[data-crispr-next]");
+        const crisprStepDescriptions = [
+            "Herkennen: het blauwe gids-RNA past bij de groene doelvolgorde en helpt Cas9 de plek te vinden.",
+            "Knippen: Cas9 knipt het DNA bij de groene doelvolgorde.",
+            "Herstellen: de cel repareert de knip. Door die reparatie kan het DNA veranderen."
+        ];
+        let crisprStepIndex = 0;
+
+        function showCrisprStep(stepIndex) {
+            crisprStepIndex = stepIndex;
+            crisprStage.dataset.step = String(stepIndex);
+            crisprStatus.textContent = crisprStepDescriptions[stepIndex];
+            crisprStepButtons.forEach((button, index) => {
+                button.setAttribute("aria-pressed", String(index === stepIndex));
+            });
+            crisprPreviousButton.disabled = stepIndex === 0;
+            crisprNextButton.disabled = stepIndex === crisprStepButtons.length - 1;
+        }
+
+        crisprStepButtons.forEach((button) => {
+            button.addEventListener("click", () => {
+                showCrisprStep(Number(button.dataset.crisprStep));
+            });
         });
 
-        document.querySelector("[data-close-science]").addEventListener("click", () => {
-            scienceSection.hidden = true;
-            scienceButton.focus();
+        crisprPreviousButton.addEventListener("click", () => {
+            if (crisprStepIndex > 0) {
+                showCrisprStep(crisprStepIndex - 1);
+            }
+        });
+
+        crisprNextButton.addEventListener("click", () => {
+            if (crisprStepIndex < crisprStepButtons.length - 1) {
+                showCrisprStep(crisprStepIndex + 1);
+            }
+        });
+
+        const treatmentPages = [...document.querySelectorAll("[data-treatment-page]")];
+        const treatmentPageContent = {
+            "treatment-casgevy": {
+                labels: [
+                    "STAP 1 · STAMCELLEN UIT HET BLOED",
+                    "STAP 2 · CRISPR-CAS9 VERANDERT HET BCL11A-REGELGEBIED",
+                    "STAP 3 · DE AANGEPASTE CELLEN GAAN TERUG"
+                ],
+                descriptions: [
+                    "Artsen verzamelen bloedvormende stamcellen van de patiënt. Deze eigen cellen worden buiten het lichaam aangepast.",
+                    "CRISPR-Cas9 verandert een regelgebied (enhancer) bij het BCL11A-gen in voorlopers van rode bloedcellen. Daardoor kan de aanmaak van foetaal hemoglobine (HbF) toenemen; de sikkelcelmutatie zelf wordt niet gerepareerd.",
+                    "Na zware chemotherapie worden de aangepaste stamcellen teruggegeven. Ze kunnen nieuwe bloedcellen maken die meer HbF bevatten."
+                ]
+            },
+            "treatment-zolgensma": {
+                labels: [
+                    "STAP 1 · DE SMN1-KOPIE REIST MEE",
+                    "STAP 2 · HET VIRUS BRENGT DE KOPIE NAAR CELLEN",
+                    "STAP 3 · DE CEL MAAKT SMN-EIWIT"
+                ],
+                descriptions: [
+                    "De behandeling bevat een werkende kopie van het SMN1-gen in een aangepaste AAV9-virusvector. Dit is gentherapie, geen CRISPR.",
+                    "Na toediening brengt de virusvector de genkopie naar cellen, waaronder motorische zenuwcellen.",
+                    "De cel gebruikt de toegevoegde kopie om SMN-eiwit te maken. Het oorspronkelijke SMN1-DNA wordt niet gerepareerd of vervangen."
+                ]
+            },
+            "treatment-car-t": {
+                labels: [
+                    "STAP 1 · T-CELLEN UIT HET BLOED",
+                    "STAP 2 · T-CELLEN KRIJGEN EEN HERKENNINGSRECEPTOR",
+                    "STAP 3 · DE AANGEPASTE CELLEN WORDEN VERMEERDERD",
+                    "STAP 4 · CAR-T-CELLEN HERKENNEN HUN DOELWIT"
+                ],
+                descriptions: [
+                    "Met een procedure die leukafarese heet, worden T-cellen uit het bloed van de patiënt verzameld.",
+                    "In het lab krijgen de T-cellen een genetische instructie om een CAR-receptor te maken, vaak met een aangepaste virusvector als drager. Dit is genetisch aangepaste celtherapie; de methode is niet noodzakelijk CRISPR-Cas9.",
+                    "De aangepaste T-cellen worden in het lab vermeerderd tot er genoeg zijn voor de behandeling.",
+                    "Na een voorbereidende behandeling worden de cellen teruggegeven. Ze kunnen kankercellen met het passende doelwit herkennen en aanvallen."
+                ]
+            }
+        };
+
+        function showTreatmentStep(page, stepIndex) {
+            const content = treatmentPageContent[page.id];
+            const visual = page.querySelector("[data-treatment-visual]");
+            const stepButtons = page.querySelectorAll("[data-treatment-step]");
+            const flowNodes = page.querySelectorAll("[data-flow-node]");
+
+            visual.dataset.step = String(stepIndex);
+            page.querySelector("[data-visual-label]").textContent = content.labels[stepIndex];
+            page.querySelector("[data-treatment-status]").textContent = content.descriptions[stepIndex];
+            stepButtons.forEach((button, index) => {
+                button.setAttribute("aria-pressed", String(index === stepIndex));
+            });
+            flowNodes.forEach((node, index) => {
+                node.classList.toggle("is-active", index === stepIndex);
+            });
+            page.querySelector("[data-treatment-previous]").disabled = stepIndex === 0;
+            page.querySelector("[data-treatment-next]").disabled = stepIndex === stepButtons.length - 1;
+        }
+
+        treatmentPages.forEach((page) => {
+            const stepButtons = page.querySelectorAll("[data-treatment-step]");
+            const previousButton = page.querySelector("[data-treatment-previous]");
+            const nextButton = page.querySelector("[data-treatment-next]");
+            let currentStep = 0;
+
+            stepButtons.forEach((button) => {
+                button.addEventListener("click", () => {
+                    currentStep = Number(button.dataset.treatmentStep);
+                    showTreatmentStep(page, currentStep);
+                });
+            });
+
+            previousButton.addEventListener("click", () => {
+                if (currentStep > 0) {
+                    currentStep -= 1;
+                    showTreatmentStep(page, currentStep);
+                }
+            });
+
+            nextButton.addEventListener("click", () => {
+                if (currentStep < stepButtons.length - 1) {
+                    currentStep += 1;
+                    showTreatmentStep(page, currentStep);
+                }
+            });
+
+            page.querySelector("[data-treatment-back]").addEventListener("click", () => {
+                window.location.hash = "medisch";
+            });
+        });
+
+        document.querySelectorAll("[data-treatment-open]").forEach((button) => {
+            button.addEventListener("click", () => {
+                window.location.hash = button.dataset.treatmentOpen;
+            });
+        });
+
+        const siteTitle = document.title;
+        let wasOnTreatmentPage = false;
+
+        function updateTreatmentPage() {
+            const pageId = window.location.hash.slice(1);
+            const activePage = treatmentPages.find((page) => page.id === pageId);
+            document.body.classList.toggle("is-treatment-detail", Boolean(activePage));
+
+            treatmentPages.forEach((page) => {
+                page.hidden = page !== activePage;
+            });
+
+            if (activePage) {
+                showTreatmentStep(activePage, 0);
+                document.title = `${activePage.querySelector("h1").textContent} | ${siteTitle}`;
+                activePage.scrollIntoView();
+                activePage.querySelector("h1").focus({ preventScroll: true });
+            } else {
+                document.title = siteTitle;
+                if (wasOnTreatmentPage) {
+                    document.getElementById(pageId)?.scrollIntoView();
+                }
+            }
+
+            wasOnTreatmentPage = Boolean(activePage);
+        }
+
+        window.addEventListener("hashchange", updateTreatmentPage);
+        updateTreatmentPage();
+
+        const termHelpButtons = document.querySelectorAll("[data-term-help]");
+
+        function closeTermHelp(exceptButton) {
+            termHelpButtons.forEach((button) => {
+                if (button !== exceptButton) {
+                    button.setAttribute("aria-expanded", "false");
+                    document.getElementById(button.getAttribute("aria-describedby")).hidden = true;
+                }
+            });
+        }
+
+        termHelpButtons.forEach((button) => {
+            button.addEventListener("click", () => {
+                const tooltip = document.getElementById(button.getAttribute("aria-describedby"));
+                const willOpen = button.getAttribute("aria-expanded") !== "true";
+                closeTermHelp(button);
+                button.setAttribute("aria-expanded", String(willOpen));
+                tooltip.hidden = !willOpen;
+            });
+        });
+
+        document.addEventListener("click", (event) => {
+            if (!event.target.closest(".term-help")) {
+                closeTermHelp();
+            }
+        });
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+                closeTermHelp();
+            }
         });
 
         const decisionModel = document.querySelector("[data-decision-model]");
@@ -1245,6 +2682,8 @@
         const nextQuestionButton = decisionModel.querySelector("[data-next-question]");
         const completionMessage = decisionModel.querySelector("[data-decision-complete]");
         const restartButton = decisionModel.querySelector("[data-restart]");
+        const progressBar = decisionModel.querySelector("[data-progress-bar]");
+        const progressFill = decisionModel.querySelector("[data-progress-fill]");
         const decisionQuestions = [
             {
                 prompt: "De genen van een mens beïnvloeden",
@@ -1252,13 +2691,11 @@
                 choices: [
                     {
                         label: "Ja",
-                        consequence: "Een ernstige erfelijke ziekte zou mogelijk voorkomen kunnen worden. Tegelijk is de techniek onzeker: er kunnen onbedoelde veranderingen ontstaan en het toekomstige kind kan niet zelf instemmen.",
-                        tradeoff: "Je kiest voor de kans om ziekte te voorkomen, maar neemt onbekende risico's voor het kind en mogelijk volgende generaties mee."
+                        consequence: "Een ernstige erfelijke ziekte zou mogelijk voorkomen kunnen worden. Tegelijk is de techniek onzeker: er kunnen onbedoelde veranderingen ontstaan en het toekomstige kind kan niet zelf instemmen."
                     },
                     {
                         label: "Nee",
-                        consequence: "Je voorkomt dat het embryo wordt blootgesteld aan onbekende veranderingen. De erfelijke ziekte kan daardoor wel bij het kind ontstaan.",
-                        tradeoff: "Je beschermt het kind tegen een onzekere ingreep, maar laat de kans op de ernstige ziekte bestaan."
+                        consequence: "Je voorkomt dat het embryo wordt blootgesteld aan onbekende veranderingen. De erfelijke ziekte kan daardoor wel bij het kind ontstaan."
                     }
                 ]
             },
@@ -1268,13 +2705,11 @@
                 choices: [
                     {
                         label: "Ja",
-                        consequence: "Ouders krijgen meer invloed op eigenschappen van hun toekomstige kind. Zulke keuzes kunnen ook maatschappelijke druk vergroten om aan één ideaal uiterlijk te voldoen.",
-                        tradeoff: "Je kiest voor ouderlijke keuzevrijheid, maar moet ook meewegen dat het kind niet zelf kiest en dat niet iedereen toegang tot zulke technieken zou hebben."
+                        consequence: "Ouders krijgen meer invloed op eigenschappen van hun toekomstige kind. Zulke keuzes kunnen ook maatschappelijke druk vergroten om aan één ideaal uiterlijk te voldoen."
                     },
                     {
                         label: "Nee",
-                        consequence: "Je voorkomt dat medische technieken worden gebruikt om uiterlijk te kiezen en beperkt de druk op kinderen om aan bepaalde schoonheidsidealen te voldoen.",
-                        tradeoff: "Je beschermt toekomstige kinderen tegen keuzes die anderen voor hen maken, maar beperkt ook wat ouders met nieuwe technieken zouden mogen kiezen."
+                        consequence: "Je voorkomt dat medische technieken worden gebruikt om uiterlijk te kiezen en beperkt de druk op kinderen om aan bepaalde schoonheidsidealen te voldoen."
                     }
                 ]
             },
@@ -1284,13 +2719,11 @@
                 choices: [
                     {
                         label: "Ja",
-                        consequence: "Een verandering zou een erfelijke ziekte mogelijk uit families kunnen halen. Een onbedoelde verandering kan ook worden doorgegeven aan kinderen en kleinkinderen.",
-                        tradeoff: "Je kiest voor mogelijke gezondheidswinst over generaties, maar ook voor risico's die toekomstige mensen niet zelf kunnen accepteren of weigeren."
+                        consequence: "Een verandering zou een erfelijke ziekte mogelijk uit families kunnen halen. Een onbedoelde verandering kan ook worden doorgegeven aan kinderen en kleinkinderen."
                     },
                     {
                         label: "Nee",
-                        consequence: "Toekomstige generaties worden beschermd tegen onbekende veranderingen die zij zouden erven. Een erfelijke ziekte kan wel in de familie blijven voorkomen.",
-                        tradeoff: "Je vermijdt risico's voor mensen die nog niet geboren zijn, maar laat mogelijke voordelen van erfelijke ziektepreventie onbenut."
+                        consequence: "Toekomstige generaties worden beschermd tegen onbekende veranderingen die zij zouden erven. Een erfelijke ziekte kan wel in de familie blijven voorkomen."
                     }
                 ]
             }
@@ -1301,8 +2734,12 @@
             const question = decisionQuestions[questionIndex];
 
             decisionModel.querySelector("[data-question-progress]").textContent = `VRAAG ${questionIndex + 1} / ${decisionQuestions.length}`;
+            progressBar.setAttribute("aria-valuemax", String(decisionQuestions.length));
+            progressBar.setAttribute("aria-valuenow", String(questionIndex + 1));
+            progressFill.style.width = `${((questionIndex + 1) / decisionQuestions.length) * 100}%`;
             decisionModel.querySelector("[data-question]").textContent = question.prompt;
             decisionModel.querySelector("[data-question-context]").textContent = question.context;
+            progressBar.setAttribute("aria-valuetext", `Vraag ${questionIndex + 1} van ${decisionQuestions.length}`);
 
             choiceButtons.forEach((button, index) => {
                 button.textContent = question.choices[index].label;
@@ -1314,6 +2751,8 @@
             completionMessage.hidden = true;
         }
 
+        showQuestion();
+
         choiceButtons.forEach((button) => {
             button.addEventListener("click", () => {
                 const question = decisionQuestions[questionIndex];
@@ -1324,7 +2763,6 @@
                 });
 
                 decisionModel.querySelector("[data-consequence]").textContent = outcome.consequence;
-                decisionModel.querySelector("[data-tradeoff]").textContent = outcome.tradeoff;
                 resultPanel.hidden = false;
                 const isLastQuestion = questionIndex === decisionQuestions.length - 1;
                 nextQuestionButton.hidden = isLastQuestion;
