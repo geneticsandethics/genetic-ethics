@@ -107,28 +107,6 @@
             object-position: center;
         }
 
-        .hero-image svg {
-            display: block;
-            width: 100%;
-            height: 100%;
-            min-height: 430px;
-            background: #edf1e8;
-        }
-
-        .hero-image figcaption {
-            position: absolute;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            padding: 16px 20px;
-            background: rgba(22, 44, 35, .86);
-            color: white;
-            font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
         .science-page {
             --forest: #244a3a;
             --sage: #64806d;
@@ -640,7 +618,7 @@
         .crispr-sequence,
         .crispr-guide {
             display: grid;
-            grid-template-columns: repeat(9, minmax(0, 1fr));
+            grid-template-columns: repeat(10, minmax(0, 1fr));
             align-items: center;
             justify-items: center;
             gap: 5px;
@@ -650,6 +628,7 @@
 
         .crispr-sequence {
             position: relative;
+            padding-bottom: 24px;
         }
 
         .crispr-base {
@@ -670,6 +649,24 @@
             border-color: #648b49;
             background: #e4efd9;
             color: #355c2d;
+        }
+
+        .crispr-base.is-pam {
+            border-color: #c99c4a;
+            background: #fff0cf;
+            color: #795514;
+        }
+
+        .crispr-pam-label {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 60%;
+            color: #795514;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: .5px;
+            text-align: center;
         }
 
         .crispr-guide-label {
@@ -704,7 +701,7 @@
             position: absolute;
             top: -3px;
             bottom: -3px;
-            left: 55.55%;
+            left: 60%;
             visibility: hidden;
             opacity: 0;
             border-left: 2px dashed #b55342;
@@ -750,6 +747,128 @@
             display: block;
         }
 
+        .crispr-stage[data-step="2"] > .crispr-visual-label,
+        .crispr-stage[data-step="2"] > .crispr-sequence,
+        .crispr-stage[data-step="2"] > .crispr-guide-label,
+        .crispr-stage[data-step="2"] > .crispr-guide {
+            display: none;
+        }
+
+        .crispr-repair-example {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .crispr-stage[data-step="2"] .crispr-repair-example {
+            display: block;
+        }
+
+        .crispr-repair-flow {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr);
+            align-items: center;
+            gap: 10px;
+        }
+
+        .crispr-repair-part {
+            min-width: 0;
+            padding: 13px 8px;
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            background: white;
+            text-align: center;
+            animation: crispr-repair-appear .45s ease both;
+        }
+
+        .crispr-repair-part:nth-of-type(2) {
+            animation-delay: .65s;
+        }
+
+        .crispr-repair-part:nth-of-type(3) {
+            animation-delay: 1.3s;
+        }
+
+        .crispr-repair-part strong {
+            display: block;
+            margin-bottom: 9px;
+            color: var(--muted);
+            font-size: 10px;
+            letter-spacing: .6px;
+        }
+
+        .crispr-repair-letters {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            color: var(--ink);
+            font-family: Georgia, serif;
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .crispr-repair-letters span {
+            display: grid;
+            width: 27px;
+            height: 30px;
+            place-items: center;
+            border: 1px solid var(--line);
+            border-radius: 4px;
+            background: #f8f9f5;
+        }
+
+        .crispr-repair-letters .crispr-cut {
+            width: auto;
+            border: 0;
+            background: transparent;
+            color: #a85345;
+        }
+
+        .crispr-repair-part--changed {
+            border-color: #e1b1a7;
+            background: #fff8f5;
+        }
+
+        .crispr-repair-part--changed .crispr-repair-letters span:last-child {
+            border-color: #dca89d;
+            background: #fff0eb;
+            color: #873d33;
+        }
+
+        .crispr-repair-arrow {
+            color: #64806d;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .crispr-repair-explanation,
+        .crispr-repair-caveat {
+            max-width: 760px;
+            margin: 16px auto 0;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .crispr-repair-caveat {
+            margin-top: 10px;
+            font-family: Georgia, serif;
+            font-size: 12px;
+            font-style: italic;
+            text-align: center;
+        }
+
+        @keyframes crispr-repair-appear {
+            from {
+                opacity: 0;
+                transform: translateY(6px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .crispr-legend {
             display: flex;
             flex-wrap: wrap;
@@ -775,6 +894,10 @@
 
         .crispr-legend-swatch--guide {
             background: #d8e8f7;
+        }
+
+        .crispr-legend-swatch--pam {
+            background: #ffe4a9;
         }
 
         .crispr-step-status {
@@ -876,22 +999,8 @@
             transition: transform .35s ease;
         }
 
-        .medical-image-illustration {
-            height: 160px;
-            background: #e9eee4;
-        }
-
         .medical-card:hover .medical-image {
             transform: scale(1.025);
-        }
-
-        .medical-image-caption {
-            margin: 0;
-            padding: 7px 12px;
-            background: #f3f4ef;
-            color: var(--muted);
-            font-size: 10px;
-            line-height: 1.4;
         }
 
         .medical-open {
@@ -1641,10 +1750,6 @@
 
             .hero-image,
             .hero-image img,
-            .hero-image svg {
-                min-height: 300px;
-            }
-
             .science-hero {
                 padding: 70px 7% 50px;
             }
@@ -1807,6 +1912,30 @@
             .crispr-step-status {
                 min-height: 0;
             }
+
+            .crispr-repair-flow {
+                grid-template-columns: 1fr;
+                gap: 6px;
+            }
+
+            .crispr-repair-arrow {
+                line-height: 1;
+                transform: rotate(90deg);
+            }
+
+            .crispr-repair-part {
+                padding: 10px 6px;
+            }
+
+            .crispr-repair-letters {
+                gap: 3px;
+                font-size: 14px;
+            }
+
+            .crispr-repair-letters span {
+                width: 25px;
+                height: 28px;
+            }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -1854,28 +1983,7 @@
             </a>
         </div>
         <figure class="hero-image">
-            <svg viewBox="0 0 640 480" role="img" aria-labelledby="hero-illustration-title hero-illustration-description">
-                <title id="hero-illustration-title">Vereenvoudigde illustratie van CRISPR-Cas9</title>
-                <desc id="hero-illustration-description">Een blauw gids-RNA past bij een groen gemarkeerd doelstuk in het DNA. Cas9 knipt het DNA op die plek.</desc>
-                <rect width="640" height="480" fill="#edf1e8"/>
-                <path d="M0 110H640M0 370H640" stroke="#dce2d8" stroke-width="1"/>
-                <text x="40" y="55" fill="#52745f" font-family="Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="2">DNA-BEWERKING · VEREENVOUDIGD</text>
-                <path d="M105 143C230 143 230 192 355 192S480 241 555 241" fill="none" stroke="#244a3a" stroke-width="8" stroke-linecap="round"/>
-                <path d="M105 241C230 241 230 192 355 192S480 143 555 143" fill="none" stroke="#64806d" stroke-width="8" stroke-linecap="round"/>
-                <path d="M153 157L153 227M210 169L210 215M267 184L267 200M324 193L324 191M381 184L381 200M438 169L438 215M495 157L495 227" stroke="#9aab91" stroke-width="3"/>
-                <rect x="247" y="164" width="150" height="56" rx="10" fill="#e4efd9" stroke="#648b49" stroke-width="2"/>
-                <text x="322" y="198" fill="#355c2d" font-family="Arial, sans-serif" font-size="17" font-weight="700" text-anchor="middle">DOELVOLGORDE</text>
-                <path d="M256 258C285 232 351 232 383 258" fill="none" stroke="#3569a8" stroke-width="8" stroke-linecap="round"/>
-                <path d="M319 245V281" stroke="#3569a8" stroke-width="3" stroke-dasharray="5 5"/>
-                <circle cx="320" cy="315" r="43" fill="#fff" stroke="#244a3a" stroke-width="3"/>
-                <text x="320" y="322" fill="#244a3a" font-family="Arial, sans-serif" font-size="21" font-weight="700" text-anchor="middle">Cas9</text>
-                <path d="M320 272V235" stroke="#b55342" stroke-width="3" stroke-dasharray="5 5"/>
-                <text x="94" y="315" fill="#3569a8" font-family="Arial, sans-serif" font-size="15" font-weight="700">GIDS-RNA</text>
-                <text x="383" y="326" fill="#873d33" font-family="Arial, sans-serif" font-size="15" font-weight="700">KNIPT HIER</text>
-                <rect x="40" y="398" width="560" height="42" rx="6" fill="#fff" opacity=".82"/>
-                <text x="320" y="424" fill="#586b60" font-family="Arial, sans-serif" font-size="14" text-anchor="middle">Een gericht hulpmiddel; de cel herstelt daarna de DNA-knip.</text>
-            </svg>
-            <figcaption>Eigen, vereenvoudigde illustratie · geen echte celopname</figcaption>
+            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ef/APHIS-Moore_Air_Base_in_Texas-Plant_Protection_and_Quarantine_Science_and_Technology_Insect_Management_and_Molecular_Diagnostics_Laboratory_%2820230621-CDP-APHIS-0498%29.jpg/960px-thumbnail.jpg" alt="Laborant bereidt DNA-monsters voor PCR-onderzoek in een USDA-moleculair-diagnostisch laboratorium" fetchpriority="high" decoding="async">
         </figure>
     </main>
 
@@ -1952,13 +2060,13 @@
 
             <div class="crispr-explainer">
                 <p class="crispr-intro">
-                    CRISPR-Cas9 kan een gekozen stukje DNA aanpassen. Het
-                    gids-RNA herkent de bijpassende code en helpt Cas9 de juiste
-                    plek te vinden. Cas9 knipt daar het DNA. Daarna repareert
-                    de cel de knip. Door die reparatie kan het DNA veranderen
-                    en kan een gen anders werken of uitgaan. Cas9 knipt alleen
-                    naast een kort DNA-signaal; dat signaal heet PAM en is in
-                    deze vereenvoudigde animatie niet getekend.
+                    CRISPR-Cas9 is een soort gereedschap waarmee wetenschappers
+                    DNA kunnen aanpassen. Het gids-RNA helpt Cas9 de juiste plek
+                    in het DNA te vinden. Cas9 knipt daar het DNA door. De cel
+                    herstelt de knip, maar daarbij kan de DNA-code veranderen.
+                    Hierdoor kan een gen anders gaan werken of uitgeschakeld
+                    worden. Cas9 kan alleen knippen als er vlak bij de gekozen
+                    plek een kort herkenningssignaal aanwezig is. Dit heet PAM.
                 </p>
 
                 <div class="crispr-demo" data-crispr-demo>
@@ -1981,32 +2089,67 @@
                         <span class="crispr-visual-label">ZOEK DE DOELVOLGORDE IN HET DNA</span>
                         <div class="crispr-sequence" aria-hidden="true">
                             <span class="crispr-base">A</span>
-                            <span class="crispr-base">T</span>
                             <span class="crispr-base is-target">G</span>
                             <span class="crispr-base is-target">A</span>
                             <span class="crispr-base is-target">A</span>
                             <span class="crispr-base is-target">C</span>
                             <span class="crispr-base is-target">T</span>
+                            <span class="crispr-base is-pam">A</span>
+                            <span class="crispr-base is-pam">G</span>
+                            <span class="crispr-base is-pam">G</span>
                             <span class="crispr-base">C</span>
-                            <span class="crispr-base">A</span>
+                            <span class="crispr-pam-label">PAM · AGG</span>
                             <span class="crispr-cut-marker"></span>
                         </div>
                         <p class="crispr-guide-label">GIDS-RNA</p>
                         <div class="crispr-guide" aria-hidden="true">
-                            <span></span><span></span>
+                            <span></span>
                             <span class="is-guide-base">C</span>
                             <span class="is-guide-base">U</span>
                             <span class="is-guide-base">U</span>
                             <span class="is-guide-base">G</span>
                             <span class="is-guide-base">A</span>
-                            <span></span><span></span>
+                            <span></span><span></span><span></span><span></span>
                         </div>
                         <p class="crispr-repair-label">✓ DE CEL HEEFT HET DNA GEREPAREERD</p>
+                        <div class="crispr-repair-example" role="group" aria-label="Voorbeeld van DNA-herstel waarbij één letter ontbreekt">
+                            <span class="crispr-visual-label">ZO KAN DE DNA-CODE VERANDEREN</span>
+                            <div class="crispr-repair-flow">
+                                <div class="crispr-repair-part">
+                                    <strong>VOOR DE KNIP</strong>
+                                    <div class="crispr-repair-letters" aria-label="A, T, G, C, C, A">
+                                        <span>A</span><span>T</span><span>G</span><span>C</span><span>C</span><span>A</span>
+                                    </div>
+                                </div>
+                                <span class="crispr-repair-arrow" aria-hidden="true">→</span>
+                                <div class="crispr-repair-part">
+                                    <strong>CAS9 KNIPT</strong>
+                                    <div class="crispr-repair-letters" aria-label="A, T, G; knip; C, C, A">
+                                        <span>A</span><span>T</span><span>G</span><span class="crispr-cut">✂</span><span>C</span><span>C</span><span>A</span>
+                                    </div>
+                                </div>
+                                <span class="crispr-repair-arrow" aria-hidden="true">→</span>
+                                <div class="crispr-repair-part crispr-repair-part--changed">
+                                    <strong>NA HERSTEL · ÉÉN C MINDER</strong>
+                                    <div class="crispr-repair-letters" aria-label="A, T, G, C, A; één C ontbreekt">
+                                        <span>A</span><span>T</span><span>G</span><span>C</span><span>A</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="crispr-repair-explanation">
+                                De cel probeert de twee uiteinden weer aan elkaar te maken.
+                                Tijdens dit herstel kunnen DNA-bouwstenen verdwijnen of worden toegevoegd.
+                                Denk aan een handleiding: haal je een letter uit een instructie,
+                                dan kan die instructie anders worden gelezen.
+                                <br><strong>Als de DNA-code verandert, kan de instructie van een gen veranderen. Daardoor kan een eiwit anders worden gemaakt of helemaal niet meer worden gemaakt.</strong>
+                            </p>
+                        </div>
                     </div>
 
                     <div class="crispr-legend" aria-label="Legenda">
                         <span class="crispr-legend-item"><span class="crispr-legend-swatch" aria-hidden="true"></span>Doelvolgorde in het DNA</span>
                         <span class="crispr-legend-item"><span class="crispr-legend-swatch crispr-legend-swatch--guide" aria-hidden="true"></span>Gids-RNA</span>
+                        <span class="crispr-legend-item"><span class="crispr-legend-swatch crispr-legend-swatch--pam" aria-hidden="true"></span>PAM-signaal</span>
                     </div>
 
                     <p class="crispr-step-status" data-crispr-status role="status" aria-live="polite">
@@ -2041,52 +2184,32 @@
                 <span class="science-number">03 / IN DE GENEESKUNDE</span>
                 <h3>Hoe helpen behandelingen mensen?</h3>
                 <p>
-                    De voorbeelden gebruiken verschillende technieken: Casgevy
-                    bewerkt cellen met CRISPR-Cas9, Zolgensma voegt een werkende
-                    genkopie toe en CAR-T past afweercellen aan. Geen van deze
-                    behandelingen is bedoeld om erfelijk DNA in embryo's of
-                    voortplantingscellen te veranderen.
+                    Genetische modificatie klinkt misschien als iets uit de
+                    toekomst, maar het wordt nu al gebruikt om mensen met
+                    ernstige ziekten te behandelen. Denk aan sikkelcelziekte,
+                    SMA en bepaalde vormen van bloedkanker. Maar hoe werkt dat
+                    precies? En hoe kunnen wetenschappers genetische technieken
+                    inzetten om patiënten te helpen? Dat ontdek je aan de hand
+                    van drie voorbeelden: Casgevy, Zolgensma en CAR-T. Elk
+                    gebruikt een andere techniek, maar ze hebben hetzelfde doel:
+                    het behandelen van ernstige ziekten.
                 </p>
             </div>
 
             <div class="medical-grid">
                 <article class="medical-card">
                     <figure class="medical-image-figure">
-                        <svg class="medical-image medical-image-illustration" viewBox="0 0 480 200" role="img" aria-labelledby="casgevy-card-title casgevy-card-description">
-                            <title id="casgevy-card-title">Schematische weergave van Casgevy</title>
-                            <desc id="casgevy-card-description">Een bloedstamcel wordt met CRISPR aangepast en kan daarna meer foetaal hemoglobine maken.</desc>
-                            <rect width="480" height="200" fill="#edf1e8"/>
-                            <circle cx="76" cy="82" r="31" fill="#f8e4dc" stroke="#b55342" stroke-width="3"/>
-                            <circle cx="76" cy="82" r="11" fill="#d98a79"/>
-                            <text x="76" y="139" fill="#20372f" font-family="Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">STAMCEL</text>
-                            <path d="M123 82H178" stroke="#64806d" stroke-width="3"/>
-                            <path d="M169 74L179 82L169 90" fill="none" stroke="#64806d" stroke-width="3"/>
-                            <path d="M211 57C230 74 230 90 211 107M253 57C234 74 234 90 253 107M215 63L249 101M249 63L215 101" fill="none" stroke="#244a3a" stroke-width="3" stroke-linecap="round"/>
-                            <rect x="222" y="76" width="20" height="14" rx="3" fill="#d7ef72"/>
-                            <text x="232" y="139" fill="#20372f" font-family="Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">CRISPR-Cas9</text>
-                            <path d="M276 82H332" stroke="#64806d" stroke-width="3"/>
-                            <path d="M323 74L333 82L323 90" fill="none" stroke="#64806d" stroke-width="3"/>
-                            <circle cx="387" cy="82" r="29" fill="#fff" stroke="#b55342" stroke-width="3"/>
-                            <circle cx="387" cy="82" r="10" fill="#d98a79"/>
-                            <circle cx="420" cy="64" r="8" fill="#fff" stroke="#b55342" stroke-width="2"/>
-                            <circle cx="423" cy="96" r="8" fill="#fff" stroke="#b55342" stroke-width="2"/>
-                            <text x="394" y="139" fill="#20372f" font-family="Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">MEER HbF</text>
-                        </svg>
-                        <figcaption class="medical-image-caption">Stamcellen aanpassen om HbF te verhogen · schematisch</figcaption>
+                        <img class="medical-image" src="assets/images/sickle-cell-user-provided.png" alt="Illustratie van sikkelvormige rode bloedcellen, aangeleverd bij het wijzigingsverzoek" loading="lazy" decoding="async">
                     </figure>
-                    <span class="medical-tag">VOORBEELD 01</span>
                     <h4>Sikkelcelziekte</h4>
-                    <span class="medical-method-tag">CRISPR-Cas9 · eigen stamcellen</span>
                     <p>
-                        Casgevy is in de EU een behandeling voor bepaalde patiënten
-                        vanaf 12 jaar met ernstige sikkelcelziekte. Artsen halen bloedstamcellen
-                        uit het lichaam en veranderen met CRISPR-Cas9 een
-                        regelgebied bij het BCL11A-gen. Daardoor kunnen de
-                        aangepaste cellen meer foetaal hemoglobine (HbF) maken.
-                        De behandeling kan pijnaanvallen verminderen.
-                        <a class="medical-source-cite" href="https://www.ema.europa.eu/en/medicines/human/EPAR/casgevy" target="_blank" rel="noopener">Bron: EMA</a>
-                        <a class="medical-source-cite" href="https://www.fda.gov/news-events/press-announcements/fda-approves-first-gene-therapies-treat-patients-sickle-cell-disease" target="_blank" rel="noopener">FDA</a>
-                        <a class="medical-source-cite" href="https://doi.org/10.1056/NEJMoa2031054" target="_blank" rel="noopener">Onderzoek</a>
+                        Sikkelcelziekte is een erfelijke aandoening waarbij rode
+                        bloedcellen een afwijkende, sikkelachtige vorm kunnen
+                        krijgen. Hierdoor kunnen ze bloedvaten verstoppen en
+                        pijnlijke aanvallen veroorzaken. Met Casgevy proberen
+                        artsen deze problemen te verminderen door de eigen
+                        bloedstamcellen van de patiënt genetisch aan te passen
+                        met CRISPR-Cas9.
                     </p>
                     <button class="medical-open" type="button" data-treatment-open="treatment-casgevy">
                         <span>Bekijk Casgevy stap voor stap</span><span aria-hidden="true">→</span>
@@ -2095,40 +2218,18 @@
 
                 <article class="medical-card">
                     <figure class="medical-image-figure">
-                        <svg class="medical-image medical-image-illustration" viewBox="0 0 480 200" role="img" aria-labelledby="zolgensma-card-title zolgensma-card-description">
-                            <title id="zolgensma-card-title">Schematische weergave van Zolgensma</title>
-                            <desc id="zolgensma-card-description">Een aangepaste virusvector vervoert een werkende SMN1-genkopie naar een cel, zonder het oorspronkelijke DNA te vervangen.</desc>
-                            <rect width="480" height="200" fill="#edf1e8"/>
-                            <circle cx="86" cy="82" r="31" fill="#fff" stroke="#3569a8" stroke-width="3"/>
-                            <path d="M86 45V35M86 129V119M49 82H39M133 82H123M60 56L52 48M120 116L112 108M112 56L120 48M52 116L60 108" stroke="#3569a8" stroke-width="4" stroke-linecap="round"/>
-                            <text x="86" y="87" fill="#285b91" font-family="Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle">SMN1</text>
-                            <text x="86" y="139" fill="#20372f" font-family="Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">GENKOPIE</text>
-                            <path d="M136 82H208" stroke="#64806d" stroke-width="3"/>
-                            <path d="M199 74L209 82L199 90" fill="none" stroke="#64806d" stroke-width="3"/>
-                            <circle cx="250" cy="82" r="34" fill="#dceaf7" stroke="#3569a8" stroke-width="3"/>
-                            <path d="M250 48V36M250 128V116M216 82H204M296 82H284M226 58L217 49M283 115L274 106M274 58L283 49M217 115L226 106" stroke="#3569a8" stroke-width="4" stroke-linecap="round"/>
-                            <text x="250" y="87" fill="#285b91" font-family="Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle">VECTOR</text>
-                            <text x="250" y="139" fill="#20372f" font-family="Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">AANGEPAST VIRUS</text>
-                            <path d="M300 82H342" stroke="#64806d" stroke-width="3"/>
-                            <path d="M333 74L343 82L333 90" fill="none" stroke="#64806d" stroke-width="3"/>
-                            <circle cx="389" cy="82" r="39" fill="#fff" stroke="#64806d" stroke-width="3"/>
-                            <circle cx="389" cy="82" r="10" fill="#d7ef72"/>
-                            <path d="M389 71V93M378 82H400" stroke="#244a3a" stroke-width="2"/>
-                            <text x="389" y="139" fill="#20372f" font-family="Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">CEL MAAKT SMN</text>
-                        </svg>
-                        <figcaption class="medical-image-caption">Een virusvector brengt een genkopie naar cellen · schematisch</figcaption>
+                        <img class="medical-image" src="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c5/Bell_Shaped_Torso.jpg/250px-Bell_Shaped_Torso.jpg" alt="Röntgenfoto van een kind met een klokvormige romp door spieratrofie; de afbeelding is niet van iemand met SMA en is niet specifiek voor SMA" loading="lazy" decoding="async">
                     </figure>
-                    <span class="medical-tag">VOORBEELD 02</span>
                     <h4>Spinale spieratrofie (SMA)</h4>
-                    <span class="medical-method-tag">Gentherapie · genkopie toevoegen</span>
                     <p>
                         SMA is een erfelijke ziekte waarbij het lichaam te
-                        weinig SMN-eiwit maakt. Zolgensma brengt met een
-                        aangepast virus een werkende kopie van het SMN1-gen
-                        naar cellen. Het is bedoeld voor bepaalde patiënten
-                        met SMA. Het herstelt of vervangt het oorspronkelijke
-                        DNA niet en gebruikt geen CRISPR-Cas9.
-                        <a class="medical-source-cite" href="https://www.ema.europa.eu/en/medicines/human/EPAR/zolgensma" target="_blank" rel="noopener">Bron: EMA</a>
+                        weinig SMN-eiwit aanmaakt. Dit eiwit is belangrijk voor
+                        het goed functioneren van zenuwcellen die de spieren
+                        aansturen. Daardoor worden de spieren steeds zwakker.
+                        Zolgensma is een behandeling die bepaalde patiënten met
+                        SMA helpt door een werkende kopie van het SMN1-gen aan
+                        cellen af te leveren. Dit gebeurt met een aangepast
+                        virus, zonder CRISPR-Cas9 te gebruiken.
                     </p>
                     <button class="medical-open" type="button" data-treatment-open="treatment-zolgensma">
                         <span>Bekijk Zolgensma stap voor stap</span><span aria-hidden="true">→</span>
@@ -2137,36 +2238,19 @@
 
                 <article class="medical-card">
                     <figure class="medical-image-figure">
-                        <svg class="medical-image medical-image-illustration" viewBox="0 0 480 200" role="img" aria-labelledby="cart-card-title cart-card-description">
-                            <title id="cart-card-title">Schematische weergave van CAR-T-cellen</title>
-                            <desc id="cart-card-description">Een aangepaste T-cel gebruikt een receptor om een doelwit op een kankercel te herkennen.</desc>
-                            <rect width="480" height="200" fill="#edf1e8"/>
-                            <circle cx="106" cy="82" r="34" fill="#dceaf7" stroke="#3569a8" stroke-width="3"/>
-                            <text x="106" y="88" fill="#285b91" font-family="Arial, sans-serif" font-size="17" font-weight="700" text-anchor="middle">T</text>
-                            <path d="M106 47V32M97 32H115" stroke="#3569a8" stroke-width="4" stroke-linecap="round"/>
-                            <text x="106" y="139" fill="#20372f" font-family="Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">CAR-T-CEL</text>
-                            <path d="M154 82H287" stroke="#64806d" stroke-width="3"/>
-                            <path d="M278 74L288 82L278 90" fill="none" stroke="#64806d" stroke-width="3"/>
-                            <circle cx="357" cy="82" r="38" fill="#f8e4dc" stroke="#b55342" stroke-width="3"/>
-                            <circle cx="357" cy="82" r="12" fill="#d98a79"/>
-                            <path d="M319 82H296" stroke="#b55342" stroke-width="3" stroke-dasharray="4 4"/>
-                            <text x="357" y="139" fill="#20372f" font-family="Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">KANKERCEL</text>
-                            <rect x="183" y="150" width="114" height="25" rx="12" fill="#fff" stroke="#dce2d8"/>
-                            <text x="240" y="167" fill="#586b60" font-family="Arial, sans-serif" font-size="11" font-weight="700" text-anchor="middle">HERKENNEN → AANVALLEN</text>
-                        </svg>
-                        <figcaption class="medical-image-caption">Een aangepaste T-cel herkent een doelwit · schematisch</figcaption>
+                        <img class="medical-image" src="https://www.amsterdamumc.org/upload_mm/f/7/0/20204_fullimage_8e2c6891-b519-4855-8bc4-1580dd9fef5c_t%20cellen.jpg" alt="Afbeelding van T-cellen bij het Amsterdam UMC-artikel over eigen afweercellen als medicijn" loading="lazy" decoding="async">
                     </figure>
-                    <span class="medical-tag">VOORBEELD 03</span>
                     <h4>Afweercellen tegen kanker</h4>
-                    <span class="medical-method-tag">CAR-T · genetisch aangepaste cellen</span>
                     <p>
-                        Bij CAR-T krijgen T-cellen van de patiënt een
-                        genetische instructie om een herkenningsreceptor te
-                        maken. De cellen worden vermeerderd en teruggegeven om
-                        bepaalde bloedkankercellen te herkennen en aan te vallen.
-                        Dit is genetisch aangepaste celtherapie; CRISPR-Cas9 is
-                        hiervoor niet noodzakelijk.
-                        <a class="medical-source-cite" href="https://www.cancer.gov/about-cancer/treatment/research/car-t-cells" target="_blank" rel="noopener">Bron: NCI</a>
+                        Ons afweersysteem beschermt ons lichaam tegen ziekten.
+                        Maar kankercellen kunnen soms aan dit afweersysteem
+                        ontsnappen. CAR-T-therapie helpt het lichaam om bepaalde
+                        kankercellen beter te herkennen en aan te vallen.
+                        Hiervoor halen artsen afweercellen uit het bloed van de
+                        patiënt en passen ze deze genetisch aan. Zo leren de
+                        cellen de kankercellen beter herkennen. Daarna worden
+                        de aangepaste cellen teruggegeven aan de patiënt om de
+                        kankercellen aan te vallen.
                     </p>
                     <button class="medical-open" type="button" data-treatment-open="treatment-car-t">
                         <span>Bekijk CAR-T stap voor stap</span><span aria-hidden="true">→</span>
@@ -2326,9 +2410,13 @@
                 <li><a href="https://medlineplus.gov/genetics/understanding/inheritance/inheritancepatterns/" target="_blank" rel="noopener">MedlinePlus: uitleg over erfelijkheid en kansen per zwangerschap</a></li>
             </ul>
             <p class="survey-note">Enquête: er zijn nog geen eigen enquêtegegevens op deze website verwerkt. Voeg resultaten pas toe nadat de antwoorden zijn verzameld en gecontroleerd.</p>
+            <p class="survey-note">Disclaimer: alle voorbeelden en animaties op deze pagina zijn vereenvoudigd weergegeven en geven de werkelijkheid niet volledig weer.</p>
             <h4>Beeldverantwoording</h4>
             <ul class="image-sources">
-                <li>De voorpagina- en medische afbeeldingen zijn zelfgemaakte SVG-illustraties. Ze zijn vereenvoudigd en schematisch, geen echte microscopische of medische beelden.</li>
+                <li>Voorpagina: <a href="https://commons.wikimedia.org/wiki/File:APHIS-Moore_Air_Base_in_Texas-Plant_Protection_and_Quarantine_Science_and_Technology_Insect_Management_and_Molecular_Diagnostics_Laboratory_(20230621-CDP-APHIS-0498).jpg" target="_blank" rel="noopener">foto van een laborant die DNA-monsters voor PCR klaarmaakt</a>, USDA / Christophe Paul, publiek domein. Het laboratorium onderzoekt vooral plant- en insectziekten; de foto toont geen menselijke CRISPR-behandeling.</li>
+                <li>Sikkelcelziekte: afbeelding aangeleverd bij het wijzigingsverzoek. De oorspronkelijke maker, publicatiebron en licentie zijn niet meegeleverd; hergebruikrechten zijn daarom niet vastgesteld.</li>
+                <li>SMA: <a href="https://commons.wikimedia.org/wiki/File:Bell_Shaped_Torso.jpg" target="_blank" rel="noopener">“Bell Shaped Torso”</a>, Wikimedia Commons-bijdragers, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>. Röntgenfoto van een kind met een klokvormige romp door spieratrofie; volgens de bestandsbeschrijving is dit geen afbeelding van een kind met SMA en niet specifiek voor SMA.</li>
+                <li>CAR-T: <a href="https://www.amsterdamumc.org/nl/vandaag/je-eigen-afweercellen-als-medicijn" target="_blank" rel="noopener">afbeelding bij “Je eigen afweercellen als medicijn”</a>, Amsterdam UMC. De pagina vermeldt geen afzonderlijke fotograaf of hergebruiklicentie.</li>
             </ul>
         </footer>
     </section>
@@ -2479,9 +2567,9 @@
         const crisprPreviousButton = crisprDemo.querySelector("[data-crispr-previous]");
         const crisprNextButton = crisprDemo.querySelector("[data-crispr-next]");
         const crisprStepDescriptions = [
-            "Herkennen: het blauwe gids-RNA past bij de groene doelvolgorde en helpt Cas9 de plek te vinden.",
-            "Knippen: Cas9 knipt het DNA bij de groene doelvolgorde.",
-            "Herstellen: de cel repareert de knip. Door die reparatie kan het DNA veranderen."
+            "Herkennen: het blauwe gids-RNA past bij de groene doelvolgorde. Het gele PAM-signaal (AGG) ligt er direct naast en is nodig om de plek te herkennen.",
+            "Knippen: Cas9 knipt bij de groene doelvolgorde, vlak naast het gele PAM-signaal (AGG).",
+            "Herstellen: de cel maakt de twee uiteinden weer aan elkaar. Tijdens het herstel kunnen DNA-bouwstenen verdwijnen of worden toegevoegd. Daardoor kan een gen anders werken of worden uitgeschakeld."
         ];
         let crisprStepIndex = 0;
 
