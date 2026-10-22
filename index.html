@@ -8,15 +8,32 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
+        :root {
+            --petrol: #123C3A;
+            --deep: #0B2928;
+            --ivory: #F6F4EC;
+            --mint: #B9E4D0;
+            --jade: #36B89A;
+            --sage-green: #8DAF9E;
+            --gold: #D9B66F;
+            --text: #183B38;
+            --muted-text: #657D75;
+            --muted-on-light: #526A62;
+            --soft-mint: #E7F0E9;
+            --rule: rgba(24, 59, 56, .15);
+        }
+
         html {
             scroll-padding-top: 80px;
+            scroll-behavior: smooth;
+            overflow-x: clip;
         }
 
         body {
             margin: 0;
             font-family: 'DM Sans', sans-serif;
-            background: #f5f5ef;
-            color: #20372f;
+            background: var(--ivory);
+            color: var(--text);
         }
 
         .hero {
@@ -28,9 +45,12 @@
             min-height: 610px;
             margin: 0 auto;
             padding: 62px 8%;
-            background-color: #e9eee4;
-            background-image: linear-gradient(rgba(32, 55, 47, .035) 1px, transparent 1px), linear-gradient(90deg, rgba(32, 55, 47, .035) 1px, transparent 1px);
-            background-size: 32px 32px;
+            background-color: var(--deep);
+            background-image:
+                radial-gradient(ellipse at 15% 12%, rgba(54, 184, 154, .24), transparent 36%),
+                linear-gradient(rgba(185, 228, 208, .055) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(185, 228, 208, .055) 1px, transparent 1px);
+            background-size: auto, 38px 38px, 38px 38px;
         }
 
         .hero-copy {
@@ -39,7 +59,7 @@
 
         .research-question {
             margin: 0 0 16px;
-            color: #52745f;
+            color: var(--mint);
             font-size: 12px;
             font-weight: 700;
             line-height: 1.5;
@@ -48,7 +68,7 @@
         h1 {
             max-width: 600px;
             margin: 0 0 18px;
-            color: #20372f;
+            color: var(--ivory);
             font-family: 'Space Grotesk', sans-serif;
             font-size: clamp(54px, 7vw, 94px);
             font-weight: 600;
@@ -58,17 +78,17 @@
         p {
             font-size: 16px;
             line-height: 1.7;
-            color: #56675e;
+            color: var(--muted-on-light);
         }
 
         .button {
             display: inline-block;
             margin-top: 14px;
             padding: 15px 22px;
-            background: #244a3a;
-            color: #fff;
+            background: var(--jade);
+            color: var(--deep);
             text-decoration: none;
-            border-radius: 4px;
+            border-radius: 3px;
             border: 0;
             font: inherit;
             font-size: 14px;
@@ -79,13 +99,13 @@
 
         .button:hover {
             transform: translateY(-2px);
-            background: #17392b;
+            background: var(--mint);
         }
 
         .button:focus-visible,
         .science-page button:focus-visible,
         .science-page a:focus-visible {
-            outline: 3px solid #d7ef72;
+            outline: 3px solid var(--gold);
             outline-offset: 3px;
         }
 
@@ -94,8 +114,9 @@
             min-height: 430px;
             margin: 0;
             overflow: hidden;
-            background: #d5ddd0;
-            box-shadow: 14px 14px 0 #c5d480;
+            border: 1px solid rgba(185, 228, 208, .35);
+            background: var(--petrol);
+            box-shadow: 18px 18px 0 rgba(54, 184, 154, .32), 0 35px 80px rgba(0, 0, 0, .24);
         }
 
         .hero-image img {
@@ -108,13 +129,13 @@
         }
 
         .science-page {
-            --forest: #244a3a;
-            --sage: #64806d;
-            --cream: #edf1e8;
-            --paper: #fbfbf7;
-            --ink: #20372f;
-            --muted: #586b60;
-            --line: #dce2d8;
+            --forest: var(--petrol);
+            --sage: var(--sage-green);
+            --cream: var(--soft-mint);
+            --paper: var(--ivory);
+            --ink: var(--text);
+            --muted: var(--muted-on-light);
+            --line: var(--rule);
             padding: 0;
             background: var(--paper);
             color: var(--ink);
@@ -130,11 +151,13 @@
             position: sticky;
             top: 0;
             z-index: 20;
-            background: #20372f;
-            color: white;
+            background: var(--petrol);
+            color: var(--ivory);
+            box-shadow: 0 1px 0 rgba(185, 228, 208, .16), 0 8px 24px rgba(11, 41, 40, .13);
         }
 
         .site-nav-inner {
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -147,7 +170,7 @@
 
         .site-nav-brand,
         .site-nav a {
-            color: white;
+            color: var(--ivory);
             font-size: 12px;
             font-weight: 700;
             text-decoration: none;
@@ -170,7 +193,7 @@
             bottom: 3px;
             left: 0;
             height: 2px;
-            background: #d7ef72;
+            background: var(--jade);
             content: "";
             transform: scaleX(0);
             transform-origin: left;
@@ -190,9 +213,121 @@
             scrollbar-width: thin;
         }
 
+        .site-search {
+            position: relative;
+            display: flex;
+            flex: 0 0 auto;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        .site-search-input {
+            width: clamp(120px, 15vw, 190px);
+            min-height: 38px;
+            padding: 7px 10px;
+            border: 1px solid rgba(255, 255, 255, .45);
+            border-radius: 5px;
+            background: rgba(255, 255, 255, .1);
+            color: white;
+            font: inherit;
+            font-size: 12px;
+        }
+
+        .site-search-input::placeholder {
+            color: rgba(255, 255, 255, .75);
+        }
+
+        .site-search-input:focus-visible,
+        .site-search-submit:focus-visible,
+        .site-search-result:focus-visible {
+            outline: 2px solid var(--gold);
+            outline-offset: 2px;
+        }
+
+        .site-search-submit {
+            min-height: 38px;
+            padding: 7px 11px;
+            border: 1px solid var(--mint);
+            border-radius: 5px;
+            background: var(--mint);
+            color: var(--deep);
+            font: inherit;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .site-search-results {
+            position: absolute;
+            top: calc(100% + 10px);
+            right: 0;
+            z-index: 25;
+            width: min(420px, calc(100vw - 32px));
+            box-sizing: border-box;
+            max-height: min(60vh, 420px);
+            overflow-y: auto;
+            padding: 8px;
+            border: 1px solid rgba(255, 255, 255, .22);
+            border-radius: 8px;
+            background: var(--deep);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, .24);
+        }
+
+        .site-search-results[hidden] {
+            display: none;
+        }
+
+        .site-search-result {
+            display: block;
+            width: 100%;
+            padding: 10px 12px;
+            border: 0;
+            border-radius: 5px;
+            background: transparent;
+            color: white;
+            font: inherit;
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .site-search-result:hover {
+            background: rgba(255, 255, 255, .1);
+        }
+
+        .site-search-result strong {
+            display: block;
+            margin-bottom: 3px;
+            color: var(--mint);
+            font-size: 13px;
+        }
+
+        .site-search-result span,
+        .site-search-empty {
+            display: block;
+            color: rgba(255, 255, 255, .84);
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        .site-search-empty {
+            margin: 0;
+            padding: 10px 12px;
+        }
+
         .site-nav a:hover,
         .site-nav a:focus-visible {
-            color: #d7ef72;
+            color: var(--mint);
         }
 
         .site-nav a:focus-visible {
@@ -1035,13 +1170,13 @@
         }
 
         .treatment-page {
-            --forest: #244a3a;
-            --sage: #64806d;
-            --cream: #edf1e8;
-            --paper: #fbfbf7;
-            --ink: #20372f;
-            --muted: #586b60;
-            --line: #dce2d8;
+            --forest: var(--petrol);
+            --sage: var(--sage-green);
+            --cream: var(--soft-mint);
+            --paper: var(--ivory);
+            --ink: var(--text);
+            --muted: var(--muted-on-light);
+            --line: var(--rule);
             min-height: calc(100vh - 58px);
             padding: clamp(34px, 6vw, 76px) 7%;
             background: var(--paper);
@@ -1862,221 +1997,354 @@
             color: white;
         }
 
-        .memory-game-section {
+        .crispr-game-section {
             max-width: 1120px;
             margin: auto;
             padding: 85px 7%;
             scroll-margin-top: 25px;
         }
 
-        .memory-game-section > p {
-            max-width: 700px;
+        .crispr-game-section > p {
+            max-width: 760px;
             color: var(--muted);
             font-size: 15px;
         }
 
-        .memory-game-panel {
+        .crispr-game-card {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(200px, .32fr);
+            gap: 20px;
+            align-items: start;
             padding: clamp(16px, 3vw, 30px);
             border: 1px solid var(--line);
-            border-radius: 10px;
-            background: #f0f3ec;
-            box-shadow: 0 15px 35px rgba(32, 55, 47, .08);
+            border-radius: 14px;
+            background: linear-gradient(145deg, #edf2e8, #f8f6ed);
+            box-shadow: 0 18px 40px rgba(32, 55, 47, .12);
         }
 
-        .memory-game-toolbar {
+        .crispr-game-main { min-width: 0; }
+
+        .crispr-game-hud {
             display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 10px;
-            margin-bottom: 16px;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 9px;
+            margin-bottom: 18px;
         }
 
-        .memory-game-stat {
+        .crispr-game-stat {
+            min-width: 0;
             padding: 10px 12px;
-            border: 1px solid var(--line);
-            border-radius: 6px;
-            background: white;
+            border: 1px solid rgba(36, 74, 58, .15);
+            border-radius: 9px;
+            background: #fff;
         }
 
-        .memory-game-stat-label {
+        .crispr-game-stat-label {
             display: block;
             margin-bottom: 4px;
             color: var(--muted);
             font-size: 10px;
-            font-weight: 700;
-            letter-spacing: .8px;
+            font-weight: 800;
+            letter-spacing: .7px;
             text-transform: uppercase;
         }
 
-        .memory-game-stat-value {
+        .crispr-game-stat-value {
             color: var(--forest);
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 18px;
+            font-size: clamp(16px, 2vw, 21px);
             font-weight: 700;
         }
 
-        .memory-game-settings {
+        .crispr-game-level {
             display: flex;
-            flex-wrap: wrap;
-            align-items: end;
             justify-content: space-between;
-            gap: 14px;
-            margin-bottom: 18px;
-        }
-
-        .memory-game-level {
-            display: grid;
-            gap: 6px;
+            gap: 12px;
+            margin: 0 0 8px;
             color: var(--forest);
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 700;
         }
 
-        .memory-game-level select {
-            min-height: 46px;
-            min-width: 180px;
-            padding: 8px 36px 8px 12px;
-            border: 1px solid var(--line);
-            border-radius: 6px;
-            background: white;
-            color: var(--forest);
-            font: inherit;
+        .crispr-game-dna-wrap {
+            position: relative;
+            padding: 16px 7px 8px;
+            overflow: hidden;
+            border: 1px solid #dce2d8;
+            border-radius: 12px;
+            background:
+                radial-gradient(ellipse at 50% 50%, rgba(100, 128, 109, .12), transparent 68%),
+                linear-gradient(145deg, #edf1e8, #e3e9df);
+            box-shadow: inset 0 0 24px rgba(36, 74, 58, .07), 0 8px 22px rgba(32, 55, 47, .1);
         }
 
-        .memory-game-restart {
-            min-height: 46px;
-            padding: 10px 18px;
+        .crispr-game-dna-wrap.is-cut {
+            animation: crispr-cut-flash .45s ease;
         }
 
-        .memory-game-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(100%, 135px), 1fr));
-            gap: clamp(8px, 1.6vw, 14px);
+        @keyframes crispr-cut-flash {
+            35% { box-shadow: inset 0 0 0 4px rgba(215, 239, 114, .9), 0 0 22px rgba(130, 165, 85, .55); }
         }
 
-        .memory-card {
-            min-width: 0;
-            min-height: clamp(122px, 15vw, 160px);
-            padding: 0;
+        .crispr-game-dna {
+            display: block;
+            width: 100%;
+            height: auto;
+            min-height: 100px;
+            overflow: visible;
+        }
+
+        .crispr-game-target {
+            fill: rgba(100, 128, 109, .12);
+            stroke: #64806d;
+            stroke-dasharray: 5 5;
+            stroke-width: 3;
+            filter: drop-shadow(0 0 8px rgba(36, 74, 58, .2));
+        }
+
+        .crispr-game-target-label {
+            fill: #244a3a;
+            font: 700 38px 'Space Grotesk', sans-serif;
+            letter-spacing: 2px;
+        }
+
+        .crispr-game-backbone {
+            fill: none;
+            stroke: #244a3a;
+            stroke-linecap: round;
+            stroke-width: 12;
+            filter: drop-shadow(0 1px 1px rgba(36, 74, 58, .18));
+        }
+
+        .crispr-game-backbone--second {
+            stroke: #64806d;
+        }
+
+        .crispr-game-rung line {
+            stroke: #64806d;
+            stroke-linecap: round;
+            stroke-width: 6;
+            opacity: .8;
+        }
+
+        .crispr-game-marker {
+            stroke: #ff658c;
+            stroke-linecap: round;
+            stroke-width: 8;
+            filter: drop-shadow(0 0 5px rgba(255, 101, 140, .85)) drop-shadow(0 0 12px rgba(255, 101, 140, .5));
+        }
+
+        .crispr-game-marker-cap { fill: #fff1f5; stroke: #ff658c; stroke-width: 4; filter: drop-shadow(0 0 6px rgba(255, 101, 140, .9)); }
+        .crispr-game-marker.is-hit { stroke: #56865b; filter: drop-shadow(0 0 8px rgba(86, 134, 91, .9)); }
+        .crispr-game-marker.is-miss { stroke: #c14f44; filter: drop-shadow(0 0 8px rgba(193, 79, 68, .9)); }
+        .crispr-game-off-target { fill: #d65943; stroke: white; stroke-width: 4; animation: crispr-off-target-flash .65s ease-out both; }
+        .crispr-game-off-target[hidden] { display: none; }
+        .crispr-game-rung.is-deleted { opacity: 0; }
+
+        @keyframes crispr-off-target-flash {
+            0% { r: 5; opacity: 1; }
+            100% { r: 19; opacity: 0; }
+        }
+
+        .crispr-game-instructions {
+            min-height: 1.5em;
+            margin: 10px 0 13px;
+            color: var(--muted);
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .crispr-game-knip,
+        .crispr-game-action {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 52px;
+            padding: 12px 22px;
             border: 0;
-            border-radius: 10px;
-            background: transparent;
-            color: var(--forest);
+            border-radius: 9px;
+            background: var(--forest);
+            color: #fff;
+            font: inherit;
+            font-size: 17px;
+            font-weight: 800;
             cursor: pointer;
-            perspective: 800px;
-            -webkit-tap-highlight-color: transparent;
             touch-action: manipulation;
+            transition: transform .15s ease, background .15s ease;
         }
 
-        .memory-card:focus-visible {
+        .crispr-game-knip {
+            display: flex;
+            width: min(100%, 340px);
+            min-height: 68px;
+            margin: 0 auto;
+            border: 1px solid rgba(255, 255, 255, .32);
+            background: linear-gradient(135deg, #f84d6a, #bc3f90 58%, #7549c6);
+            box-shadow: 0 5px 0 #71355f, 0 10px 25px rgba(194, 63, 125, .24);
+            font-size: 24px;
+            letter-spacing: .06em;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .crispr-game-knip:hover:not(:disabled),
+        .crispr-game-action:hover:not(:disabled) { transform: translateY(-2px); }
+        .crispr-game-knip:active:not(:disabled) { transform: translateY(3px); box-shadow: 0 2px 0 #71355f; }
+        .crispr-game-knip:disabled:not([data-crispr-state="ready"]),
+        .crispr-game-action:disabled { opacity: .55; cursor: not-allowed; }
+
+        .crispr-game-knip:focus-visible,
+        .crispr-game-action:focus-visible {
             outline: 3px solid #6c8c62;
             outline-offset: 3px;
         }
 
-        .memory-card:disabled {
-            cursor: default;
+        .crispr-game-health {
+            display: grid;
+            gap: 13px;
+            padding: 16px;
+            border: 1px solid rgba(36, 74, 58, .15);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, .82);
         }
 
-        .memory-card-inner {
-            position: relative;
+        .crispr-game-cell {
             display: block;
-            width: 100%;
-            min-height: inherit;
-            transform-style: preserve-3d;
-            transition: transform .42s cubic-bezier(.2, .7, .2, 1);
+            width: min(100%, 150px);
+            margin: 0 auto;
+            overflow: visible;
+            filter: drop-shadow(0 0 12px rgba(113, 184, 131, .3));
         }
 
-        .memory-card[aria-pressed="true"] .memory-card-inner,
-        .memory-card.is-matched .memory-card-inner {
-            transform: rotateY(180deg);
+        .crispr-cell-body {
+            fill: #e9aa91;
+            stroke: #b87567;
+            stroke-width: 5;
+            transition: fill .4s ease, stroke .4s ease, transform .4s ease;
+            transform-origin: 100px 100px;
         }
 
-        .memory-card-face {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            gap: 8px;
-            min-height: inherit;
-            padding: 12px;
-            overflow-wrap: anywhere;
-            border: 1px solid rgba(36, 74, 58, .18);
-            border-radius: 10px;
-            backface-visibility: hidden;
-            -webkit-backface-visibility: hidden;
-            box-shadow: 0 5px 14px rgba(32, 55, 47, .08);
+        .crispr-cell-core { fill: #ac7291; transition: fill .4s ease; }
+        .crispr-cell-spark { fill: #fff4c8; }
+        .crispr-game-cell.is-warning .crispr-cell-body { fill: #e9ca78; stroke: #bd9452; }
+        .crispr-game-cell.is-danger .crispr-cell-body { fill: #d78372; stroke: #a74c48; }
+        .crispr-game-cell.is-healthy .crispr-cell-body { fill: #9bc89a; stroke: #578767; }
+        .crispr-game-cell.is-healthy .crispr-cell-core { fill: #6b9ac0; }
+        .crispr-game-cell.is-recovering .crispr-cell-body { animation: crispr-cell-recover .65s ease; }
+
+        @keyframes crispr-cell-recover {
+            45% { transform: scale(1.09); }
+        }
+
+        .crispr-game-health h4 {
+            margin: 0;
+            color: var(--forest);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 17px;
             text-align: center;
         }
 
-        .memory-card-face--cover {
-            background: linear-gradient(145deg, #244a3a, #39634d);
-            color: #d7ef72;
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(28px, 5vw, 40px);
+        .crispr-game-health-status {
+            min-height: 1.4em;
+            margin: -8px 0 0;
+            color: var(--muted);
+            font-size: 12px;
+            text-align: center;
+        }
+
+        .crispr-game-meter-label {
+            display: flex;
+            justify-content: space-between;
+            gap: 8px;
+            color: var(--forest);
+            font-size: 11px;
             font-weight: 700;
         }
 
-        .memory-card-face--answer {
-            transform: rotateY(180deg);
-            background: white;
+        .crispr-game-safety {
+            width: 100%;
+            height: 11px;
+            margin-top: -7px;
+            border: 0;
+            border-radius: 12px;
+            background: #e5e9df;
+            accent-color: #78945e;
+        }
+
+        .crispr-game-safety::-webkit-progress-bar { border-radius: 12px; background: #e5e9df; }
+        .crispr-game-safety::-webkit-progress-value { border-radius: 12px; background: #78945e; transition: width .35s ease; }
+        .crispr-game-safety::-moz-progress-bar { border-radius: 12px; background: #78945e; }
+        .crispr-game-cell.is-danger ~ .crispr-game-safety::-webkit-progress-value { background: #c75a4b; }
+        .crispr-game-cell.is-danger ~ .crispr-game-safety::-moz-progress-bar { background: #c75a4b; }
+
+        .crispr-game-message {
+            margin-top: 16px;
+            padding: 16px;
+            border: 1px solid #c6d3b7;
+            border-left: 5px solid #77935e;
+            border-radius: 9px;
+            background: #fff;
             color: var(--forest);
+            font-size: 14px;
+            line-height: 1.6;
         }
 
-        .memory-game-icon {
-            color: #64806d;
-            font-size: clamp(24px, 4vw, 34px);
-            line-height: 1;
-        }
+        .crispr-game-message[hidden] { display: none; }
+        .crispr-game-message h4 { margin: 0 0 6px; font-size: 17px; }
+        .crispr-game-message p { margin: 0 0 10px; }
+        .crispr-game-message p:last-child { margin-bottom: 0; }
+        .crispr-game-message.is-alert { border-color: #e1c48c; border-left-color: #d08c36; background: #fffaf0; }
+        .crispr-game-message.is-danger { border-color: #d9a39c; border-left-color: #bd554c; background: #fff5f3; }
+        .crispr-game-message.is-win { border-color: #9ab58a; border-left-color: #54835b; background: #f3f8ee; }
 
-        .memory-game-term {
+        .crispr-codon-comparison {
+            display: grid;
+            gap: 7px;
+            margin: 12px 0;
+            padding: 11px;
+            border-radius: 8px;
+            background: #f1f4ed;
             font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(14px, 2vw, 17px);
+            font-size: clamp(11px, 1.7vw, 14px);
             font-weight: 700;
-            line-height: 1.2;
+            overflow-wrap: anywhere;
+            white-space: pre-wrap;
         }
 
-        .memory-game-definition {
-            font-size: clamp(12px, 1.7vw, 14px);
-            line-height: 1.4;
+        .crispr-game-actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 12px;
         }
 
-        .memory-card.is-matched .memory-card-face--answer {
-            border-color: #78985f;
-            background: #e8f0dc;
-            box-shadow: inset 0 0 0 2px #78985f, 0 5px 14px rgba(32, 55, 47, .08);
-        }
+        .crispr-game-action { min-height: 46px; font-size: 14px; }
+        .crispr-game-action--secondary { border: 1px solid var(--forest); background: transparent; color: var(--forest); }
+        .crispr-game-footer { grid-column: 1 / -1; }
 
-        .memory-game-status {
-            min-height: 1.5em;
-            margin: 14px 0 0;
-            color: var(--forest);
-            font-size: 13px;
-            font-weight: 600;
+        @media (max-width: 760px) {
+            .crispr-game-card { grid-template-columns: minmax(0, 1fr); }
+            .crispr-game-health { grid-template-columns: 96px minmax(0, 1fr); align-items: center; }
+            .crispr-game-cell { grid-row: span 3; width: 92px; }
+            .crispr-game-health h4, .crispr-game-health-status { text-align: left; }
+            .crispr-game-meter-label, .crispr-game-safety { grid-column: 2; }
         }
 
         @media (max-width: 600px) {
-            .memory-game-section {
-                padding: 60px 5%;
-            }
-
-            .memory-game-toolbar {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-            .memory-game-settings {
-                align-items: stretch;
-                flex-direction: column;
-            }
-            .memory-game-level select,
-            .memory-game-restart {
-                width: 100%;
-            }
-            .memory-game-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-            .memory-card {
-                min-height: 152px;
-            }
+            .crispr-game-section { padding: 60px 5%; }
+            .crispr-game-card { gap: 14px; padding: 13px; }
+            .crispr-game-hud { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; }
+            .crispr-game-stat { padding: 8px 10px; }
+            .crispr-game-dna-wrap { padding: 12px 2px 5px; }
+            .crispr-game-dna { min-height: 100px; }
+            .crispr-game-target-label { font-size: 42px; }
+            .crispr-game-level { flex-direction: column; gap: 4px; }
+            .crispr-game-knip { position: sticky; bottom: 12px; z-index: 3; width: 100%; min-height: 72px; margin-top: 8px; }
+            .crispr-game-health { gap: 8px; padding: 11px; }
+            .crispr-game-message { padding: 13px; font-size: 13px; }
+            .crispr-game-actions > button { flex: 1 1 100%; min-height: 50px; }
+            .crispr-codon-comparison { font-size: 11px; }
+            .crispr-game-cell { width: 82px; }
         }
 
         @media (max-width: 760px) {
@@ -2093,6 +2361,21 @@
             .site-nav-links {
                 gap: 18px;
                 padding-bottom: 2px;
+            }
+
+            .site-search {
+                margin-top: 8px;
+            }
+
+            .site-search-input {
+                width: auto;
+                min-width: 0;
+                flex: 1;
+            }
+
+            .site-search-results {
+                right: auto;
+                left: 0;
             }
 
             .hero {
@@ -2304,6 +2587,822 @@
             }
         }
 
+        :focus-visible {
+            outline: 3px solid var(--gold) !important;
+            outline-offset: 3px;
+        }
+
+        .site-nav-inner {
+            max-width: 1380px;
+            min-height: 68px;
+        }
+
+        .site-nav-brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: -.02em;
+        }
+
+        .site-nav-brand::before {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: var(--jade);
+            box-shadow: 0 0 0 4px rgba(54, 184, 154, .16);
+            content: "";
+        }
+
+        .site-nav-links a,
+        .site-nav-brand {
+            transition: color .18s ease;
+        }
+
+        .site-search-input {
+            border-radius: 3px;
+            background: rgba(246, 244, 236, .08);
+        }
+
+        .site-search-submit {
+            border-color: var(--mint);
+            border-radius: 3px;
+            background: var(--mint);
+            transition: background .18s ease, transform .18s ease;
+        }
+
+        .site-search-submit:hover {
+            transform: translateY(-1px);
+            background: var(--jade);
+        }
+
+        .hero {
+            position: relative;
+            max-width: none;
+            min-height: min(760px, calc(100svh - 68px));
+            padding: clamp(64px, 8vw, 118px) max(7vw, calc((100vw - 1220px) / 2));
+            overflow: hidden;
+            isolation: isolate;
+        }
+
+        .hero::before {
+            position: absolute;
+            top: 8%;
+            left: 43%;
+            z-index: -1;
+            width: min(48vw, 620px);
+            aspect-ratio: 1;
+            border: 1px solid rgba(185, 228, 208, .14);
+            border-radius: 50%;
+            box-shadow: 0 0 0 34px rgba(185, 228, 208, .025), 0 0 0 82px rgba(185, 228, 208, .02);
+            content: "";
+        }
+
+        .hero-copy {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            max-width: 630px;
+            animation: editorial-arrive .7s ease-out both;
+        }
+
+        .hero-copy h1 { order: 2; }
+
+        .hero-copy .research-question {
+            order: 1;
+            padding: 7px 11px;
+            border: 1px solid rgba(185, 228, 208, .3);
+            color: var(--mint);
+            font-size: 11px;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+        }
+
+        .hero-copy .research-question::before {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            margin: 0 8px 1px 0;
+            border-radius: 50%;
+            background: var(--jade);
+            content: "";
+        }
+
+        .hero-copy > p:not(.research-question) {
+            order: 3;
+            max-width: 540px;
+            margin-top: 2px;
+            color: rgba(246, 244, 236, .78);
+            font-size: clamp(16px, 1.5vw, 18px);
+        }
+
+        .hero-copy .button { order: 4; }
+
+        .hero h1 {
+            max-width: 650px;
+            margin-bottom: 14px;
+            font-size: clamp(58px, 7.4vw, 104px);
+            letter-spacing: -.075em;
+            line-height: .91;
+        }
+
+        .hero-image {
+            min-height: clamp(350px, 44vw, 520px);
+            animation: editorial-arrive .85s .08s ease-out both;
+        }
+
+        .hero-image::after {
+            position: absolute;
+            inset: 0;
+            border: 1px solid rgba(246, 244, 236, .25);
+            background: linear-gradient(180deg, transparent 58%, rgba(11, 41, 40, .38));
+            content: "";
+            pointer-events: none;
+        }
+
+        .hero-image img {
+            min-height: inherit;
+            filter: saturate(.78) contrast(1.04);
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+            width: max-content;
+            max-width: 100%;
+            min-height: 50px;
+            padding: 15px 23px;
+            border-radius: 3px;
+            font-size: 13px;
+            letter-spacing: .02em;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .science-page {
+            background: var(--ivory);
+            color: var(--text);
+        }
+
+        .science-hero {
+            padding: clamp(80px, 10vw, 136px) 7% clamp(72px, 9vw, 120px);
+            background:
+                radial-gradient(ellipse at 50% 15%, rgba(54, 184, 154, .17), transparent 52%),
+                linear-gradient(145deg, var(--petrol), var(--deep));
+            color: var(--ivory);
+        }
+
+        .science-hero::before,
+        .science-hero::after {
+            position: absolute;
+            width: 280px;
+            height: 280px;
+            border: 1px solid rgba(185, 228, 208, .13);
+            border-radius: 50%;
+            content: "";
+            pointer-events: none;
+        }
+
+        .science-hero::before {
+            top: -182px;
+            left: -78px;
+            box-shadow: 0 0 0 28px rgba(185, 228, 208, .025), 0 0 0 58px rgba(185, 228, 208, .02);
+        }
+
+        .science-hero::after {
+            right: -145px;
+            bottom: -185px;
+            width: 370px;
+            height: 370px;
+            border-color: rgba(54, 184, 154, .2);
+        }
+
+        .science-label,
+        .science-number {
+            color: var(--sage-green);
+            font-size: 10px;
+            letter-spacing: .19em;
+        }
+
+        .science-number { color: var(--petrol); }
+        .science-hero .science-label {
+            color: var(--mint);
+        }
+        .dna-explanation .science-label,
+        .ethics-bridge .science-label { color: var(--petrol); }
+
+        .science-hero h2 {
+            position: relative;
+            z-index: 1;
+            color: var(--ivory);
+            font-size: clamp(48px, 7.6vw, 96px);
+            letter-spacing: -.065em;
+        }
+
+        .science-hero h2 em { color: var(--mint); }
+
+        .science-hero-sequence {
+            border-color: rgba(185, 228, 208, .24);
+            background: rgba(246, 244, 236, .07);
+            color: var(--ivory);
+        }
+
+        .science-hero-sequence span,
+        .science-hero-sequence span:nth-of-type(2),
+        .science-hero-sequence span:nth-of-type(3),
+        .science-hero-sequence span:nth-of-type(4) {
+            background: var(--mint);
+            color: var(--petrol);
+        }
+
+        .science-hero-sequence i { border-color: var(--sage-green); }
+
+        .science-hero > p {
+            position: relative;
+            z-index: 1;
+            max-width: 660px;
+            color: rgba(246, 244, 236, .74);
+        }
+
+        .science-button {
+            border-color: var(--jade);
+            border-radius: 3px;
+            background: var(--jade);
+            color: var(--deep);
+            font-weight: 700;
+        }
+
+        .science-button:hover {
+            background: var(--mint);
+            color: var(--deep);
+        }
+
+        .science-hero-note { color: rgba(246, 244, 236, .78); }
+        .science-dot { background: var(--jade); }
+
+        .science-block {
+            max-width: none;
+            padding: clamp(68px, 9vw, 112px) max(7vw, calc((100vw - 1160px) / 2));
+        }
+
+        .science-block > .science-intro,
+        .science-block > .dna-panel,
+        .science-block > .crispr-explainer,
+        .science-block > .science-note,
+        .science-block > .medical-grid,
+        .science-block > .dilemma-list,
+        .science-block > .science-closing {
+            max-width: 1160px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        .science-block#dna { background: var(--ivory); }
+        .science-block.science-crispr {
+            padding-right: max(7vw, calc((100vw - 1080px) / 2));
+            padding-left: max(7vw, calc((100vw - 1080px) / 2));
+            background: var(--soft-mint);
+        }
+        .science-block#medisch { background: #EEF3EC; }
+        .science-block#ethische-dilemma { background: var(--ivory); }
+
+        .science-intro {
+            max-width: 760px;
+            margin-bottom: 44px;
+        }
+
+        .science-intro h3,
+        .science-quiz h3,
+        .ethics-bridge h3 {
+            margin: 15px 0 18px;
+            color: var(--text);
+            font-size: clamp(32px, 4.5vw, 54px);
+            font-weight: 500;
+            letter-spacing: -.055em;
+        }
+
+        .science-intro > p,
+        .science-quiz > p,
+        .ethics-bridge > p {
+            color: var(--muted-on-light);
+            font-size: 16px;
+        }
+
+        .dna-panel {
+            grid-template-columns: minmax(220px, .75fr) minmax(0, 1.25fr);
+            gap: clamp(28px, 5vw, 64px);
+            padding: clamp(24px, 4vw, 48px);
+            border: 1px solid var(--rule);
+            border-top: 3px solid var(--jade);
+            border-radius: 4px;
+            background: #fffefa;
+            box-shadow: 0 24px 70px rgba(18, 60, 58, .08);
+        }
+
+        .dna-illustration {
+            padding: 20px;
+            border: 1px solid rgba(18, 60, 58, .2);
+            background: var(--soft-mint);
+        }
+
+        .dna-sequence-label { color: var(--petrol); }
+        .dna-rung::before { border-color: var(--petrol); }
+
+        .dna-base {
+            border-color: var(--petrol);
+            background: #fffefa;
+            color: var(--petrol);
+        }
+
+        .dna-rung.is-mutated .dna-base {
+            border-color: var(--gold);
+            background: #F5EBD2;
+            color: var(--petrol);
+        }
+
+        .dna-mutation-arrow { color: var(--petrol); }
+
+        .dna-visual-caption {
+            width: fit-content;
+            margin: 14px auto 0;
+            padding: 7px 12px;
+            border-radius: 2px;
+            background: var(--jade);
+            color: var(--deep);
+            font-size: 12px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .dna-explanation h4,
+        .medical-card h4 {
+            color: var(--petrol);
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: -.03em;
+        }
+
+        .crispr-demo {
+            border-color: rgba(18, 60, 58, .16);
+            border-radius: 4px;
+            background: #fffefa;
+            box-shadow: 0 18px 48px rgba(18, 60, 58, .06);
+        }
+
+        .crispr-step-button {
+            border-color: rgba(18, 60, 58, .16);
+            border-radius: 3px;
+            background: var(--ivory);
+            color: var(--petrol);
+        }
+
+        .crispr-step-button:hover,
+        .crispr-step-button[aria-pressed="true"] {
+            border-color: var(--jade);
+            background: var(--mint);
+        }
+
+        .crispr-step-number,
+        .crispr-step-button[aria-pressed="true"] .crispr-step-number {
+            background: var(--petrol);
+            color: var(--ivory);
+        }
+
+        .crispr-stage,
+        .treatment-visual {
+            border: 1px solid rgba(18, 60, 58, .09);
+            background: #E8F1EA;
+        }
+
+        .crispr-base,
+        .crispr-guide span { color: var(--petrol); }
+
+        .crispr-base.is-target {
+            border-color: var(--jade);
+            background: var(--mint);
+            color: var(--petrol);
+        }
+
+        .crispr-base.is-pam {
+            border-color: var(--gold);
+            background: #F5EBD2;
+            color: #5B4725;
+        }
+
+        .crispr-pam-label {
+            background: transparent;
+            color: #5B4725;
+        }
+
+        .crispr-legend-swatch--pam { background: var(--gold); }
+
+        .crispr-guide span,
+        .crispr-legend-swatch--guide { background: var(--mint); }
+
+        .crispr-guide-label { color: var(--petrol); }
+
+        .crispr-guide span.is-guide-base {
+            border-color: var(--sage-green);
+            background: var(--mint);
+            color: var(--petrol);
+        }
+
+        .crispr-cut-marker { border-left-color: var(--gold); }
+        .crispr-cut-marker::before { color: #5B4725; }
+        .crispr-repair-label { border-color: var(--sage-green); background: var(--mint); color: var(--petrol); }
+        .crispr-repair-letters .crispr-cut { color: #806A37; }
+        .crispr-repair-part--changed { border-color: var(--gold); background: #F8F3E7; }
+        .crispr-repair-arrow { color: var(--sage-green); }
+        .crispr-note { border-left-color: var(--jade); }
+
+        .crispr-legend-swatch { border: 1px solid rgba(18, 60, 58, .16); }
+
+        .science-note {
+            border-color: var(--rule);
+            border-radius: 3px;
+            border-left: 3px solid var(--jade);
+            background: #fffefa;
+        }
+
+        .note-symbol {
+            border-color: var(--jade);
+            color: var(--petrol);
+        }
+
+        .medical-card {
+            border-color: var(--rule);
+            border-radius: 3px;
+            background: #fffefa;
+            box-shadow: 0 14px 36px rgba(18, 60, 58, .07);
+        }
+
+        .medical-card:hover {
+            box-shadow: 0 22px 46px rgba(18, 60, 58, .13);
+        }
+
+        .medical-image { background: var(--soft-mint); }
+
+        .medical-open {
+            border-color: var(--petrol);
+            border-radius: 3px;
+            background: var(--petrol);
+            color: var(--ivory);
+        }
+
+        .medical-open:hover {
+            border-color: var(--jade);
+            background: var(--mint);
+            color: var(--deep);
+        }
+
+        .treatment-page {
+            background:
+                linear-gradient(180deg, var(--petrol) 0, var(--petrol) 270px, var(--ivory) 270px);
+        }
+
+        .treatment-back {
+            border-color: rgba(246, 244, 236, .45);
+            color: var(--ivory);
+        }
+
+        .treatment-back:hover {
+            background: rgba(185, 228, 208, .12);
+        }
+
+        .treatment-page-heading {
+            max-width: 900px;
+            min-height: 204px;
+            padding: 10px 0 38px;
+            color: var(--ivory);
+        }
+
+        .treatment-page-heading h1 {
+            max-width: 800px;
+            color: var(--ivory);
+            letter-spacing: -.06em;
+        }
+
+        .treatment-page-heading p,
+        .treatment-page-heading .science-number { color: rgba(246, 244, 236, .76); }
+
+        .treatment-interactive,
+        .treatment-fact {
+            border-color: var(--rule);
+            border-radius: 4px;
+            background: #fffefa;
+            box-shadow: 0 18px 46px rgba(18, 60, 58, .08);
+        }
+
+        .treatment-fact--risk { border-left-color: var(--gold); background: #F8F3E7; }
+        .medical-tag { color: var(--petrol); }
+        .medical-method-tag { background: var(--soft-mint); }
+
+        .treatment-step-tab {
+            border-radius: 3px;
+            color: var(--petrol);
+        }
+
+        .treatment-step-tab[aria-pressed="true"] {
+            border-color: var(--jade);
+            background: var(--mint);
+        }
+
+        .treatment-step-tab[aria-pressed="true"] span {
+            background: var(--petrol);
+            color: var(--ivory);
+        }
+
+        .treatment-flow-icon {
+            background: var(--mint);
+            color: var(--petrol);
+        }
+
+        .treatment-step-controls .science-button:disabled {
+            border-color: var(--rule);
+            background: var(--soft-mint);
+            color: var(--muted-on-light);
+        }
+
+        .science-quiz {
+            position: relative;
+            overflow: hidden;
+            padding: clamp(76px, 9vw, 116px) 7%;
+            background:
+                radial-gradient(ellipse at 50% 0, rgba(54, 184, 154, .15), transparent 50%),
+                var(--deep);
+            color: var(--ivory);
+        }
+
+        .science-quiz .science-number { color: var(--mint); }
+        .science-quiz h3 { color: var(--ivory); }
+
+        .science-quiz > p,
+        .decision-caveat { color: rgba(246, 244, 236, .7); }
+
+        .decision-model {
+            border: 1px solid rgba(185, 228, 208, .28);
+            border-top: 3px solid var(--jade);
+            border-radius: 4px;
+            background: var(--ivory);
+            box-shadow: 0 28px 72px rgba(0, 0, 0, .24);
+        }
+
+        .decision-kicker,
+        .decision-category { color: var(--petrol); }
+        .decision-progress-fill { background: var(--jade); }
+
+        .decision-option {
+            border-radius: 3px;
+            color: var(--petrol);
+        }
+
+        .decision-option:hover,
+        .decision-option[aria-pressed="true"] {
+            border-color: var(--jade);
+            background: var(--mint);
+        }
+
+        .decision-option[aria-pressed="true"]::after {
+            background: var(--petrol);
+            color: var(--ivory);
+        }
+
+        .decision-restart {
+            border-color: var(--petrol);
+            border-radius: 3px;
+            color: var(--petrol);
+        }
+
+        .decision-result,
+        .decision-complete {
+            border-color: var(--rule);
+            background: var(--soft-mint);
+        }
+
+        .survey-bar-fill { background: var(--jade); }
+        .survey-feedback,
+        .survey-unavailable { border-left-color: var(--jade); }
+
+        .ethics-bridge {
+            padding: clamp(74px, 9vw, 116px) 8%;
+            background: var(--mint);
+        }
+
+        .ethics-bridge .science-number { color: var(--petrol); }
+        .ethics-bridge h3 { color: var(--petrol); }
+        .ethics-bridge > p { color: #315b50; }
+
+        .debate-dilemma {
+            padding: 28px;
+            border: 1px solid var(--rule);
+            border-left: 3px solid var(--jade);
+            background: #fffefa;
+        }
+
+        .debate-dilemma + .debate-dilemma { margin-top: 4px; }
+        .debate-side { border-color: var(--jade); background: var(--soft-mint); }
+        .debate-side--against { border-color: var(--gold); background: #F4F0E5; }
+        .debate-person,
+        .debate-toggle { color: var(--petrol); }
+        .debate-toggle { background: var(--petrol); }
+        .debate-toggle {
+            width: 52px;
+            height: 52px;
+            border: 2px solid var(--mint);
+            background: var(--petrol);
+            color: var(--ivory);
+            box-shadow: 0 3px 0 rgba(11, 41, 40, .18);
+            font-size: 34px;
+        }
+
+        .debate-side--against .debate-toggle { background: #806A37; }
+        .debate-side--against .debate-person,
+        .debate-side--against .debate-label { color: #806A37; }
+        .debate-toggle:focus-visible { outline-color: var(--gold); }
+
+        .science-closing {
+            border-color: var(--rule);
+            color: var(--petrol);
+        }
+
+        .sources-footer {
+            border-top: 0;
+            background:
+                radial-gradient(ellipse at 88% 0, rgba(54, 184, 154, .15), transparent 42%),
+                var(--deep);
+            color: var(--ivory);
+        }
+
+        .sources-footer h3,
+        .sources-footer h4 { color: var(--ivory); }
+        .sources-footer li,
+        .sources-footer p { color: rgba(246, 244, 236, .72); }
+        .sources-footer a { color: var(--mint); }
+        .sources-footer a:hover { color: var(--ivory); }
+
+        .crispr-game-section {
+            max-width: none;
+            padding: clamp(68px, 9vw, 112px) max(7vw, calc((100vw - 1160px) / 2));
+            background: #EEF3EC;
+        }
+
+        .crispr-game-section > .science-number,
+        .crispr-game-section > h3,
+        .crispr-game-section > p,
+        .crispr-game-section > .crispr-game-card {
+            display: block;
+            max-width: 1160px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        .crispr-game-section > h3 {
+            margin-top: 16px;
+            color: var(--petrol);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(32px, 4.5vw, 54px);
+            letter-spacing: -.055em;
+            line-height: 1.2;
+        }
+
+        .crispr-game-section > p { margin-bottom: 30px; }
+
+        .crispr-game-card {
+            border-color: var(--rule);
+            border-radius: 4px;
+            background: #fffefa;
+            box-shadow: 0 24px 64px rgba(18, 60, 58, .09);
+        }
+
+        .crispr-game-stat {
+            border-color: var(--rule);
+            border-radius: 3px;
+            background: var(--ivory);
+        }
+
+        .crispr-game-dna-wrap {
+            border-color: rgba(18, 60, 58, .18);
+            background:
+                radial-gradient(ellipse at 50% 50%, rgba(185, 228, 208, .36), transparent 68%),
+                linear-gradient(145deg, #F2F5ED, #E6EFE8);
+        }
+
+        .crispr-game-target {
+            fill: rgba(54, 184, 154, .13);
+            stroke: var(--jade);
+        }
+
+        .crispr-game-target-label { fill: var(--petrol); }
+        .crispr-game-backbone { stroke: var(--petrol); }
+        .crispr-game-backbone--second { stroke: var(--sage-green); }
+        .crispr-game-rung line { stroke: var(--petrol); }
+        .crispr-game-marker { stroke: #806A37; filter: drop-shadow(0 0 5px rgba(217, 182, 111, .68)); }
+        .crispr-game-marker-cap { fill: var(--ivory); stroke: #806A37; filter: drop-shadow(0 0 5px rgba(217, 182, 111, .5)); }
+        .crispr-game-marker.is-hit { stroke: var(--jade); }
+        .crispr-game-marker.is-miss { stroke: #A84D42; }
+        .crispr-game-knip,
+        .crispr-game-action {
+            border-color: var(--jade);
+            border-radius: 3px;
+            background: var(--jade);
+            color: var(--deep);
+            box-shadow: 0 5px 0 #187d69, 0 10px 25px rgba(18, 60, 58, .14);
+        }
+
+        .crispr-game-knip:active:not(:disabled) { box-shadow: 0 2px 0 #187d69; }
+        .crispr-game-health { border-color: var(--rule); border-radius: 4px; }
+        .crispr-game-health h4 { color: var(--petrol); }
+        .crispr-cell-body { fill: var(--sage-green); stroke: var(--petrol); }
+        .crispr-cell-core { fill: var(--petrol); }
+        .crispr-cell-spark { fill: var(--gold); }
+        .crispr-game-cell.is-warning .crispr-cell-body { fill: var(--gold); stroke: #806A37; }
+        .crispr-game-cell.is-danger .crispr-cell-body { fill: #C87A68; stroke: #8D493E; }
+        .crispr-game-cell.is-healthy .crispr-cell-body { fill: var(--mint); stroke: var(--petrol); }
+        .crispr-game-safety::-webkit-progress-value,
+        .crispr-game-safety::-moz-progress-bar { background: var(--jade); }
+        .crispr-game-message.is-alert { border-color: var(--gold); border-left-color: #806A37; background: #F8F3E7; }
+        .crispr-game-message.is-danger { border-color: #D6B1A4; border-left-color: #A84D42; background: #F8EFEB; }
+        .crispr-game-message.is-win { border-color: var(--mint); border-left-color: var(--jade); background: #EDF6F0; }
+
+        @keyframes editorial-arrive {
+            from { opacity: 0; transform: translateY(14px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 760px) {
+            .hero {
+                min-height: auto;
+                padding: 56px 7% 64px;
+            }
+
+            .hero::before {
+                top: 38%;
+                left: 30%;
+                width: 75vw;
+            }
+
+            .hero-image { box-shadow: 10px 10px 0 rgba(54, 184, 154, .32); }
+            .science-block { padding: 64px 7%; }
+            .science-block.science-crispr { padding: 64px 7%; }
+            .dna-panel { grid-template-columns: minmax(0, 1fr); }
+            .crispr-game-section { padding: 64px 7%; }
+            .decision-model { padding: 24px; }
+        }
+
+        @media (max-width: 600px) {
+            .site-nav-inner { padding-top: 10px; }
+            .hero { gap: 30px; }
+            .hero h1 { font-size: clamp(54px, 15vw, 74px); }
+            .hero-image {
+                width: calc(100% + 14vw);
+                min-height: 0;
+                height: clamp(250px, 72vw, 300px);
+                margin-right: -7vw;
+                margin-left: -7vw;
+            }
+            .hero-image img {
+                width: 100%;
+                height: 100%;
+                min-height: 0;
+                object-fit: cover;
+                object-position: 65% center;
+            }
+            .hero-copy .button { align-self: center; }
+            .science-hero { padding: 72px 7% 62px; }
+            .dna-panel { padding: 20px; }
+            .dna-illustration { padding: 14px 10px; }
+            .science-quiz,
+            .ethics-bridge { padding: 64px 7%; }
+            .decision-model { padding: 20px; }
+            .debate-dilemma { padding: 19px; }
+            .crispr-game-section { padding: 42px 5%; }
+            .crispr-game-section > h3 { margin: 10px auto; font-size: clamp(27px, 8vw, 34px); }
+            .crispr-game-section > p { margin-top: 0; margin-bottom: 12px; font-size: 13px; line-height: 1.45; }
+            .crispr-game-card { gap: 9px; padding: 10px; }
+            .crispr-game-hud { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 5px; margin-bottom: 9px; }
+            .crispr-game-stat { padding: 6px 4px; text-align: center; }
+            .crispr-game-stat-label { margin-bottom: 2px; font-size: 8px; letter-spacing: .25px; }
+            .crispr-game-stat-value { font-size: 16px; }
+            .crispr-game-level { flex-direction: row; align-items: center; gap: 6px; margin-bottom: 5px; font-size: 10px; }
+            .crispr-game-level > :last-child { text-align: right; }
+            .crispr-game-dna-wrap { padding: 6px 2px 3px; }
+            .crispr-game-dna { height: clamp(80px, 24vw, 94px); min-height: 0; }
+            .crispr-game-target-label { font-size: 42px; }
+            .crispr-game-instructions { min-height: 0; margin: 5px 0 7px; font-size: 12px; line-height: 1.35; }
+            .crispr-game-knip { position: static; min-height: 48px; margin: 0 auto 6px; padding: 6px 14px; font-size: 18px; }
+            .crispr-game-health { grid-template-columns: 52px minmax(0, 1fr); gap: 4px 7px; padding: 6px; }
+            .crispr-game-cell { grid-row: span 3; width: 50px; }
+            .crispr-game-health h4 { font-size: 14px; text-align: left; }
+            .crispr-game-health-status { min-height: 0; margin: 0; font-size: 11px; text-align: left; }
+            .crispr-game-meter-label { font-size: 10px; }
+            .crispr-game-message { margin-top: 9px; padding: 10px; font-size: 12px; }
+            .crispr-game-actions { margin-top: 8px; }
+            .crispr-game-actions > button { min-height: 44px; }
+            .debate-dilemma { padding: 16px; }
+            .debate-side { grid-template-columns: minmax(0, 1fr) 52px; gap: 8px; padding: 12px; }
+            .debate-toggle { width: 48px; height: 48px; font-size: 32px; }
+        }
+
         @media (prefers-reduced-motion: reduce) {
             *,
             *::before,
@@ -2326,10 +3425,16 @@
                 <a href="#dna">DNA</a>
                 <a href="#crispr">CRISPR-Cas9</a>
                 <a href="#medisch">Behandelingen</a>
-                <a href="#memoryspel">Memoryspel</a>
+                <a href="#crispr-precision-cut">Minigame</a>
                 <a href="#beslismodel">Beslismodel</a>
                 <a href="#ethische-dilemma">Dilemma's</a>
             </div>
+            <form class="site-search" role="search" data-site-search>
+                <label class="sr-only" for="site-search-input">Zoek op deze website</label>
+                <input class="site-search-input" id="site-search-input" type="search" placeholder="Zoek op de website…" autocomplete="off" aria-controls="site-search-results" aria-expanded="false" data-site-search-input>
+                <button class="site-search-submit" type="submit">Zoeken</button>
+                <div class="site-search-results" id="site-search-results" data-site-search-results role="listbox" aria-label="Zoekresultaten" aria-live="polite" hidden></div>
+            </form>
         </div>
     </nav>
 
@@ -2666,46 +3771,98 @@
             </p>
         </section>
 
-        <section class="memory-game-section" id="memoryspel" aria-labelledby="memory-game-title">
+        <section class="crispr-game-section" id="crispr-precision-cut" aria-labelledby="crispr-game-title">
             <span class="science-number">MINIGAME</span>
-            <h3 id="memory-game-title">Memory: genetische modificatie</h3>
+            <h3 id="crispr-game-title">CRISPR: Precision Cut</h3>
             <p>
-                Zoek de paren: combineer een genetisch begrip met de uitleg
-                die erbij hoort. Kies een niveau en test je geheugen.
+                Help de cel met een genetische afwijking. Stop de aanwijzer zo precies mogelijk
+                in de doelzone en voltooi vijf succesvolle herstelrondes.
             </p>
 
-            <div class="memory-game-panel" data-memory-game>
-                <div class="memory-game-toolbar" aria-label="Spelstatus">
-                    <div class="memory-game-stat">
-                        <span class="memory-game-stat-label">Score</span>
-                        <span class="memory-game-stat-value" data-memory-score>0</span>
+            <div class="crispr-game-card" data-crispr-game>
+                <div class="crispr-game-main">
+                    <div class="crispr-game-hud" aria-label="Spelstatus">
+                        <div class="crispr-game-stat">
+                            <span class="crispr-game-stat-label">Hersteld</span>
+                            <span class="crispr-game-stat-value" data-crispr-successes>0/5</span>
+                        </div>
+                        <div class="crispr-game-stat">
+                            <span class="crispr-game-stat-label">Fouten</span>
+                            <span class="crispr-game-stat-value" data-crispr-mistakes>0</span>
+                        </div>
+                        <div class="crispr-game-stat">
+                            <span class="crispr-game-stat-label">Score</span>
+                            <span class="crispr-game-stat-value" data-crispr-score>0</span>
+                        </div>
+                        <div class="crispr-game-stat">
+                            <span class="crispr-game-stat-label">Ronde</span>
+                            <span class="crispr-game-stat-value" data-crispr-round>1</span>
+                        </div>
                     </div>
-                    <div class="memory-game-stat">
-                        <span class="memory-game-stat-label">Gevonden paren</span>
-                        <span class="memory-game-stat-value" data-memory-pairs>0 / 6</span>
+
+                    <div class="crispr-game-level">
+                        <span data-crispr-level>Level 1 · oefenronde</span>
+                        <span>Stop de rode lijn in de doelzone</span>
                     </div>
-                    <div class="memory-game-stat">
-                        <span class="memory-game-stat-label">Pogingen</span>
-                        <span class="memory-game-stat-value" data-memory-moves>0</span>
+
+                    <div class="crispr-game-dna-wrap">
+                        <svg class="crispr-game-dna" data-crispr-dna viewBox="0 0 1000 400" preserveAspectRatio="none" role="img" aria-label="Bewegende aanwijzer, dubbele sinusvormige DNA-streng en gemarkeerde doelzone">
+                            <rect class="crispr-game-target" data-crispr-target x="400" y="70" width="160" height="260" rx="16"/>
+                            <text class="crispr-game-target-label" data-crispr-target-label x="480" y="111" text-anchor="middle">DOELZONE</text>
+                            <path class="crispr-game-backbone" d="M35 200 C58 153 82 110 105 110 C128 110 152 153 175 200 C198 247 222 290 245 290 C268 290 292 247 315 200 C338 153 362 110 385 110 C408 110 432 153 455 200 C478 247 502 290 525 290 C548 290 572 247 595 200 C618 153 642 110 665 110 C688 110 712 153 735 200 C758 247 782 290 805 290 C828 290 852 247 875 200 C898 153 922 110 945 110 C968 110 982 158 995 184"/>
+                            <path class="crispr-game-backbone crispr-game-backbone--second" d="M35 200 C58 247 82 290 105 290 C128 290 152 247 175 200 C198 153 222 110 245 110 C268 110 292 153 315 200 C338 247 362 290 385 290 C408 290 432 247 455 200 C478 153 502 110 525 110 C548 110 572 153 595 200 C618 247 642 290 665 290 C688 290 712 247 735 200 C758 153 782 110 805 110 C828 110 852 153 875 200 C898 247 922 290 945 290 C968 290 982 242 995 216"/>
+                            <g class="crispr-game-rungs" data-crispr-rungs aria-hidden="true">
+                                <g class="crispr-game-rung"><line x1="70" y1="137" x2="70" y2="263"/></g>
+                                <g class="crispr-game-rung"><line x1="140" y1="137" x2="140" y2="263"/></g>
+                                <g class="crispr-game-rung"><line x1="210" y1="263" x2="210" y2="137"/></g>
+                                <g class="crispr-game-rung"><line x1="280" y1="263" x2="280" y2="137"/></g>
+                                <g class="crispr-game-rung"><line x1="350" y1="137" x2="350" y2="263"/></g>
+                                <g class="crispr-game-rung"><line x1="420" y1="137" x2="420" y2="263"/></g>
+                                <g class="crispr-game-rung"><line x1="490" y1="263" x2="490" y2="137"/></g>
+                                <g class="crispr-game-rung"><line x1="560" y1="263" x2="560" y2="137"/></g>
+                                <g class="crispr-game-rung"><line x1="630" y1="137" x2="630" y2="263"/></g>
+                                <g class="crispr-game-rung"><line x1="700" y1="137" x2="700" y2="263"/></g>
+                                <g class="crispr-game-rung"><line x1="770" y1="263" x2="770" y2="137"/></g>
+                                <g class="crispr-game-rung"><line x1="840" y1="263" x2="840" y2="137"/></g>
+                                <g class="crispr-game-rung"><line x1="910" y1="137" x2="910" y2="263"/></g>
+                                <g class="crispr-game-rung"><line x1="970" y1="137" x2="970" y2="263"/></g>
+                            </g>
+                            <circle class="crispr-game-off-target" data-crispr-off-target cx="50" cy="200" r="20" hidden/>
+                            <line class="crispr-game-marker" data-crispr-marker x1="50" y1="53" x2="50" y2="347"/>
+                            <circle class="crispr-game-marker-cap" data-crispr-marker-cap cx="50" cy="53" r="12"/>
+                        </svg>
                     </div>
+
+                    <p class="crispr-game-instructions" data-crispr-instructions role="status" aria-live="polite">
+                        Druk op START om de aanwijzer te laten bewegen.
+                    </p>
+                    <button class="crispr-game-knip" data-crispr-cut data-crispr-state="ready" type="button">START</button>
+
+                    <div class="crispr-game-message" data-crispr-message role="status" aria-live="polite" hidden></div>
                 </div>
 
-                <div class="memory-game-settings">
-                    <label class="memory-game-level" for="memory-game-level">
-                        Niveau
-                        <select id="memory-game-level" data-memory-level>
-                            <option value="easy">Makkelijk · 6 paren</option>
-                            <option value="medium">Gemiddeld · 8 paren</option>
-                            <option value="hard">Moeilijk · 12 paren</option>
-                        </select>
-                    </label>
-                    <button class="science-button memory-game-restart" type="button" data-memory-restart>Opnieuw beginnen</button>
-                </div>
+                <aside class="crispr-game-health" aria-label="Toestand van de cel">
+                    <svg class="crispr-game-cell is-damaged" data-crispr-cell viewBox="0 0 200 200" role="img" aria-label="Cel met een genetische afwijking">
+                        <path class="crispr-cell-body" d="M101 14c16 0 24 12 37 17s29 1 38 14 3 28 7 42 12 24 7 39-20 20-29 32-10 29-25 37-27-2-42 0-28 13-42 6-14-25-25-36-28-16-31-32 7-27 10-42 0-28 11-39 27-8 41-15 26-23 43-23z"/>
+                        <circle class="crispr-cell-core" cx="101" cy="96" r="34"/>
+                        <circle class="crispr-cell-spark" cx="57" cy="74" r="6"/>
+                        <circle class="crispr-cell-spark" cx="143" cy="126" r="5"/>
+                        <circle class="crispr-cell-spark" cx="118" cy="49" r="4"/>
+                    </svg>
+                    <h4>Celstatus</h4>
+                    <p class="crispr-game-health-status" data-crispr-health-status>Genetische afwijking</p>
+                    <span class="crispr-game-meter-label">
+                        <span>Spelveiligheid</span>
+                        <span data-crispr-safety-text>3/3</span>
+                    </span>
+                    <progress class="crispr-game-safety" data-crispr-safety max="3" value="3" aria-label="Spelveiligheidsmeter"></progress>
+                </aside>
 
-                <div class="memory-game-grid" data-memory-grid aria-label="Memory-kaarten"></div>
-                <p class="memory-game-status" data-memory-status role="status" aria-live="polite">
-                    Draai twee kaartjes om en zoek het passende begrip.
-                </p>
+                <div class="crispr-game-footer">
+                    <div class="crispr-game-actions">
+                        <button class="crispr-game-action crispr-game-action--secondary" data-crispr-restart type="button" hidden>Opnieuw spelen</button>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -2991,168 +4148,429 @@
 
     <script src="assets/enquete-resultaten.js"></script>
     <script>
+        (() => {
+            const form = document.querySelector("[data-site-search]");
+            const input = form.querySelector("[data-site-search-input]");
+            const results = form.querySelector("[data-site-search-results]");
+            const searchTargets = [
+                ...document.querySelectorAll(
+                    "#dna, #crispr, #medisch, #beslismodel, #crispr-precision-cut, #ethiek, #ethische-dilemma, .medical-card, .debate-dilemma, [data-treatment-page]"
+                )
+            ];
+
+            function normalize(text) {
+                return text.toLocaleLowerCase("nl")
+                    .normalize("NFD")
+                    .replace(/[\u0300-\u036f]/g, "");
+            }
+
+            function closeResults() {
+                results.hidden = true;
+                input.setAttribute("aria-expanded", "false");
+            }
+
+            function showResults(query) {
+                results.replaceChildren();
+                const normalizedQuery = normalize(query.trim());
+                if (!normalizedQuery) {
+                    closeResults();
+                    return;
+                }
+
+                const matches = searchTargets
+                    .map((target) => {
+                        const text = target.textContent.replace(/\s+/g, " ").trim();
+                        const normalizedText = normalize(text);
+                        const matchIndex = normalizedText.indexOf(normalizedQuery);
+                        if (matchIndex === -1) return null;
+
+                        const heading = target.querySelector("h1, h2, h3, h4, h5");
+                        const title = heading?.textContent.trim() || "Informatie op deze website";
+                        const excerptStart = Math.max(0, matchIndex - 55);
+                        const excerpt = text.slice(excerptStart, excerptStart + 150);
+                        return { target, title, excerpt: `${excerptStart > 0 ? "… " : ""}${excerpt}${excerptStart + 150 < text.length ? " …" : ""}` };
+                    })
+                    .filter(Boolean)
+                    .slice(0, 8);
+
+                if (matches.length === 0) {
+                    const empty = document.createElement("p");
+                    empty.className = "site-search-empty";
+                    empty.textContent = "Geen resultaten gevonden. Probeer een andere zoekterm.";
+                    results.append(empty);
+                } else {
+                    matches.forEach(({ target, title, excerpt }) => {
+                        const result = document.createElement("button");
+                        result.type = "button";
+                        result.className = "site-search-result";
+                        result.setAttribute("role", "option");
+                        const heading = document.createElement("strong");
+                        heading.textContent = title;
+                        const summary = document.createElement("span");
+                        summary.textContent = excerpt;
+                        result.append(heading, summary);
+                        result.addEventListener("click", () => {
+                            closeResults();
+                            if (target.matches("[data-treatment-page]")) {
+                                window.location.hash = target.id;
+                                return;
+                            }
+                            target.scrollIntoView({ behavior: "smooth", block: "start" });
+                            const focusTarget = target.matches("h1, h2, h3, h4, h5")
+                                ? target
+                                : target.querySelector("h1, h2, h3, h4, h5");
+                            if (focusTarget) {
+                                if (!focusTarget.hasAttribute("tabindex")) {
+                                    focusTarget.setAttribute("tabindex", "-1");
+                                }
+                                focusTarget.focus({ preventScroll: true });
+                            }
+                        });
+                        results.append(result);
+                    });
+                }
+                results.hidden = false;
+                input.setAttribute("aria-expanded", "true");
+            }
+
+            input.addEventListener("input", () => showResults(input.value));
+            form.addEventListener("submit", (event) => {
+                event.preventDefault();
+                showResults(input.value);
+                results.querySelector(".site-search-result")?.focus();
+            });
+            input.addEventListener("keydown", (event) => {
+                if (event.key === "Escape") closeResults();
+                if (event.key === "ArrowDown") {
+                    const firstResult = results.querySelector(".site-search-result");
+                    if (firstResult) {
+                        event.preventDefault();
+                        firstResult.focus();
+                    }
+                }
+            });
+            document.addEventListener("click", (event) => {
+                if (!form.contains(event.target)) closeResults();
+            });
+        })();
+    </script>
+    <script>
 (() => {
-    const game = document.querySelector("[data-memory-game]");
+    const game = document.querySelector("[data-crispr-game]");
     if (!game) return;
 
-    const grid = game.querySelector("[data-memory-grid]");
-    const levelSelect = game.querySelector("[data-memory-level]");
-    const scoreDisplay = game.querySelector("[data-memory-score]");
-    const pairsDisplay = game.querySelector("[data-memory-pairs]");
-    const movesDisplay = game.querySelector("[data-memory-moves]");
-    const status = game.querySelector("[data-memory-status]");
-    const restartButton = game.querySelector("[data-memory-restart]");
-    const pairs = [
-        { term: "DNA", icon: "🧬", definition: "DNA is de erfelijke code in je cellen. De code bevat instructies voor je lichaam." },
-        { term: "Gen", icon: "🧩", definition: "Een gen is een stukje DNA met een instructie, bijvoorbeeld voor het maken van een eiwit." },
-        { term: "Chromosoom", icon: "🧬", definition: "Een chromosoom is een lang DNA-molecuul dat strak opgerold in een cel ligt." },
-        { term: "Mutatie", icon: "🔤", definition: "Een mutatie is een verandering in de DNA-code. Die verandering heeft niet altijd gevolgen." },
-        { term: "Genetische modificatie", icon: "✂️", definition: "Bij genetische modificatie wordt DNA in een cel doelgericht aangepast." },
-        { term: "CRISPR-Cas9", icon: "🎯", definition: "CRISPR-Cas9 is een techniek waarmee DNA op een gekozen plek kan worden aangepast." },
-        { term: "Cas9", icon: "✂️", definition: "Cas9 is een eiwit dat DNA kan knippen wanneer het naar de juiste plek is geleid." },
-        { term: "Guide-RNA", icon: "🧭", definition: "Guide-RNA helpt Cas9 de bedoelde plek in het DNA te vinden." },
-        { term: "DNA-herstel", icon: "🩹", definition: "Na een DNA-knip probeert de cel het DNA te herstellen. Daarbij kan de code veranderen." },
-        { term: "Off-target-effect", icon: "⚠️", definition: "Een off-target-effect is een onbedoelde verandering op een andere plek in het DNA." },
-        { term: "Gentherapie", icon: "🧬", definition: "Gentherapie gebruikt genetisch materiaal om een aandoening te behandelen." },
-        { term: "Stamcel", icon: "🌱", definition: "Een stamcel kan zich delen en ontwikkelen tot bepaalde andere soorten cellen." }
-    ];
-    const levelPairCounts = { easy: 6, medium: 8, hard: 12 };
-    let firstCard = null;
-    let secondCard = null;
-    let locked = false;
-    let moves = 0;
+    const marker = game.querySelector("[data-crispr-marker]");
+    const markerCap = game.querySelector("[data-crispr-marker-cap]");
+    const offTargetMarker = game.querySelector("[data-crispr-off-target]");
+    const dnaWrap = game.querySelector(".crispr-game-dna-wrap");
+    const dnaRungs = game.querySelector("[data-crispr-rungs]");
+    const target = game.querySelector("[data-crispr-target]");
+    const targetLabel = game.querySelector("[data-crispr-target-label]");
+    const successesDisplay = game.querySelector("[data-crispr-successes]");
+    const mistakesDisplay = game.querySelector("[data-crispr-mistakes]");
+    const scoreDisplay = game.querySelector("[data-crispr-score]");
+    const roundDisplay = game.querySelector("[data-crispr-round]");
+    const levelDisplay = game.querySelector("[data-crispr-level]");
+    const instructions = game.querySelector("[data-crispr-instructions]");
+    const cutButton = game.querySelector("[data-crispr-cut]");
+    const restartButton = game.querySelector("[data-crispr-restart]");
+    const message = game.querySelector("[data-crispr-message]");
+    const cell = game.querySelector("[data-crispr-cell]");
+    const healthStatus = game.querySelector("[data-crispr-health-status]");
+    const safetyMeter = game.querySelector("[data-crispr-safety]");
+    const safetyText = game.querySelector("[data-crispr-safety-text]");
+    const maxSuccesses = 5;
+    const roundWidths = [150, 125, 105, 90, 78];
+    const roundSpeeds = [650, 780, 920, 1080, 1250];
+    let successes = 0;
+    let mistakes = 0;
     let score = 0;
-    let matchedPairs = 0;
-    let resetTimeout = 0;
+    let safety = 3;
+    let markerPosition = 50;
+    let direction = 1;
+    let targetStart = 400;
+    let targetWidth = roundWidths[0];
+    let speed = roundSpeeds[0];
+    let running = false;
+    let locked = true;
+    let finished = false;
+    let lastFrame = 0;
+    let animationFrame = 0;
+    let nextRoundTimeout = 0;
 
-    function shuffle(cards) {
-        for (let index = cards.length - 1; index > 0; index -= 1) {
-            const randomIndex = Math.floor(Math.random() * (index + 1));
-            [cards[index], cards[randomIndex]] = [cards[randomIndex], cards[index]];
-        }
-        return cards;
-    }
-
-    function createCard(pair, kind) {
-        const card = document.createElement("button");
-        card.type = "button";
-        card.className = "memory-card";
-        card.dataset.pair = pair.term;
-        card.dataset.kind = kind;
-        card.setAttribute("aria-pressed", "false");
-        card.setAttribute("aria-label", "Kaartje dicht");
-
-        const inner = document.createElement("span");
-        inner.className = "memory-card-inner";
-        inner.setAttribute("aria-hidden", "true");
-        const cover = document.createElement("span");
-        cover.className = "memory-card-face memory-card-face--cover";
-        cover.setAttribute("aria-hidden", "true");
-        cover.textContent = "?";
-        const answer = document.createElement("span");
-        answer.className = "memory-card-face memory-card-face--answer";
-        if (kind === "term") {
-            const icon = document.createElement("span");
-            icon.className = "memory-game-icon";
-            icon.setAttribute("aria-hidden", "true");
-            icon.textContent = pair.icon;
-            const term = document.createElement("span");
-            term.className = "memory-game-term";
-            term.textContent = pair.term;
-            answer.append(icon, term);
-            card.setAttribute("aria-label", "Begripkaartje dicht");
-        } else {
-            const definition = document.createElement("span");
-            definition.className = "memory-game-definition";
-            definition.textContent = pair.definition;
-            answer.append(definition);
-            card.setAttribute("aria-label", "Uitlegkaartje dicht");
-        }
-        inner.append(cover, answer);
-        card.append(inner);
-        card.addEventListener("click", () => revealCard(card));
-        return card;
-    }
-
-    function updateScoreboard(pairCount) {
+    function updateHud() {
+        successesDisplay.textContent = `${successes}/${maxSuccesses}`;
+        mistakesDisplay.textContent = String(mistakes);
         scoreDisplay.textContent = String(score);
-        pairsDisplay.textContent = `${matchedPairs} / ${pairCount}`;
-        movesDisplay.textContent = String(moves);
+        roundDisplay.textContent = String(Math.min(successes + 1, maxSuccesses));
+        safetyMeter.value = safety;
+        safetyText.textContent = `${safety}/3`;
+    }
+
+    function configureRound() {
+        const roundIndex = Math.min(successes, maxSuccesses - 1);
+        targetWidth = roundWidths[roundIndex];
+        speed = roundSpeeds[roundIndex];
+        const center = Math.round(170 + Math.random() * 660);
+        targetStart = center - targetWidth / 2;
+        target.setAttribute("x", String(targetStart));
+        target.setAttribute("width", String(targetWidth));
+        targetLabel.setAttribute("x", String(center));
+        markerPosition = 40;
+        direction = 1;
+        marker.classList.remove("is-hit", "is-miss");
+        marker.setAttribute("x1", String(markerPosition));
+        marker.setAttribute("x2", String(markerPosition));
+        markerCap.setAttribute("cx", String(markerPosition));
+        levelDisplay.textContent = `Level ${roundIndex + 1} · ${roundIndex === 0 ? "oefenronde" : "ronde"}`;
+        cutButton.textContent = "START";
+        cutButton.dataset.crisprState = "ready";
+        cutButton.disabled = false;
+        updateHud();
+    }
+
+    function animate(timestamp) {
+        if (!running) return;
+        if (lastFrame) {
+            const elapsed = Math.min((timestamp - lastFrame) / 1000, 0.05);
+            markerPosition += direction * speed * elapsed;
+            if (markerPosition >= 960) {
+                markerPosition = 960;
+                direction = -1;
+            } else if (markerPosition <= 40) {
+                markerPosition = 40;
+                direction = 1;
+            }
+            marker.setAttribute("x1", String(markerPosition));
+            marker.setAttribute("x2", String(markerPosition));
+            markerCap.setAttribute("cx", String(markerPosition));
+        }
+        lastFrame = timestamp;
+        animationFrame = window.requestAnimationFrame(animate);
+    }
+
+    function startMovement() {
+        running = true;
+        locked = false;
+        lastFrame = 0;
+        cutButton.textContent = "KNIP!";
+        cutButton.dataset.crisprState = "cut";
+        cutButton.disabled = false;
+        instructions.textContent = "Tik op KNIP! wanneer de rode aanwijzer in de doelzone staat.";
+        animationFrame = window.requestAnimationFrame(animate);
     }
 
     function startGame() {
-        window.clearTimeout(resetTimeout);
-        firstCard = null;
-        secondCard = null;
-        locked = false;
-        moves = 0;
-        score = 0;
-        matchedPairs = 0;
-        const pairCount = levelPairCounts[levelSelect.value] ?? levelPairCounts.easy;
-        const cards = pairs.slice(0, pairCount).flatMap((pair) => [
-            createCard(pair, "term"),
-            createCard(pair, "definition")
-        ]);
-        grid.replaceChildren(...shuffle(cards));
-        updateScoreboard(pairCount);
-        status.textContent = "Draai twee kaartjes om en zoek het passende begrip.";
+        if (running || finished) return;
+        restartButton.hidden = true;
+        configureRound();
+        startMovement();
     }
 
-    function revealCard(card) {
-        if (locked || card.disabled || card === firstCard || card.getAttribute("aria-pressed") === "true") return;
-        card.setAttribute("aria-pressed", "true");
-        card.querySelector(".memory-card-inner").removeAttribute("aria-hidden");
-        card.setAttribute("aria-label", card.dataset.kind === "term"
-            ? `Begrip: ${card.dataset.pair}`
-            : `Uitleg bij een begrip: ${pairs.find((pair) => pair.term === card.dataset.pair).definition}`);
+    function makeParagraph(text) {
+        const paragraph = document.createElement("p");
+        paragraph.textContent = text;
+        return paragraph;
+    }
 
-        if (!firstCard) {
-            firstCard = card;
+    function showMessage(title, paragraphs, kind, actionLabel, action) {
+        const heading = document.createElement("h4");
+        heading.textContent = title;
+        message.className = `crispr-game-message${kind ? ` is-${kind}` : ""}`;
+        message.replaceChildren(heading, ...paragraphs.map(makeParagraph));
+        if (actionLabel && action) {
+            const controls = document.createElement("div");
+            controls.className = "crispr-game-actions";
+            const button = document.createElement("button");
+            button.type = "button";
+            button.className = "crispr-game-action";
+            button.textContent = actionLabel;
+            button.addEventListener("click", action, { once: true });
+            controls.append(button);
+            message.append(controls);
+        }
+        message.hidden = false;
+    }
+
+    function updateCellForMistakes() {
+        cell.classList.remove("is-healthy", "is-warning", "is-danger", "is-recovering");
+        if (mistakes >= 3) {
+            cell.classList.add("is-danger");
+            healthStatus.textContent = "Herstel onder druk";
+        } else if (mistakes > 0) {
+            cell.classList.add("is-warning");
+            healthStatus.textContent = "Waarschuwing · cel functioneert";
+        } else {
+            cell.classList.add("is-damaged");
+            healthStatus.textContent = "Genetische afwijking";
+        }
+    }
+
+    function showFrameshift() {
+        finished = true;
+        running = false;
+        restartButton.hidden = false;
+        cutButton.disabled = true;
+        cutButton.dataset.crisprState = "finished";
+        cutButton.textContent = "KLAAR";
+        instructions.textContent = "Het spel is afgelopen na drie fouten. Speel opnieuw om het nog eens te proberen.";
+        const heading = document.createElement("h4");
+        heading.textContent = "Leesraamverschuiving! Het DNA wordt anders gelezen.";
+        const intro = makeParagraph("In dit scenario verdwijnt één nucleotide uit het coderende deel. Codons zijn groepjes van drie nucleotiden; na de deletie verschuift de indeling.");
+        const comparison = document.createElement("div");
+        comparison.className = "crispr-codon-comparison";
+        comparison.textContent = "Voor de mutatie: AUG | GAA | CUC | GGU | UAA\nNa de mutatie:   AUG | AAC | UCG | GUU | AA...";
+        const detail = makeParagraph("De veranderde codons kunnen andere aminozuren opleveren; soms ontstaat ook een vroegtijdig stopcodon. Daardoor kan een afwijkend of te kort eiwit ontstaan dat niet goed werkt.");
+        const nuance = makeParagraph("Dit is een mogelijk gevolg van een frameshiftmutatie, niet van iedere deletie. Een kleine verandering in DNA kan soms grote gevolgen hebben voor een eiwit en de werking van een cel.");
+        message.className = "crispr-game-message is-danger";
+        message.replaceChildren(heading, intro, comparison, detail, nuance);
+        message.hidden = false;
+    }
+
+    function continueAfterMistake() {
+        message.hidden = true;
+        marker.classList.remove("is-miss");
+        offTargetMarker.setAttribute("hidden", "");
+        if (!finished) startMovement();
+    }
+
+    function showMistake() {
+        mistakes += 1;
+        safety = Math.max(0, safety - 1);
+        score = Math.max(0, score - 25);
+        updateHud();
+        updateCellForMistakes();
+
+        if (mistakes === 1) {
+            offTargetMarker.setAttribute("cx", String(markerPosition));
+            offTargetMarker.removeAttribute("hidden");
+            showMessage("Off-target effect!", [
+                "CRISPR-Cas9 heeft op een andere plek in het DNA geknipt dan bedoeld. Hierdoor kan een ongewenste verandering ontstaan. In dit scenario heeft de verandering weinig invloed op de werking van de cel. Je kunt doorgaan!",
+                "Een off-target effect veroorzaakt niet automatisch ernstige schade: de gevolgen hangen af van de plek en de aard van de verandering."
+            ], "alert", "Doorgaan", continueAfterMistake);
+        } else if (mistakes === 2) {
+            const nearestRung = [...dnaRungs.querySelectorAll(".crispr-game-rung")]
+                .reduce((nearest, rung) => {
+                    const rungX = Number(rung.querySelector("line")?.getAttribute("x1"));
+                    const distance = Math.abs(rungX - markerPosition);
+                    return distance < nearest.distance ? { element: rung, distance } : nearest;
+                }, { element: null, distance: Infinity }).element;
+            nearestRung?.classList.add("is-deleted");
+            showMessage("Deletie: een basenpaar ontbreekt!", [
+                "Bij DNA-herstel kan per ongeluk een stukje DNA verloren gaan. In dit scenario is één basenpaar verwijderd en heeft dit nog geen groot effect op de cel.",
+                "Wordt een basenpaar uit een coderend deel verwijderd, dan kan dit juist een leesraamverschuiving veroorzaken met belangrijke gevolgen."
+            ], "alert", "Doorgaan", continueAfterMistake);
+        } else if (mistakes === 3) {
+            showFrameshift();
+        }
+    }
+
+    function finishGame() {
+        finished = true;
+        restartButton.hidden = false;
+        cutButton.disabled = true;
+        cutButton.dataset.crisprState = "finished";
+        cutButton.textContent = "KLAAR";
+        instructions.textContent = "Alle vijf herstelrondes zijn voltooid.";
+        cell.classList.remove("is-damaged", "is-warning", "is-danger");
+        cell.classList.add("is-healthy", "is-recovering");
+        healthStatus.textContent = "Cel hersteld";
+        showMessage("DNA succesvol aangepast!", [
+            "Perfecte knip! De gewenste DNA-verandering is gelukt.",
+            `Je hebt ${successes} succesvolle modificaties uitgevoerd, met ${mistakes} fout${mistakes === 1 ? "" : "en"}. Eindscore: ${score}.`,
+            "CRISPR-Cas9 kan worden gebruikt om DNA heel gericht aan te passen. Toch verloopt DNA-herstel niet altijd precies zoals bedoeld. Een verkeerde knip kan een off-target effect veroorzaken en een kleine insertie of deletie kan soms een leesraamverschuiving veroorzaken. Daarom zijn nauwkeurigheid en controle op ongewenste effecten belangrijk bij genetische modificatie."
+        ], "win");
+    }
+
+    function cutDna() {
+        if (!running) {
+            startGame();
             return;
         }
-
-        secondCard = card;
+        if (locked || finished) return;
         locked = true;
-        moves += 1;
-        const pairCount = levelPairCounts[levelSelect.value] ?? levelPairCounts.easy;
-        if (firstCard.dataset.pair === secondCard.dataset.pair && firstCard.dataset.kind !== secondCard.dataset.kind) {
-            firstCard.classList.add("is-matched");
-            secondCard.classList.add("is-matched");
-            firstCard.disabled = true;
-            secondCard.disabled = true;
-            matchedPairs += 1;
-            score += 100;
-            status.textContent = `Goed gevonden! ${matchedPairs} van de ${pairCount} paren gevonden.`;
-            firstCard = null;
-            secondCard = null;
-            locked = false;
-            updateScoreboard(pairCount);
-            if (matchedPairs === pairCount) {
-                status.textContent = `Geweldig gedaan! Je vond alle ${pairCount} paren in ${moves} pogingen en scoorde ${score} punten.`;
-            }
+        running = false;
+        window.cancelAnimationFrame(animationFrame);
+        cutButton.disabled = true;
+        cutButton.dataset.crisprState = "waiting";
+        const hit = markerPosition >= targetStart && markerPosition <= targetStart + targetWidth;
+        if (!hit) {
+            marker.classList.add("is-miss");
+            showMistake();
             return;
         }
 
-        status.textContent = "Geen paar. De kaartjes draaien zo weer om.";
-        updateScoreboard(pairCount);
-        resetTimeout = window.setTimeout(() => {
-            [firstCard, secondCard].forEach((openCard) => {
-                openCard.setAttribute("aria-pressed", "false");
-                openCard.querySelector(".memory-card-inner").setAttribute("aria-hidden", "true");
-                openCard.setAttribute("aria-label", openCard.dataset.kind === "term"
-                    ? "Begripkaartje dicht"
-                    : "Uitlegkaartje dicht");
-            });
-            firstCard = null;
-            secondCard = null;
-            locked = false;
-            status.textContent = "Probeer opnieuw een passend begrip en uitleg te vinden.";
-        }, 900);
+        marker.classList.add("is-hit");
+        successes += 1;
+        const center = targetStart + targetWidth / 2;
+        const precisionBonus = Math.round(Math.max(0, 1 - Math.abs(markerPosition - center) / (targetWidth / 2)) * 25);
+        score += 100 + precisionBonus;
+        updateHud();
+        cell.classList.remove("is-damaged", "is-warning", "is-danger", "is-recovering");
+        if (mistakes > 0) {
+            updateCellForMistakes();
+        } else {
+            cell.classList.add("is-healthy");
+            healthStatus.textContent = "Herstel gelukt";
+        }
+        cell.classList.add("is-recovering");
+        instructions.textContent = "Goed getimed! De cel herstelt.";
+        dnaWrap.classList.remove("is-cut");
+        void dnaWrap.getBoundingClientRect();
+        dnaWrap.classList.add("is-cut");
+
+        if (successes === maxSuccesses) {
+            finishGame();
+            return;
+        }
+
+        showMessage("Perfecte knip! De gewenste DNA-verandering is gelukt.", [
+            `Ronde ${successes} van ${maxSuccesses} voltooid. De volgende doelzone is kleiner en de aanwijzer beweegt sneller.`
+        ], "win");
+        nextRoundTimeout = window.setTimeout(() => {
+            message.hidden = true;
+            marker.classList.remove("is-hit", "is-miss");
+            offTargetMarker.setAttribute("hidden", "");
+            dnaWrap.classList.remove("is-cut");
+            dnaRungs.querySelectorAll(".is-deleted").forEach((rung) => rung.classList.remove("is-deleted"));
+            configureRound();
+            startMovement();
+        }, 1200);
     }
 
-    levelSelect.addEventListener("change", startGame);
-    restartButton.addEventListener("click", startGame);
-    startGame();
+    function resetGame() {
+        window.cancelAnimationFrame(animationFrame);
+        window.clearTimeout(nextRoundTimeout);
+        successes = 0;
+        mistakes = 0;
+        score = 0;
+        safety = 3;
+        running = false;
+        locked = true;
+        finished = false;
+        lastFrame = 0;
+        marker.classList.remove("is-hit", "is-miss");
+        cell.classList.remove("is-healthy", "is-warning", "is-danger", "is-recovering");
+        cell.classList.add("is-damaged");
+        healthStatus.textContent = "Genetische afwijking";
+        message.hidden = true;
+        message.replaceChildren();
+        offTargetMarker.setAttribute("hidden", "");
+        dnaWrap.classList.remove("is-cut");
+        dnaRungs.querySelectorAll(".is-deleted").forEach((rung) => rung.classList.remove("is-deleted"));
+        instructions.textContent = "Druk op START om de aanwijzer te laten bewegen.";
+        cutButton.textContent = "START";
+        cutButton.dataset.crisprState = "ready";
+        cutButton.disabled = false;
+        restartButton.hidden = true;
+        configureRound();
+    }
+
+    cutButton.addEventListener("click", cutDna);
+    restartButton.addEventListener("click", () => {
+        resetGame();
+    });
+    resetGame();
 })();
     </script>
     <script>
