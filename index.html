@@ -1862,6 +1862,274 @@
             color: white;
         }
 
+        .cell-game-section {
+            max-width: 1120px;
+            margin: auto;
+            padding: 85px 7%;
+            scroll-margin-top: 25px;
+        }
+
+        .cell-game-section > p {
+            max-width: 700px;
+            color: var(--muted);
+            font-size: 15px;
+        }
+
+        .cell-game-card {
+            padding: clamp(16px, 3vw, 30px);
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            background: #f0f3ec;
+            box-shadow: 0 15px 35px rgba(32, 55, 47, .08);
+        }
+
+        .cell-game-hud {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .cell-game-stat {
+            padding: 10px 12px;
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            background: white;
+        }
+
+        .cell-game-stat-label {
+            display: block;
+            margin-bottom: 4px;
+            color: var(--muted);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+        }
+
+        .cell-game-stat-value {
+            color: var(--forest);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .cell-game-board-wrap {
+            position: relative;
+            width: min(100%, 756px);
+            margin: 0 auto;
+            overflow: hidden;
+            border: 3px solid #244a3a;
+            border-radius: 8px;
+            background: #142720;
+            box-shadow: 0 12px 28px rgba(20, 39, 32, .2);
+        }
+
+        .cell-game-legend {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px 18px;
+            max-width: 756px;
+            margin: 12px auto 0;
+            color: var(--forest);
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .cell-game-legend-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .cell-game-virus-icon {
+            font-size: 18px;
+            line-height: 1;
+        }
+
+        .cell-game-canvas {
+            display: block;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 21 / 15;
+            touch-action: pan-y;
+        }
+
+        .cell-game-overlay {
+            position: absolute;
+            inset: 0;
+            display: grid;
+            overflow-y: auto;
+            place-items: center;
+            padding: clamp(12px, 4vw, 30px);
+            background: rgba(12, 27, 22, .82);
+        }
+
+        .cell-game-overlay[hidden] {
+            display: none;
+        }
+
+        .cell-game-dialog {
+            width: min(100%, 460px);
+            max-height: 100%;
+            overflow-y: auto;
+            padding: clamp(18px, 4vw, 30px);
+            border: 1px solid rgba(255, 255, 255, .55);
+            border-radius: 10px;
+            background: #fbfbf7;
+            box-shadow: 0 18px 55px rgba(0, 0, 0, .3);
+        }
+
+        .cell-game-dialog-kicker {
+            margin: 0 0 8px;
+            color: #64806d;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.4px;
+            text-transform: uppercase;
+        }
+
+        .cell-game-dialog h4 {
+            margin: 0 0 12px;
+            color: #20372f;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(22px, 5vw, 30px);
+        }
+
+        .cell-game-dialog p {
+            color: #56675e;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .cell-game-dialog-actions {
+            display: grid;
+            gap: 9px;
+            margin-top: 18px;
+        }
+
+        .cell-game-button {
+            min-height: 44px;
+            padding: 10px 16px;
+            border: 1px solid #244a3a;
+            border-radius: 5px;
+            background: #244a3a;
+            color: white;
+            font: inherit;
+            font-size: 14px;
+            font-weight: 700;
+            text-align: left;
+            cursor: pointer;
+            transition: background .18s ease, transform .18s ease;
+        }
+
+        .cell-game-button:hover {
+            transform: translateY(-1px);
+            background: #17392b;
+        }
+
+        .cell-game-button:focus-visible,
+        .cell-game-touch-button:focus-visible {
+            outline: 3px solid #d7ef72;
+            outline-offset: 3px;
+        }
+
+        .cell-game-controls {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            max-width: 756px;
+            margin: 18px auto 0;
+        }
+
+        .cell-game-help {
+            margin: 0;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .cell-game-dpad {
+            display: grid;
+            flex: 0 0 auto;
+            grid-template-columns: repeat(3, 56px);
+            grid-template-rows: repeat(2, 56px);
+            gap: 6px;
+            touch-action: none;
+        }
+
+        .cell-game-touch-button {
+            display: grid;
+            place-items: center;
+            padding: 0;
+            border: 1px solid #244a3a;
+            border-radius: 7px;
+            background: white;
+            color: #244a3a;
+            font: inherit;
+            font-size: 20px;
+            font-weight: 700;
+            cursor: pointer;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: none;
+        }
+
+        .cell-game-touch-button:active,
+        .cell-game-touch-button[aria-pressed="true"] {
+            background: #d7ef72;
+        }
+
+        .cell-game-touch-up {
+            grid-column: 2;
+            grid-row: 1;
+        }
+
+        .cell-game-touch-left {
+            grid-column: 1;
+            grid-row: 2;
+        }
+
+        .cell-game-touch-down {
+            grid-column: 2;
+            grid-row: 2;
+        }
+
+        .cell-game-touch-right {
+            grid-column: 3;
+            grid-row: 2;
+        }
+
+        .cell-game-status {
+            max-width: 756px;
+            min-height: 1.5em;
+            margin: 14px auto 0;
+            color: var(--forest);
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        @media (max-width: 600px) {
+            .cell-game-section {
+                padding: 60px 5%;
+            }
+
+            .cell-game-hud {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .cell-game-controls {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .cell-game-dpad {
+                align-self: center;
+            }
+        }
+
         @media (max-width: 760px) {
             .site-nav-inner {
                 display: block;
@@ -2109,6 +2377,7 @@
                 <a href="#dna">DNA</a>
                 <a href="#crispr">CRISPR-Cas9</a>
                 <a href="#medisch">Behandelingen</a>
+                <a href="#cell-man">Minigame</a>
                 <a href="#beslismodel">Beslismodel</a>
                 <a href="#ethische-dilemma">Dilemma's</a>
             </div>
@@ -2348,7 +2617,7 @@
             <div class="medical-grid">
                 <article class="medical-card">
                     <figure class="medical-image-figure">
-                        <img class="medical-image" src="assets/images/sickle-cell-user-provided.png" alt="Illustratie van sikkelvormige rode bloedcellen, aangeleverd bij het wijzigingsverzoek" loading="lazy" decoding="async">
+                        <img class="medical-image" src="https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8e/Red_Blood_Cells_in_Sickle_Cell_Disease.jpg/1280px-Red_Blood_Cells_in_Sickle_Cell_Disease.jpg" alt="Microscopische opname van normale en sikkelvormige rode bloedcellen bij sikkelcelziekte" loading="lazy" decoding="async">
                     </figure>
                     <h4>Sikkelcelziekte</h4>
                     <p>
@@ -2446,6 +2715,71 @@
             <p class="decision-caveat">
                 Dit beslismodel is geen persoonlijk medisch advies.
             </p>
+        </section>
+
+        <section class="cell-game-section" id="cell-man" aria-labelledby="cell-game-title">
+            <span class="science-number">MINIGAME</span>
+            <h3 id="cell-game-title">Cell-Man: The Genetic Maze</h3>
+            <p>
+                Stuur je cel door het doolhof, verzamel DNA-fragmenten en ontwijk
+                de virusvijanden. Een CRISPR-power-up beschermt je tijdelijk.
+                Verzamel de helft van het DNA om de uitgang te openen.
+            </p>
+
+            <div class="cell-game-card" data-cell-game>
+                <div class="cell-game-hud" aria-label="Spelstatus">
+                    <div class="cell-game-stat">
+                        <span class="cell-game-stat-label">Score</span>
+                        <span class="cell-game-stat-value" data-game-score>0</span>
+                    </div>
+                    <div class="cell-game-stat">
+                        <span class="cell-game-stat-label">Levens</span>
+                        <span class="cell-game-stat-value" data-game-lives>♥ ♥ ♥ ♥ ♥</span>
+                    </div>
+                    <div class="cell-game-stat">
+                        <span class="cell-game-stat-label">DNA-fragmenten</span>
+                        <span class="cell-game-stat-value" data-game-dna>0 / 0</span>
+                    </div>
+                </div>
+
+                <div class="cell-game-board-wrap">
+                    <canvas class="cell-game-canvas" width="840" height="600" data-game-canvas tabindex="0" aria-label="Cell-Man doolhof. Gebruik pijltjestoetsen of WASD om de cel te bewegen.">
+                        Je browser ondersteunt het canvas-element niet.
+                    </canvas>
+                    <div class="cell-game-overlay" data-game-overlay hidden>
+                        <section class="cell-game-dialog" role="dialog" aria-modal="true" aria-labelledby="cell-game-dialog-title">
+                            <p class="cell-game-dialog-kicker" data-game-dialog-kicker>Cell-Man</p>
+                            <h4 id="cell-game-dialog-title" data-game-dialog-title></h4>
+                            <p data-game-dialog-description></p>
+                            <div class="cell-game-dialog-actions" data-game-dialog-actions></div>
+                        </section>
+                    </div>
+                </div>
+
+                <div class="cell-game-legend" aria-label="Uitleg spelonderdelen">
+                    <span class="cell-game-legend-item"><span class="cell-game-virus-icon" aria-hidden="true">🦠</span> Virusvijand: raak hem niet aan</span>
+                    <span class="cell-game-legend-item"><span aria-hidden="true">✦</span> CRISPR-power-up: tijdelijke bescherming</span>
+                    <span class="cell-game-legend-item"><span aria-hidden="true">●</span> DNA-fragment</span>
+                </div>
+
+                <div class="cell-game-controls">
+                    <p class="cell-game-help">
+                        Besturing: pijltjestoetsen of WASD. Op telefoon tik je op
+                        de pijlen om een richting te kiezen. Je kunt op elk
+                        moment een andere richting kiezen. Verzamel de helft
+                        van de DNA-fragmenten om de uitgang te openen.
+                    </p>
+                    <div class="cell-game-dpad" role="group" aria-label="Aanraakbediening voor Cell-Man">
+                        <button class="cell-game-touch-button cell-game-touch-up" type="button" data-game-direction="up" aria-label="Omhoog" aria-pressed="false">↑</button>
+                        <button class="cell-game-touch-button cell-game-touch-left" type="button" data-game-direction="left" aria-label="Links" aria-pressed="false">←</button>
+                        <button class="cell-game-touch-button cell-game-touch-down" type="button" data-game-direction="down" aria-label="Omlaag" aria-pressed="false">↓</button>
+                        <button class="cell-game-touch-button cell-game-touch-right" type="button" data-game-direction="right" aria-label="Rechts" aria-pressed="false">→</button>
+                    </div>
+                </div>
+                <p class="cell-game-status" data-game-status role="status" aria-live="polite">
+                    Druk op Start spel om te beginnen.
+                </p>
+            </div>
         </section>
 
         <section class="ethics-bridge" id="ethiek">
@@ -2583,7 +2917,7 @@
             <h4>Beeldverantwoording</h4>
             <ul class="image-sources">
                 <li>Voorpagina: <a href="https://commons.wikimedia.org/wiki/File:APHIS-Moore_Air_Base_in_Texas-Plant_Protection_and_Quarantine_Science_and_Technology_Insect_Management_and_Molecular_Diagnostics_Laboratory_(20230621-CDP-APHIS-0498).jpg" target="_blank" rel="noopener">foto van een laborant die DNA-monsters voor PCR klaarmaakt</a>, USDA / Christophe Paul, publiek domein. Het laboratorium onderzoekt vooral plant- en insectziekten; de foto toont geen menselijke CRISPR-behandeling.</li>
-                <li>Sikkelcelziekte: afbeelding aangeleverd bij het wijzigingsverzoek. De oorspronkelijke maker, publicatiebron en licentie zijn niet meegeleverd; hergebruikrechten zijn daarom niet vastgesteld.</li>
+                <li>Sikkelcelziekte: <a href="https://commons.wikimedia.org/wiki/File:Red_Blood_Cells_in_Sickle_Cell_Disease.jpg" target="_blank" rel="noopener">“Red Blood Cells in Sickle Cell Disease”</a>, Gregory Kato, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>. Microscopische opname van normale en sikkelvormige rode bloedcellen.</li>
                 <li>SMA: <a href="https://commons.wikimedia.org/wiki/File:Bell_Shaped_Torso.jpg" target="_blank" rel="noopener">“Bell Shaped Torso”</a>, Wikimedia Commons-bijdragers, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>. Röntgenfoto van een kind met een klokvormige romp door spieratrofie; volgens de bestandsbeschrijving is dit geen afbeelding van een kind met SMA en niet specifiek voor SMA.</li>
                 <li>CAR-T: <a href="https://www.amsterdamumc.org/nl/vandaag/je-eigen-afweercellen-als-medicijn" target="_blank" rel="noopener">afbeelding bij “Je eigen afweercellen als medicijn”</a>, Amsterdam UMC. De pagina vermeldt geen afzonderlijke fotograaf of hergebruiklicentie.</li>
             </ul>
@@ -2729,6 +3063,7 @@
     </main>
 
     <script src="assets/enquete-resultaten.js"></script>
+    <script src="assets/cell-man-game.js"></script>
     <script>
         const crisprDemo = document.querySelector("[data-crispr-demo]");
         const crisprStage = crisprDemo.querySelector("[data-crispr-stage]");
