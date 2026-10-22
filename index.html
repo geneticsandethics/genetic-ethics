@@ -1866,7 +1866,7 @@
             max-width: 1120px;
             margin: auto;
             padding: 85px 7%;
-            scroll-margin-top: 25px;
+            scroll-margin-top: 110px;
         }
 
         .cell-game-section > p {
@@ -1888,6 +1888,17 @@
             grid-template-columns: repeat(4, minmax(0, 1fr));
             gap: 10px;
             margin-bottom: 16px;
+        }
+
+        .cell-game-start-row {
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .cell-game-start {
+            min-width: 180px;
+            min-height: 48px;
+            font-weight: 700;
         }
 
         .cell-game-stat {
@@ -2727,6 +2738,9 @@
             </p>
 
             <div class="cell-game-card" data-cell-game>
+                <div class="cell-game-start-row">
+                    <button class="science-button cell-game-start" type="button" data-game-start>Start spel</button>
+                </div>
                 <div class="cell-game-hud" aria-label="Spelstatus">
                     <div class="cell-game-stat">
                         <span class="cell-game-stat-label">Score</span>
