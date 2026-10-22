@@ -292,6 +292,7 @@
         .science-hero h2 em {
             color: #bd5c45;
             font-weight: 500;
+            font-style: normal;
         }
 
         .science-hero-sequence {
@@ -828,12 +829,6 @@
         .crispr-repair-part--changed {
             border-color: #e1b1a7;
             background: #fff8f5;
-        }
-
-        .crispr-repair-part--changed .crispr-repair-letters span:last-child {
-            border-color: #dca89d;
-            background: #fff0eb;
-            color: #873d33;
         }
 
         .crispr-repair-arrow {
@@ -1426,9 +1421,19 @@
         }
 
         .decision-description,
-        .decision-question {
+        .decision-question,
+        .decision-category {
             color: var(--muted);
             font-size: 14px;
+        }
+
+        .decision-category {
+            margin: 24px 0 8px;
+            color: var(--sage);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
         }
 
         .decision-question {
@@ -1527,6 +1532,106 @@
             margin-bottom: 0;
         }
 
+        .survey-results {
+            margin-top: 20px;
+            padding-top: 18px;
+            border-top: 1px solid var(--line);
+        }
+
+        .survey-results h5 {
+            margin: 0 0 8px;
+            color: var(--ink);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 16px;
+        }
+
+        .survey-results-intro,
+        .survey-results-note,
+        .survey-feedback,
+        .survey-unavailable {
+            margin: 0 0 12px;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .survey-bars {
+            display: grid;
+            gap: 12px;
+            margin: 16px 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .survey-bar-row {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            align-items: center;
+            gap: 6px 10px;
+            color: var(--ink);
+            font-size: 13px;
+        }
+
+        .survey-bar-track {
+            grid-column: 1 / -1;
+            height: 14px;
+            overflow: hidden;
+            border-radius: 99px;
+            background: white;
+        }
+
+        .survey-bar-fill {
+            height: 100%;
+            border-radius: inherit;
+            background: var(--sage);
+        }
+
+        .survey-bar-value {
+            grid-column: 2;
+            grid-row: 1;
+            color: var(--muted);
+            font-size: 12px;
+            text-align: right;
+        }
+
+        .survey-feedback {
+            padding: 10px 12px;
+            border-left: 3px solid var(--sage);
+            background: white;
+        }
+
+        .survey-results-note {
+            margin: 14px 0 0;
+            font-size: 11px;
+        }
+
+        .survey-knowledge-results {
+            margin-top: 20px;
+            padding-top: 16px;
+            border-top: 1px solid var(--line);
+        }
+
+        .survey-knowledge-results h6 {
+            margin: 0 0 6px;
+            color: var(--ink);
+            font-size: 14px;
+        }
+
+        .survey-knowledge-group + .survey-knowledge-group {
+            margin-top: 16px;
+        }
+
+        .survey-knowledge-group h6 {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 12px;
+        }
+
+        .survey-unavailable {
+            margin: 0;
+            padding: 14px;
+            border-left: 3px solid var(--sage);
+            background: white;
+        }
+
         .decision-caveat {
             max-width: 780px;
             margin: 20px auto 0;
@@ -1575,17 +1680,15 @@
 
         .debate-pair {
             display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
+            grid-template-columns: minmax(0, 1fr);
             gap: 14px;
         }
 
         .debate-side {
             display: grid;
-            grid-template-columns: 42px 1fr;
-            grid-template-rows: auto 1fr;
+            grid-template-columns: minmax(0, 1fr) auto;
             align-items: center;
-            gap: 4px 12px;
-            min-height: 110px;
+            gap: 12px;
             padding: 16px;
             border-top: 3px solid var(--forest);
             background: var(--cream);
@@ -1596,12 +1699,50 @@
             background: #fbf1ed;
         }
 
+        .debate-person-info {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
         .debate-person {
             position: relative;
-            grid-row: 1 / span 2;
+            display: block;
+            flex: 0 0 40px;
             width: 40px;
             height: 54px;
             color: var(--forest);
+        }
+
+        .debate-toggle {
+            display: grid;
+            width: 48px;
+            height: 48px;
+            padding: 0;
+            place-items: center;
+            border: 0;
+            border-radius: 50%;
+            background: var(--forest);
+            color: white;
+            font-family: Arial, sans-serif;
+            font-size: 34px;
+            font-weight: 700;
+            line-height: 1;
+            cursor: pointer;
+            transition: transform .2s ease, background .2s ease;
+        }
+
+        .debate-side--against .debate-toggle {
+            background: #a85345;
+        }
+
+        .debate-toggle:hover {
+            transform: scale(1.08);
+        }
+
+        .debate-toggle:focus-visible {
+            outline: 2px solid var(--forest);
+            outline-offset: 3px;
         }
 
         .debate-side--against .debate-person {
@@ -1644,7 +1785,7 @@
         }
 
         .debate-argument {
-            grid-column: 2;
+            grid-column: 1 / -1;
             margin: 0;
             color: var(--ink);
             font-size: 13px;
@@ -1748,8 +1889,16 @@
                 font-size: clamp(50px, 13vw, 72px);
             }
 
-            .hero-image,
-            .hero-image img,
+            .hero-image {
+                min-height: 0;
+            }
+
+            .hero-image img {
+                height: auto;
+                min-height: 0;
+                object-fit: contain;
+            }
+
             .science-hero {
                 padding: 70px 7% 50px;
             }
@@ -2261,21 +2410,19 @@
 
         <section class="science-quiz" id="beslismodel" aria-labelledby="decision-title">
             <span class="science-number">INTERACTIEF BESLISMODEL</span>
-            <h3 id="decision-title">Een keuze, verschillende gevolgen.</h3>
-            <p>Lees de situatie en kies wat jij zou doen. Er zijn geen goede of foute antwoorden. Na je keuze zie je wat de mogelijke gevolgen zijn.</p>
+            <h3 id="decision-title">Jouw mening, vergeleken met de enquête.</h3>
+            <p>Beantwoord de vragen met ja of nee. Er zijn geen goede of foute meningen. Na je keuze kun je die vergelijken met de antwoorden uit onze enquête.</p>
 
             <div class="decision-model" data-decision-model>
                 <div class="decision-progress-row">
-                    <p class="decision-kicker" data-question-progress>VRAAG 1 / 3</p>
-                    <div class="decision-progress-track" role="progressbar" aria-label="Voortgang beslismodel" aria-valuemin="1" aria-valuemax="3" aria-valuenow="1" data-progress-bar>
+                    <p class="decision-kicker" data-question-progress>VRAAG 1 / 15</p>
+                    <div class="decision-progress-track" role="progressbar" aria-label="Voortgang beslismodel" aria-valuemin="1" aria-valuemax="15" aria-valuenow="1" data-progress-bar>
                         <div class="decision-progress-fill" data-progress-fill></div>
                     </div>
                     <button class="decision-restart" type="button" data-restart>Opnieuw starten</button>
                 </div>
-                <h4 data-question tabindex="-1">De genen van een mens beïnvloeden</h4>
-                <p class="decision-description" data-question-context>
-                    Zou jij het DNA van een embryo aanpassen om te voorkomen dat het kind een ernstige erfelijke ziekte krijgt, als de risico's hierbij onbekend zijn?
-                </p>
+                <p class="decision-category" data-question-category></p>
+                <h4 data-question tabindex="-1"></h4>
                 <p class="decision-question">Wat kies je?</p>
 
                 <div class="decision-options">
@@ -2284,12 +2431,16 @@
                 </div>
 
                 <div class="decision-result" data-decision-result role="status" aria-live="polite" hidden>
-                    <h4>Mogelijke gevolgen</h4>
-                    <p data-consequence></p>
+                    <h4>Jouw antwoord</h4>
+                    <p data-answer-summary></p>
+                    <section class="survey-results" data-survey-results aria-labelledby="survey-results-title">
+                        <h5 id="survey-results-title">Antwoorden uit onze enquête</h5>
+                        <div data-survey-results-content></div>
+                    </section>
                 </div>
                 <button class="science-button decision-next" type="button" data-next-question hidden>Volgende vraag →</button>
                 <p class="decision-complete" data-decision-complete role="status" hidden>
-                    Je hebt alle casussen doorlopen. Denk na over wat voor jou het zwaarst woog; er is geen goed of fout antwoord.
+                    Je hebt alle vragen beantwoord. De antwoorden van andere deelnemers zijn een vergelijking, geen oordeel over welke mening juist is.
                 </p>
             </div>
             <p class="decision-caveat">
@@ -2320,8 +2471,8 @@
                 <span class="science-number">04 / ETHIEK EN SAMENLEVING</span>
                 <h3>Twee mensen, twee meningen.</h3>
                 <p>
-                    Lees wat beide mensen belangrijk vinden. Welke kant begrijp
-                    jij het best?
+                    Lees eerst de situaties. Klik op het plusje naast een persoon
+                    om diens mening te zien. Welke kant begrijp jij het best?
                 </p>
             </div>
 
@@ -2336,14 +2487,20 @@
                     </p>
                     <div class="debate-pair">
                         <div class="debate-side">
-                            <span class="debate-person" aria-hidden="true"></span>
-                            <span class="debate-label">PATIËNT</span>
-                            <p class="debate-argument">"Ik wil minder pijnaanvallen en serieus meepraten over mijn behandeling."</p>
+                            <div class="debate-person-info">
+                                <span class="debate-person" aria-hidden="true"></span>
+                                <span class="debate-label">PATIËNT</span>
+                            </div>
+                            <button class="debate-toggle" type="button" aria-label="Toon de mening van de patiënt" data-debate-name="de patiënt" aria-expanded="false" aria-controls="debate-opinion-patient-casgevy" data-debate-toggle>+</button>
+                            <p class="debate-argument" id="debate-opinion-patient-casgevy" hidden>"Ik wil minder pijnaanvallen en serieus meepraten over mijn behandeling."</p>
                         </div>
                         <div class="debate-side debate-side--against">
-                            <span class="debate-person" aria-hidden="true"></span>
-                            <span class="debate-label">OUDERS</span>
-                            <p class="debate-argument">"We willen haar beschermen tegen zware risico's die nog niet helemaal bekend zijn."</p>
+                            <div class="debate-person-info">
+                                <span class="debate-person" aria-hidden="true"></span>
+                                <span class="debate-label">OUDERS</span>
+                            </div>
+                            <button class="debate-toggle" type="button" aria-label="Toon de mening van de ouders" data-debate-name="de ouders" aria-expanded="false" aria-controls="debate-opinion-parents-casgevy" data-debate-toggle>+</button>
+                            <p class="debate-argument" id="debate-opinion-parents-casgevy" hidden>"We willen haar beschermen tegen zware risico's die nog niet helemaal bekend zijn."</p>
                         </div>
                     </div>
                 </article>
@@ -2357,14 +2514,20 @@
                     </p>
                     <div class="debate-pair">
                         <div class="debate-side">
-                            <span class="debate-person" aria-hidden="true"></span>
-                            <span class="debate-label">ONDERZOEKER</span>
-                            <p class="debate-argument">"Onderzoek kan kennis opleveren en misschien later ernstige ziekte voorkomen."</p>
+                            <div class="debate-person-info">
+                                <span class="debate-person" aria-hidden="true"></span>
+                                <span class="debate-label">ONDERZOEKER</span>
+                            </div>
+                            <button class="debate-toggle" type="button" aria-label="Toon de mening van de onderzoeker" data-debate-name="de onderzoeker" aria-expanded="false" aria-controls="debate-opinion-researcher" data-debate-toggle>+</button>
+                            <p class="debate-argument" id="debate-opinion-researcher" hidden>"Onderzoek kan kennis opleveren en misschien later ernstige ziekte voorkomen."</p>
                         </div>
                         <div class="debate-side debate-side--against">
-                            <span class="debate-person" aria-hidden="true"></span>
-                            <span class="debate-label">OUDER</span>
-                            <p class="debate-argument">"Een fout kan worden doorgegeven aan volgende generaties; zij kunnen niet instemmen."</p>
+                            <div class="debate-person-info">
+                                <span class="debate-person" aria-hidden="true"></span>
+                                <span class="debate-label">OUDER</span>
+                            </div>
+                            <button class="debate-toggle" type="button" aria-label="Toon de mening van de ouder" data-debate-name="de ouder" aria-expanded="false" aria-controls="debate-opinion-parent" data-debate-toggle>+</button>
+                            <p class="debate-argument" id="debate-opinion-parent" hidden>"Een fout kan worden doorgegeven aan volgende generaties; zij kunnen niet instemmen."</p>
                         </div>
                     </div>
                 </article>
@@ -2378,14 +2541,20 @@
                     </p>
                     <div class="debate-pair">
                         <div class="debate-side">
-                            <span class="debate-person" aria-hidden="true"></span>
-                            <span class="debate-label">PATIËNT</span>
-                            <p class="debate-argument">"Geef voorrang aan wie nu het ziekst is; wachten kan mijn gezondheid schaden."</p>
+                            <div class="debate-person-info">
+                                <span class="debate-person" aria-hidden="true"></span>
+                                <span class="debate-label">PATIËNT</span>
+                            </div>
+                            <button class="debate-toggle" type="button" aria-label="Toon de mening van de patiënt" data-debate-name="de patiënt" aria-expanded="false" aria-controls="debate-opinion-patient-access" data-debate-toggle>+</button>
+                            <p class="debate-argument" id="debate-opinion-patient-access" hidden>"Geef voorrang aan wie nu het ziekst is; wachten kan mijn gezondheid schaden."</p>
                         </div>
                         <div class="debate-side debate-side--against">
-                            <span class="debate-person" aria-hidden="true"></span>
-                            <span class="debate-label">ZORGVERLENER</span>
-                            <p class="debate-argument">"Gebruik dezelfde eerlijke regels voor iedereen; anders telt urgentie zwaarder dan gelijke kansen."</p>
+                            <div class="debate-person-info">
+                                <span class="debate-person" aria-hidden="true"></span>
+                                <span class="debate-label">ZORGVERLENER</span>
+                            </div>
+                            <button class="debate-toggle" type="button" aria-label="Toon de mening van de zorgverlener" data-debate-name="de zorgverlener" aria-expanded="false" aria-controls="debate-opinion-provider" data-debate-toggle>+</button>
+                            <p class="debate-argument" id="debate-opinion-provider" hidden>"Gebruik dezelfde eerlijke regels voor iedereen; anders telt urgentie zwaarder dan gelijke kansen."</p>
                         </div>
                     </div>
                 </article>
@@ -2409,7 +2578,7 @@
                 <li><a href="https://www.who.int/publications/i/item/9789240030381" target="_blank" rel="noopener">WHO: aanbevelingen voor onderzoek naar menselijk DNA</a></li>
                 <li><a href="https://medlineplus.gov/genetics/understanding/inheritance/inheritancepatterns/" target="_blank" rel="noopener">MedlinePlus: uitleg over erfelijkheid en kansen per zwangerschap</a></li>
             </ul>
-            <p class="survey-note">Enquête: er zijn nog geen eigen enquêtegegevens op deze website verwerkt. Voeg resultaten pas toe nadat de antwoorden zijn verzameld en gecontroleerd.</p>
+            <p class="survey-note">Enquête: echte resultaten zijn nog niet toegevoegd. Zodra de antwoorden zijn verzameld en gecontroleerd, kun je de aantallen per dilemma invullen in het bestand assets/enquete-resultaten.js.</p>
             <p class="survey-note">Disclaimer: alle voorbeelden en animaties op deze pagina zijn vereenvoudigd weergegeven en geven de werkelijkheid niet volledig weer.</p>
             <h4>Beeldverantwoording</h4>
             <ul class="image-sources">
@@ -2559,6 +2728,7 @@
         </div>
     </main>
 
+    <script src="assets/enquete-resultaten.js"></script>
     <script>
         const crisprDemo = document.querySelector("[data-crispr-demo]");
         const crisprStage = crisprDemo.querySelector("[data-crispr-stage]");
@@ -2566,6 +2736,21 @@
         const crisprStatus = crisprDemo.querySelector("[data-crispr-status]");
         const crisprPreviousButton = crisprDemo.querySelector("[data-crispr-previous]");
         const crisprNextButton = crisprDemo.querySelector("[data-crispr-next]");
+        document.querySelectorAll("[data-debate-toggle]").forEach((button) => {
+            const opinion = document.getElementById(button.getAttribute("aria-controls"));
+            const person = button.dataset.debateName;
+            button.addEventListener("click", () => {
+                const isExpanded = button.getAttribute("aria-expanded") === "true";
+                opinion.hidden = isExpanded;
+                button.setAttribute("aria-expanded", String(!isExpanded));
+                button.textContent = isExpanded ? "+" : "−";
+                button.setAttribute(
+                    "aria-label",
+                    `${isExpanded ? "Toon" : "Verberg"} de mening van ${person}`
+                );
+            });
+        });
+
         const crisprStepDescriptions = [
             "Herkennen: het blauwe gids-RNA past bij de groene doelvolgorde. Het gele PAM-signaal (AGG) ligt er direct naast en is nodig om de plek te herkennen.",
             "Knippen: Cas9 knipt bij de groene doelvolgorde, vlak naast het gele PAM-signaal (AGG).",
@@ -2767,56 +2952,311 @@
         const decisionModel = document.querySelector("[data-decision-model]");
         const choiceButtons = decisionModel.querySelectorAll("[data-choice]");
         const resultPanel = decisionModel.querySelector("[data-decision-result]");
+        const surveyResultsContent = decisionModel.querySelector("[data-survey-results-content]");
         const nextQuestionButton = decisionModel.querySelector("[data-next-question]");
         const completionMessage = decisionModel.querySelector("[data-decision-complete]");
         const restartButton = decisionModel.querySelector("[data-restart]");
         const progressBar = decisionModel.querySelector("[data-progress-bar]");
         const progressFill = decisionModel.querySelector("[data-progress-fill]");
+        const minimumKnowledgeGroupResponses = 10;
         const decisionQuestions = [
             {
-                prompt: "De genen van een mens beïnvloeden",
-                context: "Zou jij het DNA van een embryo aanpassen om te voorkomen dat het kind een ernstige erfelijke ziekte krijgt, als de risico's hierbij onbekend zijn?",
-                choices: [
-                    {
-                        label: "Ja",
-                        consequence: "Een ernstige erfelijke ziekte zou mogelijk voorkomen kunnen worden. Tegelijk is de techniek onzeker: er kunnen onbedoelde veranderingen ontstaan en het toekomstige kind kan niet zelf instemmen."
-                    },
-                    {
-                        label: "Nee",
-                        consequence: "Je voorkomt dat het embryo wordt blootgesteld aan onbekende veranderingen. De erfelijke ziekte kan daardoor wel bij het kind ontstaan."
-                    }
-                ]
+                id: "medische-ziekten",
+                category: "Medische toepassingen en risico's",
+                prompt: "Vind je het verantwoord om genetische modificatie te gebruiken om erfelijke ziekten te behandelen?"
             },
             {
-                prompt: "Het uiterlijk van een mens beïnvloeden",
-                context: "Zou jij erfelijke eigenschappen van een embryo, zoals oogkleur en haarkleur, aanpassen als dit beschikbaar is?",
-                choices: [
-                    {
-                        label: "Ja",
-                        consequence: "Ouders krijgen meer invloed op eigenschappen van hun toekomstige kind. Zulke keuzes kunnen ook maatschappelijke druk vergroten om aan één ideaal uiterlijk te voldoen."
-                    },
-                    {
-                        label: "Nee",
-                        consequence: "Je voorkomt dat medische technieken worden gebruikt om uiterlijk te kiezen en beperkt de druk op kinderen om aan bepaalde schoonheidsidealen te voldoen."
-                    }
-                ]
+                id: "medische-risico-bijwerkingen",
+                category: "Medische toepassingen en risico's",
+                prompt: "Vind je het verantwoord om genetische modificatie te gebruiken om erfelijke ziekten te behandelen als de kans op ernstige bijwerkingen groot is?"
             },
             {
-                prompt: "Genetische modificatie bij toekomstige generaties",
-                context: "Zou jij aanpassingen aan embryo-DNA toestaan als die veranderingen ook aan toekomstige generaties worden doorgegeven?",
-                choices: [
-                    {
-                        label: "Ja",
-                        consequence: "Een verandering zou een erfelijke ziekte mogelijk uit families kunnen halen. Een onbedoelde verandering kan ook worden doorgegeven aan kinderen en kleinkinderen."
-                    },
-                    {
-                        label: "Nee",
-                        consequence: "Toekomstige generaties worden beschermd tegen onbekende veranderingen die zij zouden erven. Een erfelijke ziekte kan wel in de familie blijven voorkomen."
-                    }
-                ]
+                id: "medische-alternatieven",
+                category: "Medische toepassingen en risico's",
+                prompt: "Vind je het verantwoord om genetische modificatie te gebruiken als er ook andere behandelingen bestaan, maar die minder effectief zijn?"
+            },
+            {
+                id: "medische-onbekende-effecten-niet-ernstig",
+                category: "Medische toepassingen en risico's",
+                prompt: "Vind je het verantwoord om genetische modificatie toe te passen als de langetermijneffecten nog niet bekend zijn en de patiënt niet ernstig ziek is?"
+            },
+            {
+                id: "medische-onbekende-effecten-ernstig",
+                category: "Medische toepassingen en risico's",
+                prompt: "Vind je het verantwoord om genetische modificatie toe te passen als de langetermijneffecten nog niet bekend zijn en de patiënt ernstig ziek is?"
+            },
+            {
+                id: "medische-niet-levensbedreigend",
+                category: "Medische toepassingen en risico's",
+                prompt: "Vind je het verantwoord om genetische modificatie toe te passen bij aandoeningen die niet levensbedreigend zijn?"
+            },
+            {
+                id: "embryos-ziekte",
+                category: "Embryo's en toekomstige generaties",
+                prompt: "Vind je het verantwoord om het DNA van embryo's aan te passen om ernstige erfelijke aandoeningen te voorkomen?"
+            },
+            {
+                id: "embryos-toekomstige-generaties",
+                category: "Embryo's en toekomstige generaties",
+                prompt: "Vind je het verantwoord om het DNA van embryo's aan te passen als de veranderingen kunnen worden doorgegeven aan toekomstige generaties?"
+            },
+            {
+                id: "controlevraag-antwoordoptie-3",
+                category: "Controlevraag",
+                prompt: "Om te controleren of je de vraag zorgvuldig leest: moet je bij deze vraag antwoordoptie 3 kiezen?"
+            },
+            {
+                id: "gelijkheid-betaalbaarheid",
+                category: "Gelijkheid en niet-medische toepassingen",
+                prompt: "Vind je het verantwoord dat genetische behandelingen beschikbaar zijn voor mensen die ze kunnen betalen, ook als anderen dat niet kunnen?"
+            },
+            {
+                id: "niet-medisch-uiterlijk",
+                category: "Gelijkheid en niet-medische toepassingen",
+                prompt: "Vind je het verantwoord dat ouders genetische modificatie gebruiken om niet-medische eigenschappen van hun kind, zoals oogkleur of lengte, te beïnvloeden?"
+            },
+            {
+                id: "niet-gevaarlijke-beperkingen",
+                category: "Gelijkheid en niet-medische toepassingen",
+                prompt: "Vind je het verantwoord dat ouders genetische modificatie gebruiken om beperkingen te voorkomen die niet medisch gevaarlijk zijn?"
+            },
+            {
+                id: "overheid-doeleinden",
+                category: "Overheid en ethische afwegingen",
+                prompt: "Vind je het verantwoord dat de overheid bepaalt voor welke doeleinden genetische modificatie mag worden gebruikt?"
+            },
+            {
+                id: "verbod-niet-medisch-veilig",
+                category: "Overheid en ethische afwegingen",
+                prompt: "Vind je dat genetische modificatie voor niet-medische doeleinden verboden moet worden, ook als de techniek veilig is?"
+            },
+            {
+                id: "risico-versus-voordeel",
+                category: "Overheid en ethische afwegingen",
+                prompt: "Denk je dat de risico's van genetische modificatie groter zijn dan de voordelen?"
             }
         ];
+        const decisionChoices = [
+            { id: "ja", label: "Ja" },
+            { id: "nee", label: "Nee" }
+        ];
+        decisionQuestions.forEach((question) => {
+            question.choices = decisionChoices;
+        });
         let questionIndex = 0;
+
+        function validateSurveyCounts(counts, choiceIds, context) {
+            if (!counts || typeof counts !== "object" || Array.isArray(counts)) {
+                throw new Error(`${context}: antwoorden moeten als een object worden aangeleverd.`);
+            }
+
+            const keys = Object.keys(counts);
+            if (keys.length !== choiceIds.length || choiceIds.some((id) => !keys.includes(id))) {
+                throw new Error(`${context}: antwoordcategorieën komen niet overeen met het beslismodel.`);
+            }
+
+            choiceIds.forEach((id) => {
+                if (!Number.isSafeInteger(counts[id]) || counts[id] < 0) {
+                    throw new Error(`${context}: aantallen moeten niet-negatieve gehele getallen zijn.`);
+                }
+            });
+
+            return counts;
+        }
+
+        function getRoundedPercentages(counts, choiceIds, total) {
+            const percentages = choiceIds.map((id, index) => {
+                const exact = (counts[id] / total) * 100;
+                return { index, value: Math.floor(exact), remainder: exact - Math.floor(exact) };
+            });
+            const pointsToDistribute = 100 - percentages.reduce((sum, item) => sum + item.value, 0);
+
+            [...percentages]
+                .sort((first, second) => second.remainder - first.remainder || first.index - second.index)
+                .slice(0, pointsToDistribute)
+                .forEach((item) => {
+                    percentages[item.index].value += 1;
+                });
+
+            return percentages.map((item) => item.value);
+        }
+
+        function appendSurveyBars(container, question, counts, total, title) {
+            const group = document.createElement("div");
+            group.className = "survey-knowledge-group";
+
+            if (title) {
+                const heading = document.createElement("h6");
+                heading.textContent = title;
+                group.append(heading);
+            }
+
+            const percentages = getRoundedPercentages(
+                counts,
+                question.choices.map((choice) => choice.id),
+                total
+            );
+            const list = document.createElement("ul");
+            list.className = "survey-bars";
+
+            question.choices.forEach((choice, index) => {
+                const row = document.createElement("li");
+                row.className = "survey-bar-row";
+                const label = document.createElement("span");
+                label.textContent = choice.label;
+                const track = document.createElement("span");
+                track.className = "survey-bar-track";
+                track.setAttribute("aria-hidden", "true");
+                const fill = document.createElement("span");
+                fill.className = "survey-bar-fill";
+                fill.style.width = `${percentages[index]}%`;
+                track.append(fill);
+                const value = document.createElement("span");
+                value.className = "survey-bar-value";
+                value.textContent = `${percentages[index]}% · ${counts[choice.id]} ${counts[choice.id] === 1 ? "deelnemer" : "deelnemers"}`;
+                row.setAttribute(
+                    "aria-label",
+                    `${choice.label}: ${percentages[index]} procent, ${counts[choice.id]} ${counts[choice.id] === 1 ? "deelnemer" : "deelnemers"}`
+                );
+                row.append(label, track, value);
+                list.append(row);
+            });
+
+            group.append(list);
+            container.append(group);
+            return { percentages, maximumCount: Math.max(...question.choices.map((choice) => counts[choice.id])) };
+        }
+
+        function renderKnowledgeGroups(container, question, overallCounts) {
+            const groups = window.enqueteResultaten?.results?.[question.id]?.knowledgeGroups;
+            const groupNames = [
+                ["laag", "Lagere kennisscore"],
+                ["gemiddeld", "Gemiddelde kennisscore"],
+                ["hoog", "Hogere kennisscore"]
+            ];
+
+            if (!groups || typeof groups !== "object" || groups.linked !== true) {
+                return;
+            }
+
+            const validatedGroups = groupNames.map(([id, label]) => {
+                const counts = validateSurveyCounts(
+                    groups[id],
+                    question.choices.map((choice) => choice.id),
+                    label
+                );
+                const total = Object.values(counts).reduce((sum, count) => sum + count, 0);
+                if (!Number.isSafeInteger(total)) {
+                    throw new Error(`${question.id}: totaal aantal antwoorden is te groot.`);
+                }
+                return { id, label, counts, total };
+            });
+
+            const combinedByChoice = question.choices.map((choice) =>
+                validatedGroups.reduce((sum, group) => sum + group.counts[choice.id], 0)
+            );
+            if (combinedByChoice.some((count) => !Number.isSafeInteger(count))) {
+                throw new Error("De gekoppelde kennisscoregroepen bevatten ongeldige aantallen.");
+            }
+            if (combinedByChoice.some((count, index) => count > overallCounts[question.choices[index].id])) {
+                throw new Error("De gekoppelde kennisscoregroepen bevatten meer antwoorden dan de totale enquête.");
+            }
+            if (validatedGroups.some((group) => group.total < minimumKnowledgeGroupResponses)) {
+                return;
+            }
+
+            const section = document.createElement("section");
+            section.className = "survey-knowledge-results";
+            const heading = document.createElement("h5");
+            heading.textContent = "Antwoorden per kennisscore";
+            const note = document.createElement("p");
+            note.className = "survey-results-intro";
+            note.textContent = `Alleen getoond bij minimaal ${minimumKnowledgeGroupResponses} gekoppelde deelnemers per groep.`;
+            section.append(heading, note);
+
+            validatedGroups.forEach((group) => {
+                appendSurveyBars(section, question, group.counts, group.total, group.label);
+            });
+            container.append(section);
+        }
+
+        function renderSurveyResults(question, selectedChoiceId) {
+            surveyResultsContent.replaceChildren();
+            const dataFile = window.enqueteResultaten;
+            if (!dataFile || !dataFile.results) {
+                const error = document.createElement("p");
+                error.className = "survey-unavailable";
+                error.textContent = "De resultaten zijn niet beschikbaar: het enquêtegegevensbestand kon niet worden geladen.";
+                surveyResultsContent.append(error);
+                return;
+            }
+
+            const result = dataFile.results[question.id];
+            if (!result) {
+                const message = document.createElement("p");
+                message.className = "survey-unavailable";
+                message.textContent = "De echte enquêtegegevens voor dit dilemma zijn nog niet toegevoegd.";
+                surveyResultsContent.append(message);
+                return;
+            }
+
+            try {
+                const choiceIds = question.choices.map((choice) => choice.id);
+                const counts = validateSurveyCounts(result.counts, choiceIds, question.id);
+                const total = Object.values(counts).reduce((sum, count) => sum + count, 0);
+                if (!Number.isSafeInteger(total)) {
+                    throw new Error(`${question.id}: totaal aantal antwoorden is te groot.`);
+                }
+                if (total === 0) {
+                    const message = document.createElement("p");
+                    message.className = "survey-unavailable";
+                    message.textContent = "Er zijn nog geen geldige enquêteantwoorden voor dit dilemma.";
+                    surveyResultsContent.append(message);
+                    return;
+                }
+
+                const intro = document.createElement("p");
+                intro.className = "survey-results-intro";
+                intro.textContent = `${total} ${total === 1 ? "deelnemer heeft" : "deelnemers hebben"} deze vraag beantwoord.`;
+                surveyResultsContent.append(intro);
+
+                const chart = document.createElement("div");
+                chart.setAttribute("role", "group");
+                chart.setAttribute("aria-label", "Verdeling van enquêteantwoorden");
+                const summary = appendSurveyBars(chart, question, counts, total);
+                surveyResultsContent.append(chart);
+
+                const selectedCount = counts[selectedChoiceId];
+                const feedback = document.createElement("p");
+                feedback.className = "survey-feedback";
+                if (selectedCount === summary.maximumCount) {
+                    feedback.textContent = "Jouw keuze is een van de meest gekozen antwoorden. Dat is een vergelijking, geen oordeel over welk antwoord juist is.";
+                } else {
+                    feedback.textContent = "Jouw keuze hoort bij een kleinere groep deelnemers. Dat is een vergelijking, geen oordeel over welk antwoord juist is.";
+                }
+                surveyResultsContent.append(feedback);
+                try {
+                    renderKnowledgeGroups(surveyResultsContent, question, counts);
+                } catch (error) {
+                    console.error("Vergelijking per kennisscore kon niet worden weergegeven.", error);
+                    const message = document.createElement("p");
+                    message.className = "survey-unavailable";
+                    message.textContent = "De vergelijking per kennisscore is niet beschikbaar. Controleer de gekoppelde aantallen in assets/enquete-resultaten.js.";
+                    surveyResultsContent.append(message);
+                }
+
+                const note = document.createElement("p");
+                note.className = "survey-results-note";
+                note.textContent = "Bron: onze enquête. Deze deelnemers vormen niet noodzakelijk een representatieve afspiegeling van de Nederlandse bevolking. Jouw antwoord wordt niet opgeslagen of aan de enquêtegegevens toegevoegd.";
+                surveyResultsContent.append(note);
+            } catch (error) {
+                console.error("Enquêteresultaten konden niet worden weergegeven.", error);
+                const message = document.createElement("p");
+                message.className = "survey-unavailable";
+                message.textContent = "De enquêteresultaten konden niet worden weergegeven. Controleer de aantallen en antwoordcategorieën in assets/enquete-resultaten.js.";
+                surveyResultsContent.append(message);
+            }
+        }
 
         function showQuestion() {
             const question = decisionQuestions[questionIndex];
@@ -2825,8 +3265,8 @@
             progressBar.setAttribute("aria-valuemax", String(decisionQuestions.length));
             progressBar.setAttribute("aria-valuenow", String(questionIndex + 1));
             progressFill.style.width = `${((questionIndex + 1) / decisionQuestions.length) * 100}%`;
+            decisionModel.querySelector("[data-question-category]").textContent = question.category;
             decisionModel.querySelector("[data-question]").textContent = question.prompt;
-            decisionModel.querySelector("[data-question-context]").textContent = question.context;
             progressBar.setAttribute("aria-valuetext", `Vraag ${questionIndex + 1} van ${decisionQuestions.length}`);
 
             choiceButtons.forEach((button, index) => {
@@ -2835,6 +3275,7 @@
             });
 
             resultPanel.hidden = true;
+            surveyResultsContent.replaceChildren();
             nextQuestionButton.hidden = true;
             completionMessage.hidden = true;
         }
@@ -2850,7 +3291,8 @@
                     choiceButton.setAttribute("aria-pressed", String(choiceButton === button));
                 });
 
-                decisionModel.querySelector("[data-consequence]").textContent = outcome.consequence;
+                decisionModel.querySelector("[data-answer-summary]").textContent = `Je antwoord: ${outcome.label}.`;
+                renderSurveyResults(question, outcome.id);
                 resultPanel.hidden = false;
                 const isLastQuestion = questionIndex === decisionQuestions.length - 1;
                 nextQuestionButton.hidden = isLastQuestion;
