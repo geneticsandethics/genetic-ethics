@@ -1862,20 +1862,20 @@
             color: white;
         }
 
-        .cell-game-section {
+        .memory-game-section {
             max-width: 1120px;
             margin: auto;
             padding: 85px 7%;
             scroll-margin-top: 25px;
         }
 
-        .cell-game-section > p {
+        .memory-game-section > p {
             max-width: 700px;
             color: var(--muted);
             font-size: 15px;
         }
 
-        .cell-game-card {
+        .memory-game-panel {
             padding: clamp(16px, 3vw, 30px);
             border: 1px solid var(--line);
             border-radius: 10px;
@@ -1883,21 +1883,21 @@
             box-shadow: 0 15px 35px rgba(32, 55, 47, .08);
         }
 
-        .cell-game-hud {
+        .memory-game-toolbar {
             display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
+            grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 10px;
             margin-bottom: 16px;
         }
 
-        .cell-game-stat {
+        .memory-game-stat {
             padding: 10px 12px;
             border: 1px solid var(--line);
             border-radius: 6px;
             background: white;
         }
 
-        .cell-game-stat-label {
+        .memory-game-stat-label {
             display: block;
             margin-bottom: 4px;
             color: var(--muted);
@@ -1907,162 +1907,176 @@
             text-transform: uppercase;
         }
 
-        .cell-game-stat-value {
+        .memory-game-stat-value {
             color: var(--forest);
             font-family: 'Space Grotesk', sans-serif;
             font-size: 18px;
             font-weight: 700;
         }
 
-        .cell-game-board-wrap {
-            position: relative;
-            width: min(100%, 756px);
-            margin: 0 auto;
-            overflow: hidden;
-            border: 3px solid #244a3a;
-            border-radius: 8px;
-            background: #142720;
-            box-shadow: 0 12px 28px rgba(20, 39, 32, .2);
-        }
-
-        .cell-game-legend {
+        .memory-game-settings {
             display: flex;
             flex-wrap: wrap;
-            justify-content: center;
-            gap: 8px 18px;
-            max-width: 756px;
-            margin: 12px auto 0;
-            color: var(--forest);
-            font-size: 12px;
-            font-weight: 600;
+            align-items: end;
+            justify-content: space-between;
+            gap: 14px;
+            margin-bottom: 18px;
         }
 
-        .cell-game-legend-item {
-            display: inline-flex;
-            align-items: center;
+        .memory-game-level {
+            display: grid;
             gap: 6px;
-        }
-
-        .cell-game-virus-icon {
-            font-size: 18px;
-            line-height: 1;
-        }
-
-        .cell-game-canvas {
-            display: block;
-            width: 100%;
-            height: auto;
-            aspect-ratio: 21 / 15;
-            touch-action: none;
-        }
-
-        .cell-game-overlay {
-            position: absolute;
-            inset: 0;
-            display: grid;
-            overflow-y: auto;
-            place-items: center;
-            padding: clamp(12px, 4vw, 30px);
-            background: rgba(12, 27, 22, .82);
-        }
-
-        .cell-game-overlay[hidden] {
-            display: none;
-        }
-
-        .cell-game-dialog {
-            width: min(100%, 460px);
-            max-height: 100%;
-            overflow-y: auto;
-            padding: clamp(18px, 4vw, 30px);
-            border: 1px solid rgba(255, 255, 255, .55);
-            border-radius: 10px;
-            background: #fbfbf7;
-            box-shadow: 0 18px 55px rgba(0, 0, 0, .3);
-        }
-
-        .cell-game-dialog-kicker {
-            margin: 0 0 8px;
-            color: #64806d;
-            font-size: 10px;
+            color: var(--forest);
+            font-size: 13px;
             font-weight: 700;
-            letter-spacing: 1.4px;
-            text-transform: uppercase;
         }
 
-        .cell-game-dialog h4 {
-            margin: 0 0 12px;
-            color: #20372f;
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(22px, 5vw, 30px);
-        }
-
-        .cell-game-dialog p {
-            color: #56675e;
-            font-size: 14px;
-            line-height: 1.6;
-        }
-
-        .cell-game-dialog-actions {
-            display: grid;
-            gap: 9px;
-            margin-top: 18px;
-        }
-
-        .cell-game-button {
-            min-height: 44px;
-            padding: 10px 16px;
-            border: 1px solid #244a3a;
-            border-radius: 5px;
-            background: #244a3a;
-            color: white;
+        .memory-game-level select {
+            min-height: 46px;
+            min-width: 180px;
+            padding: 8px 36px 8px 12px;
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            background: white;
+            color: var(--forest);
             font: inherit;
-            font-size: 14px;
-            font-weight: 700;
-            text-align: left;
+        }
+
+        .memory-game-restart {
+            min-height: 46px;
+            padding: 10px 18px;
+        }
+
+        .memory-game-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 135px), 1fr));
+            gap: clamp(8px, 1.6vw, 14px);
+        }
+
+        .memory-card {
+            min-width: 0;
+            min-height: clamp(122px, 15vw, 160px);
+            padding: 0;
+            border: 0;
+            border-radius: 10px;
+            background: transparent;
+            color: var(--forest);
             cursor: pointer;
-            transition: background .18s ease, transform .18s ease;
+            perspective: 800px;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
         }
 
-        .cell-game-button:hover {
-            transform: translateY(-1px);
-            background: #17392b;
-        }
-
-        .cell-game-button:focus-visible {
-            outline: 3px solid #d7ef72;
+        .memory-card:focus-visible {
+            outline: 3px solid #6c8c62;
             outline-offset: 3px;
         }
 
-        .cell-game-controls {
-            max-width: 756px;
-            margin: 18px auto 0;
+        .memory-card:disabled {
+            cursor: default;
         }
 
-        .cell-game-help {
-            margin: 0;
-            color: var(--muted);
-            font-size: 12px;
+        .memory-card-inner {
+            position: relative;
+            display: block;
+            width: 100%;
+            min-height: inherit;
+            transform-style: preserve-3d;
+            transition: transform .42s cubic-bezier(.2, .7, .2, 1);
         }
 
-        .cell-game-status {
-            max-width: 756px;
+        .memory-card[aria-pressed="true"] .memory-card-inner,
+        .memory-card.is-matched .memory-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .memory-card-face {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 8px;
+            min-height: inherit;
+            padding: 12px;
+            overflow-wrap: anywhere;
+            border: 1px solid rgba(36, 74, 58, .18);
+            border-radius: 10px;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            box-shadow: 0 5px 14px rgba(32, 55, 47, .08);
+            text-align: center;
+        }
+
+        .memory-card-face--cover {
+            background: linear-gradient(145deg, #244a3a, #39634d);
+            color: #d7ef72;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(28px, 5vw, 40px);
+            font-weight: 700;
+        }
+
+        .memory-card-face--answer {
+            transform: rotateY(180deg);
+            background: white;
+            color: var(--forest);
+        }
+
+        .memory-game-icon {
+            color: #64806d;
+            font-size: clamp(24px, 4vw, 34px);
+            line-height: 1;
+        }
+
+        .memory-game-term {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(14px, 2vw, 17px);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .memory-game-definition {
+            font-size: clamp(12px, 1.7vw, 14px);
+            line-height: 1.4;
+        }
+
+        .memory-card.is-matched .memory-card-face--answer {
+            border-color: #78985f;
+            background: #e8f0dc;
+            box-shadow: inset 0 0 0 2px #78985f, 0 5px 14px rgba(32, 55, 47, .08);
+        }
+
+        .memory-game-status {
             min-height: 1.5em;
-            margin: 14px auto 0;
+            margin: 14px 0 0;
             color: var(--forest);
             font-size: 13px;
             font-weight: 600;
         }
 
         @media (max-width: 600px) {
-            .cell-game-section {
+            .memory-game-section {
                 padding: 60px 5%;
             }
 
-            .cell-game-hud {
+            .memory-game-toolbar {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
             }
-
+            .memory-game-settings {
+                align-items: stretch;
+                flex-direction: column;
+            }
+            .memory-game-level select,
+            .memory-game-restart {
+                width: 100%;
+            }
+            .memory-game-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+            .memory-card {
+                min-height: 152px;
+            }
         }
 
         @media (max-width: 760px) {
@@ -2312,7 +2326,7 @@
                 <a href="#dna">DNA</a>
                 <a href="#crispr">CRISPR-Cas9</a>
                 <a href="#medisch">Behandelingen</a>
-                <a href="#cell-man">Minigame</a>
+                <a href="#memoryspel">Memoryspel</a>
                 <a href="#beslismodel">Beslismodel</a>
                 <a href="#ethische-dilemma">Dilemma's</a>
             </div>
@@ -2652,61 +2666,45 @@
             </p>
         </section>
 
-        <section class="cell-game-section" id="cell-man" aria-labelledby="cell-game-title">
+        <section class="memory-game-section" id="memoryspel" aria-labelledby="memory-game-title">
             <span class="science-number">MINIGAME</span>
-            <h3 id="cell-game-title">Cell-Man: The Genetic Maze</h3>
+            <h3 id="memory-game-title">Memory: genetische modificatie</h3>
             <p>
-                Stuur je cel door het doolhof, verzamel DNA-fragmenten en ontwijk
-                de virusvijanden. Een CRISPR-power-up beschermt je tijdelijk.
-                Verzamel de helft van het DNA om de uitgang te openen.
+                Zoek de paren: combineer een genetisch begrip met de uitleg
+                die erbij hoort. Kies een niveau en test je geheugen.
             </p>
 
-            <div class="cell-game-card" data-cell-game>
-                <div class="cell-game-hud" aria-label="Spelstatus">
-                    <div class="cell-game-stat">
-                        <span class="cell-game-stat-label">Score</span>
-                        <span class="cell-game-stat-value" data-game-score>0</span>
+            <div class="memory-game-panel" data-memory-game>
+                <div class="memory-game-toolbar" aria-label="Spelstatus">
+                    <div class="memory-game-stat">
+                        <span class="memory-game-stat-label">Score</span>
+                        <span class="memory-game-stat-value" data-memory-score>0</span>
                     </div>
-                    <div class="cell-game-stat">
-                        <span class="cell-game-stat-label">Levens</span>
-                        <span class="cell-game-stat-value" data-game-lives>♥ ♥ ♥ ♥ ♥</span>
+                    <div class="memory-game-stat">
+                        <span class="memory-game-stat-label">Gevonden paren</span>
+                        <span class="memory-game-stat-value" data-memory-pairs>0 / 6</span>
                     </div>
-                    <div class="cell-game-stat">
-                        <span class="cell-game-stat-label">DNA-fragmenten</span>
-                        <span class="cell-game-stat-value" data-game-dna>0 / 0</span>
-                    </div>
-                </div>
-
-                <div class="cell-game-board-wrap">
-                    <canvas class="cell-game-canvas" width="840" height="600" data-game-canvas tabindex="0" aria-label="Cell-Man doolhof. Gebruik pijltjestoetsen of WASD om de cel te bewegen.">
-                        Je browser ondersteunt het canvas-element niet.
-                    </canvas>
-                    <div class="cell-game-overlay" data-game-overlay hidden>
-                        <section class="cell-game-dialog" role="dialog" aria-modal="true" aria-labelledby="cell-game-dialog-title">
-                            <p class="cell-game-dialog-kicker" data-game-dialog-kicker>Cell-Man</p>
-                            <h4 id="cell-game-dialog-title" data-game-dialog-title></h4>
-                            <p data-game-dialog-description></p>
-                            <div class="cell-game-dialog-actions" data-game-dialog-actions></div>
-                        </section>
+                    <div class="memory-game-stat">
+                        <span class="memory-game-stat-label">Pogingen</span>
+                        <span class="memory-game-stat-value" data-memory-moves>0</span>
                     </div>
                 </div>
 
-                <div class="cell-game-legend" aria-label="Uitleg spelonderdelen">
-                    <span class="cell-game-legend-item"><span class="cell-game-virus-icon" aria-hidden="true">🦠</span> Virusvijand: raak hem niet aan</span>
-                    <span class="cell-game-legend-item"><span aria-hidden="true">✦</span> CRISPR-power-up: tijdelijke bescherming</span>
-                    <span class="cell-game-legend-item"><span aria-hidden="true">●</span> DNA-fragment</span>
+                <div class="memory-game-settings">
+                    <label class="memory-game-level" for="memory-game-level">
+                        Niveau
+                        <select id="memory-game-level" data-memory-level>
+                            <option value="easy">Makkelijk · 6 paren</option>
+                            <option value="medium">Gemiddeld · 8 paren</option>
+                            <option value="hard">Moeilijk · 12 paren</option>
+                        </select>
+                    </label>
+                    <button class="science-button memory-game-restart" type="button" data-memory-restart>Opnieuw beginnen</button>
                 </div>
 
-                <div class="cell-game-controls">
-                    <p class="cell-game-help">
-                        Op telefoon veeg je met je vinger over het doolhof om
-                        een richting te kiezen. Op een computer gebruik je de
-                        pijltjestoetsen of WASD. Verzamel de helft van de
-                        DNA-fragmenten om de uitgang te openen.
-                    </p>
-                </div>
-                <p class="cell-game-status" data-game-status role="status" aria-live="polite">
-                    Druk op Start spel om te beginnen.
+                <div class="memory-game-grid" data-memory-grid aria-label="Memory-kaarten"></div>
+                <p class="memory-game-status" data-memory-status role="status" aria-live="polite">
+                    Draai twee kaartjes om en zoek het passende begrip.
                 </p>
             </div>
         </section>
@@ -2994,565 +2992,167 @@
     <script src="assets/enquete-resultaten.js"></script>
     <script>
 (() => {
-    const game = document.querySelector("[data-cell-game]");
-    if (!game) {
-        return;
-    }
+    const game = document.querySelector("[data-memory-game]");
+    if (!game) return;
 
-    const canvas = game.querySelector("[data-game-canvas]");
-    const context = canvas.getContext("2d");
-    const overlay = game.querySelector("[data-game-overlay]");
-    const dialogKicker = game.querySelector("[data-game-dialog-kicker]");
-    const dialogTitle = game.querySelector("[data-game-dialog-title]");
-    const dialogActions = game.querySelector("[data-game-dialog-actions]");
-    const scoreDisplay = game.querySelector("[data-game-score]");
-    const livesDisplay = game.querySelector("[data-game-lives]");
-    const dnaDisplay = game.querySelector("[data-game-dna]");
-    const statusDisplay = game.querySelector("[data-game-status]");
-
-    const mazeRows = [
-        "#####################",
-        "#.........#.........#",
-        "#.###.###.#.###.###.#",
-        "#...#...#...#...#...#",
-        "###.#.#.#####.#.#.###",
-        "#...#.#...#...#.#...#",
-        "#.###.###.#.###.###.#",
-        "#.....#...#...#.....#",
-        "###.#.#.#####.#.#.###",
-        "#...#.#...#...#.#...#",
-        "#.###.###.#.###.###.#",
-        "#...#...#...#...#...#",
-        "###.###.#####.###.###",
-        "#........#.........E#",
-        "#####################"
+    const grid = game.querySelector("[data-memory-grid]");
+    const levelSelect = game.querySelector("[data-memory-level]");
+    const scoreDisplay = game.querySelector("[data-memory-score]");
+    const pairsDisplay = game.querySelector("[data-memory-pairs]");
+    const movesDisplay = game.querySelector("[data-memory-moves]");
+    const status = game.querySelector("[data-memory-status]");
+    const restartButton = game.querySelector("[data-memory-restart]");
+    const pairs = [
+        { term: "DNA", icon: "🧬", definition: "DNA is de erfelijke code in je cellen. De code bevat instructies voor je lichaam." },
+        { term: "Gen", icon: "🧩", definition: "Een gen is een stukje DNA met een instructie, bijvoorbeeld voor het maken van een eiwit." },
+        { term: "Chromosoom", icon: "🧬", definition: "Een chromosoom is een lang DNA-molecuul dat strak opgerold in een cel ligt." },
+        { term: "Mutatie", icon: "🔤", definition: "Een mutatie is een verandering in de DNA-code. Die verandering heeft niet altijd gevolgen." },
+        { term: "Genetische modificatie", icon: "✂️", definition: "Bij genetische modificatie wordt DNA in een cel doelgericht aangepast." },
+        { term: "CRISPR-Cas9", icon: "🎯", definition: "CRISPR-Cas9 is een techniek waarmee DNA op een gekozen plek kan worden aangepast." },
+        { term: "Cas9", icon: "✂️", definition: "Cas9 is een eiwit dat DNA kan knippen wanneer het naar de juiste plek is geleid." },
+        { term: "Guide-RNA", icon: "🧭", definition: "Guide-RNA helpt Cas9 de bedoelde plek in het DNA te vinden." },
+        { term: "DNA-herstel", icon: "🩹", definition: "Na een DNA-knip probeert de cel het DNA te herstellen. Daarbij kan de code veranderen." },
+        { term: "Off-target-effect", icon: "⚠️", definition: "Een off-target-effect is een onbedoelde verandering op een andere plek in het DNA." },
+        { term: "Gentherapie", icon: "🧬", definition: "Gentherapie gebruikt genetisch materiaal om een aandoening te behandelen." },
+        { term: "Stamcel", icon: "🌱", definition: "Een stamcel kan zich delen en ontwikkelen tot bepaalde andere soorten cellen." }
     ];
-    const columnCount = 21;
-    const rowCount = 15;
-    const maximumLives = 5;
-    const start = { x: 1, y: 1 };
-    const exit = { x: 19, y: 13 };
-    const enemyHomes = [
-        { x: 9, y: 3, color: "#ff6875" },
-        { x: 11, y: 7, color: "#ff9e5e" },
-        { x: 9, y: 11, color: "#d28aff" }
-    ];
-    const powerupPositions = [
-        { x: 5, y: 1 },
-        { x: 15, y: 7 },
-        { x: 5, y: 13 }
-    ];
-    const directions = {
-        up: { x: 0, y: -1, keys: ["ArrowUp", "w", "W"] },
-        down: { x: 0, y: 1, keys: ["ArrowDown", "s", "S"] },
-        left: { x: -1, y: 0, keys: ["ArrowLeft", "a", "A"] },
-        right: { x: 1, y: 0, keys: ["ArrowRight", "d", "D"] }
-    };
-    const cellSize = canvas.width / columnCount;
-    let walls;
-    let pellets;
-    let powerups;
-    let player;
-    let enemies;
+    const levelPairCounts = { easy: 6, medium: 8, hard: 12 };
+    let firstCard = null;
+    let secondCard = null;
+    let locked = false;
+    let moves = 0;
     let score = 0;
-    let lives = 5;
-    let dnaCollected = 0;
-    let totalDna = 0;
-    let requiredDna = 0;
-    let powerUntil = 0;
-    let invulnerableUntil = 0;
-    let direction = null;
-    let running = false;
-    let lastMove = 0;
-    let lastEnemyMove = 0;
-    let animationFrame = 0;
+    let matchedPairs = 0;
+    let resetTimeout = 0;
 
-    function keyFor(x, y) {
-        return `${x},${y}`;
-    }
-
-    function getOpenCells() {
-        const cells = [];
-        mazeRows.forEach((row, y) => {
-            [...row].forEach((tile, x) => {
-                if (tile !== "#") {
-                    cells.push({ x, y });
-                }
-            });
-        });
-        return cells;
-    }
-
-    function distancesFrom(origin) {
-        const distances = new Map([[keyFor(origin.x, origin.y), 0]]);
-        const queue = [origin];
-        for (let index = 0; index < queue.length; index += 1) {
-            const cell = queue[index];
-            const distance = distances.get(keyFor(cell.x, cell.y));
-            Object.values(directions).forEach((step) => {
-                const next = { x: cell.x + step.x, y: cell.y + step.y };
-                const key = keyFor(next.x, next.y);
-                if (
-                    next.x >= 0 &&
-                    next.x < columnCount &&
-                    next.y >= 0 &&
-                    next.y < rowCount &&
-                    mazeRows[next.y][next.x] !== "#" &&
-                    !distances.has(key)
-                ) {
-                    distances.set(key, distance + 1);
-                    queue.push(next);
-                }
-            });
+    function shuffle(cards) {
+        for (let index = cards.length - 1; index > 0; index -= 1) {
+            const randomIndex = Math.floor(Math.random() * (index + 1));
+            [cards[index], cards[randomIndex]] = [cards[randomIndex], cards[index]];
         }
-        return distances;
+        return cards;
     }
 
-    function createBoard() {
-        walls = mazeRows.map((row) => [...row].map((tile) => tile === "#"));
-        const openCells = getOpenCells();
-        const reserved = new Set([keyFor(start.x, start.y), keyFor(exit.x, exit.y)]);
-        const powers = powerupPositions.filter((cell) => !walls[cell.y]?.[cell.x]);
-        powers.forEach((cell) => reserved.add(keyFor(cell.x, cell.y)));
-        powerups = new Set(powers.map((cell) => keyFor(cell.x, cell.y)));
-        const dnaCells = openCells.filter((cell) => !reserved.has(keyFor(cell.x, cell.y)));
-        pellets = new Set(dnaCells.map((cell) => keyFor(cell.x, cell.y)));
-        totalDna = pellets.size;
-        requiredDna = Math.ceil(totalDna * .5);
-        return pellets.size;
+    function createCard(pair, kind) {
+        const card = document.createElement("button");
+        card.type = "button";
+        card.className = "memory-card";
+        card.dataset.pair = pair.term;
+        card.dataset.kind = kind;
+        card.setAttribute("aria-pressed", "false");
+        card.setAttribute("aria-label", "Kaartje dicht");
+
+        const inner = document.createElement("span");
+        inner.className = "memory-card-inner";
+        inner.setAttribute("aria-hidden", "true");
+        const cover = document.createElement("span");
+        cover.className = "memory-card-face memory-card-face--cover";
+        cover.setAttribute("aria-hidden", "true");
+        cover.textContent = "?";
+        const answer = document.createElement("span");
+        answer.className = "memory-card-face memory-card-face--answer";
+        if (kind === "term") {
+            const icon = document.createElement("span");
+            icon.className = "memory-game-icon";
+            icon.setAttribute("aria-hidden", "true");
+            icon.textContent = pair.icon;
+            const term = document.createElement("span");
+            term.className = "memory-game-term";
+            term.textContent = pair.term;
+            answer.append(icon, term);
+            card.setAttribute("aria-label", "Begripkaartje dicht");
+        } else {
+            const definition = document.createElement("span");
+            definition.className = "memory-game-definition";
+            definition.textContent = pair.definition;
+            answer.append(definition);
+            card.setAttribute("aria-label", "Uitlegkaartje dicht");
+        }
+        inner.append(cover, answer);
+        card.append(inner);
+        card.addEventListener("click", () => revealCard(card));
+        return card;
     }
 
-    function updateHud() {
+    function updateScoreboard(pairCount) {
         scoreDisplay.textContent = String(score);
-        livesDisplay.textContent = `${"♥ ".repeat(lives).trim()}${"♡ ".repeat(maximumLives - lives).trim()}`.trim();
-        dnaDisplay.textContent = `${dnaCollected} / ${requiredDna}`;
-        if (running) {
-            statusDisplay.textContent = powerUntil > performance.now()
-                ? "CRISPR-bescherming actief — virussen kunnen je tijdelijk niet raken."
-                : dnaCollected >= requiredDna
-                    ? "De uitgang is open! Ga naar de groene deur."
-                    : `Verzamel nog ${requiredDna - dnaCollected} DNA-fragmenten om de uitgang te openen.`;
-        }
-    }
-
-    function showDialog(kicker, title, description, actions) {
-        running = false;
-        clearDirection();
-        dialogKicker.textContent = kicker;
-        dialogTitle.textContent = title;
-        dialogActions.replaceChildren();
-        const descriptionElement = game.querySelector("[data-game-dialog-description]");
-        if (descriptionElement) {
-            descriptionElement.hidden = !description;
-            descriptionElement.textContent = description || "";
-        }
-        actions.forEach(({ label, onClick }) => {
-            const button = document.createElement("button");
-            button.type = "button";
-            button.className = "cell-game-button";
-            button.textContent = label;
-            button.addEventListener("click", onClick);
-            dialogActions.append(button);
-        });
-        overlay.hidden = false;
-        dialogActions.querySelector("button")?.focus();
-    }
-
-    function hideDialog() {
-        overlay.hidden = true;
-        running = true;
-        clearDirection();
-        lastMove = performance.now();
-        lastEnemyMove = lastMove;
-        draw();
-        animationFrame = requestAnimationFrame(tick);
-        game.querySelector("[data-game-canvas]").focus({ preventScroll: true });
+        pairsDisplay.textContent = `${matchedPairs} / ${pairCount}`;
+        movesDisplay.textContent = String(moves);
     }
 
     function startGame() {
+        window.clearTimeout(resetTimeout);
+        firstCard = null;
+        secondCard = null;
+        locked = false;
+        moves = 0;
         score = 0;
-        lives = maximumLives;
-        dnaCollected = 0;
-        powerUntil = 0;
-        invulnerableUntil = 0;
-        clearDirection();
-        createBoard();
-        player = { ...start };
-        enemies = enemyHomes.map((home) => ({
-            ...home,
-            x: home.x,
-            y: home.y,
-            homeX: home.x,
-            homeY: home.y
-        }));
-        updateHud();
-        statusDisplay.textContent = "Verzamel DNA-fragmenten en bereik de uitgang.";
-        hideDialog();
-        draw();
+        matchedPairs = 0;
+        const pairCount = levelPairCounts[levelSelect.value] ?? levelPairCounts.easy;
+        const cards = pairs.slice(0, pairCount).flatMap((pair) => [
+            createCard(pair, "term"),
+            createCard(pair, "definition")
+        ]);
+        grid.replaceChildren(...shuffle(cards));
+        updateScoreboard(pairCount);
+        status.textContent = "Draai twee kaartjes om en zoek het passende begrip.";
     }
 
-    function showWelcome() {
-        showDialog(
-            "LEER EN SPEEL",
-            "Cell-Man: The Genetic Maze",
-            `Verzamel ${requiredDna} DNA-fragmenten en bereik de uitgang. De virusvijanden achtervolgen je; CRISPR-power-ups beschermen je tijdelijk. Je hebt 5 levens.`,
-            [{ label: "Start spel", onClick: startGame }]
-        );
-    }
+    function revealCard(card) {
+        if (locked || card.disabled || card === firstCard || card.getAttribute("aria-pressed") === "true") return;
+        card.setAttribute("aria-pressed", "true");
+        card.querySelector(".memory-card-inner").removeAttribute("aria-hidden");
+        card.setAttribute("aria-label", card.dataset.kind === "term"
+            ? `Begrip: ${card.dataset.pair}`
+            : `Uitleg bij een begrip: ${pairs.find((pair) => pair.term === card.dataset.pair).definition}`);
 
-    function isWall(x, y) {
-        return walls[y]?.[x] !== false;
-    }
-
-    function getCellCenter(x, y) {
-        return { x: (x + 0.5) * cellSize, y: (y + 0.5) * cellSize };
-    }
-
-    function addRoundedRectPath(x, y, width, height, radius) {
-        const corner = Math.min(radius, width / 2, height / 2);
-        if (typeof context.roundRect === "function") {
-            context.roundRect(x, y, width, height, corner);
+        if (!firstCard) {
+            firstCard = card;
             return;
         }
 
-        context.moveTo(x + corner, y);
-        context.lineTo(x + width - corner, y);
-        context.quadraticCurveTo(x + width, y, x + width, y + corner);
-        context.lineTo(x + width, y + height - corner);
-        context.quadraticCurveTo(x + width, y + height, x + width - corner, y + height);
-        context.lineTo(x + corner, y + height);
-        context.quadraticCurveTo(x, y + height, x, y + height - corner);
-        context.lineTo(x, y + corner);
-        context.quadraticCurveTo(x, y, x + corner, y);
-        context.closePath();
-    }
-
-    function draw() {
-        context.clearRect(0, 0, canvas.width, canvas.height);
-        context.fillStyle = "#142720";
-        context.fillRect(0, 0, canvas.width, canvas.height);
-
-        walls.forEach((row, y) => row.forEach((wall, x) => {
-            if (wall) {
-                const padding = 2;
-                const left = x * cellSize + padding;
-                const top = y * cellSize + padding;
-                context.fillStyle = "#244a3a";
-                context.beginPath();
-                addRoundedRectPath(left, top, cellSize - padding * 2, cellSize - padding * 2, 5);
-                context.fill();
-                context.strokeStyle = "#41644f";
-                context.lineWidth = 1.5;
-                context.stroke();
-            }
-        }));
-
-        pellets.forEach((key) => {
-            const [x, y] = key.split(",").map(Number);
-            const center = getCellCenter(x, y);
-            context.fillStyle = "#d7ef72";
-            context.beginPath();
-            context.arc(center.x, center.y, cellSize * .14, 0, Math.PI * 2);
-            context.fill();
-        });
-
-        powerups.forEach((key) => {
-            const [x, y] = key.split(",").map(Number);
-            const center = getCellCenter(x, y);
-            context.fillStyle = "#ed8bf1";
-            context.beginPath();
-            for (let point = 0; point < 10; point += 1) {
-                const radius = point % 2 === 0 ? cellSize * .32 : cellSize * .14;
-                const angle = -Math.PI / 2 + point * Math.PI / 5;
-                const px = center.x + Math.cos(angle) * radius;
-                const py = center.y + Math.sin(angle) * radius;
-                if (point === 0) context.moveTo(px, py);
-                else context.lineTo(px, py);
-            }
-            context.closePath();
-            context.fill();
-        });
-
-        const exitCenter = getCellCenter(exit.x, exit.y);
-        const exitOpen = dnaCollected >= requiredDna;
-        context.fillStyle = exitOpen ? "#d7ef72" : "#64806d";
-        context.beginPath();
-        addRoundedRectPath(exitCenter.x - cellSize * .34, exitCenter.y - cellSize * .38, cellSize * .68, cellSize * .76, 5);
-        context.fill();
-        context.fillStyle = "#142720";
-        context.beginPath();
-        context.arc(exitCenter.x + cellSize * .15, exitCenter.y, cellSize * .035, 0, Math.PI * 2);
-        context.fill();
-
-        enemies.forEach((enemy) => drawEnemy(enemy));
-        drawPlayer();
-    }
-
-    function drawPlayer() {
-        const center = getCellCenter(player.x, player.y);
-        if (performance.now() < invulnerableUntil && Math.floor(performance.now() / 100) % 2 === 0) {
-            return;
-        }
-        const shielded = powerUntil > performance.now();
-        if (shielded) {
-            context.strokeStyle = "#65d6cf";
-            context.lineWidth = cellSize * .07;
-            context.beginPath();
-            context.arc(center.x, center.y, cellSize * .43, 0, Math.PI * 2);
-            context.stroke();
-        }
-        const facing = direction ? Math.atan2(direction.y, direction.x) : 0;
-        const mouth = .22 + Math.abs(Math.sin(performance.now() / 100)) * .22;
-        context.fillStyle = shielded ? "#7ce7e2" : "#d7ef72";
-        context.beginPath();
-        context.moveTo(center.x, center.y);
-        context.arc(center.x, center.y, cellSize * .36, facing + mouth, facing + Math.PI * 2 - mouth);
-        context.closePath();
-        context.fill();
-    }
-
-    function drawEnemy(enemy) {
-        const center = getCellCenter(enemy.x, enemy.y);
-        const frightened = powerUntil > performance.now();
-        const radius = cellSize * .26;
-        const spikeRadius = cellSize * .37;
-        context.fillStyle = frightened ? "#568bea" : enemy.color;
-        context.beginPath();
-        for (let spike = 0; spike < 24; spike += 1) {
-            const angle = spike * Math.PI / 12;
-            const currentRadius = spike % 2 === 0 ? spikeRadius : radius * .83;
-            const x = center.x + Math.cos(angle) * currentRadius;
-            const y = center.y + Math.sin(angle) * currentRadius;
-            if (spike === 0) context.moveTo(x, y);
-            else context.lineTo(x, y);
-        }
-        context.closePath();
-        context.fill();
-        context.fillStyle = frightened ? "#dceaff" : "#fff2df";
-        context.beginPath();
-        context.arc(center.x, center.y, radius * .74, 0, Math.PI * 2);
-        context.fill();
-        context.fillStyle = frightened ? "#274d80" : "#6a2639";
-        context.beginPath();
-        context.arc(center.x - radius * .2, center.y - radius * .1, radius * .11, 0, Math.PI * 2);
-        context.arc(center.x + radius * .2, center.y - radius * .1, radius * .11, 0, Math.PI * 2);
-        context.arc(center.x, center.y + radius * .2, radius * .1, 0, Math.PI * 2);
-        context.fill();
-    }
-
-    function collectAtPlayer(now) {
-        const key = keyFor(player.x, player.y);
-        if (pellets.delete(key)) {
-            dnaCollected += 1;
-            score += 10;
-        }
-        if (powerups.delete(key)) {
-            powerUntil = now + 10000;
-            score += 50;
-            statusDisplay.textContent = "CRISPR-power-up! Je bent 10 seconden beschermd tegen de virusvijanden.";
-        }
-        if (player.x === exit.x && player.y === exit.y) {
-            if (dnaCollected >= requiredDna) {
-                finishGame();
-                return true;
-            }
-            statusDisplay.textContent = `Uitgang gesloten: verzamel nog ${requiredDna - dnaCollected} DNA-fragmenten.`;
-        }
-        return false;
-    }
-
-    function getNextStep(cell, target) {
-        const queue = [cell];
-        const previous = new Map([[keyFor(cell.x, cell.y), null]]);
-        for (let index = 0; index < queue.length; index += 1) {
-            const current = queue[index];
-            if (current.x === target.x && current.y === target.y) {
-                break;
-            }
-            Object.values(directions).forEach((step) => {
-                const next = { x: current.x + step.x, y: current.y + step.y };
-                const key = keyFor(next.x, next.y);
-                if (!isWall(next.x, next.y) && !previous.has(key)) {
-                    previous.set(key, keyFor(current.x, current.y));
-                    queue.push(next);
-                }
-            });
-        }
-        let key = keyFor(target.x, target.y);
-        if (!previous.has(key)) {
-            return cell;
-        }
-        while (previous.get(key) && previous.get(key) !== keyFor(cell.x, cell.y)) {
-            key = previous.get(key);
-        }
-        const [x, y] = key.split(",").map(Number);
-        return { x, y };
-    }
-
-    function moveEnemies() {
-        enemies.forEach((enemy) => {
-            const next = getNextStep(enemy, player);
-            enemy.x = next.x;
-            enemy.y = next.y;
-        });
-    }
-
-    function checkEnemyCollision(now) {
-        const enemy = enemies.find((candidate) => candidate.x === player.x && candidate.y === player.y);
-        if (!enemy) {
-            return;
-        }
-        if (powerUntil > now) {
+        secondCard = card;
+        locked = true;
+        moves += 1;
+        const pairCount = levelPairCounts[levelSelect.value] ?? levelPairCounts.easy;
+        if (firstCard.dataset.pair === secondCard.dataset.pair && firstCard.dataset.kind !== secondCard.dataset.kind) {
+            firstCard.classList.add("is-matched");
+            secondCard.classList.add("is-matched");
+            firstCard.disabled = true;
+            secondCard.disabled = true;
+            matchedPairs += 1;
             score += 100;
-            enemy.x = enemy.homeX;
-            enemy.y = enemy.homeY;
-            updateHud();
-            statusDisplay.textContent = "Virus gevangen tijdens je CRISPR-bescherming! +100 punten.";
-            return;
-        }
-        if (invulnerableUntil > now) {
-            return;
-        }
-        lives -= 1;
-        invulnerableUntil = now + 1800;
-        player = { ...start };
-        enemies.forEach((current) => {
-            current.x = current.homeX;
-            current.y = current.homeY;
-        });
-        updateHud();
-        if (lives === 0) {
-            running = false;
-            cancelAnimationFrame(animationFrame);
-            statusDisplay.textContent = "Game over. Probeer het doolhof opnieuw!";
-            showDialog("GAME OVER", "De virussen hebben je ingehaald.", `Je eindscore was ${score}. Start opnieuw en gebruik de CRISPR-power-ups om jezelf tijdelijk te beschermen.`, [
-                { label: "Opnieuw spelen", onClick: startGame }
-            ]);
-        } else {
-            statusDisplay.textContent = `Een virus raakte je. Je hebt nog ${lives} ${lives === 1 ? "leven" : "levens"}.`;
-        }
-    }
-
-    function finishGame() {
-        running = false;
-        cancelAnimationFrame(animationFrame);
-        statusDisplay.textContent = "Level voltooid! Je hebt de uitgang bereikt.";
-        showDialog(
-            "LEVEL VOLTOOID",
-            "Je bent uit het genetische doolhof!",
-            `Je verzamelde ${dnaCollected} DNA-fragmenten en bereikte de uitgang. Je eindscore is ${score}.`,
-            [{ label: "Opnieuw spelen", onClick: startGame }]
-        );
-    }
-
-    function tick(now) {
-        if (!running) {
-            return;
-        }
-        if (document.hidden) {
-            lastMove = now;
-            lastEnemyMove = now;
-            animationFrame = requestAnimationFrame(tick);
-            return;
-        }
-        if (now - lastMove >= 145) {
-            lastMove = now;
-            if (direction) {
-                const nextX = player.x + direction.x;
-                const nextY = player.y + direction.y;
-                if (!isWall(nextX, nextY)) {
-                    player.x = nextX;
-                    player.y = nextY;
-                }
+            status.textContent = `Goed gevonden! ${matchedPairs} van de ${pairCount} paren gevonden.`;
+            firstCard = null;
+            secondCard = null;
+            locked = false;
+            updateScoreboard(pairCount);
+            if (matchedPairs === pairCount) {
+                status.textContent = `Geweldig gedaan! Je vond alle ${pairCount} paren in ${moves} pogingen en scoorde ${score} punten.`;
             }
-            if (collectAtPlayer(now)) {
-                updateHud();
-                draw();
-                animationFrame = requestAnimationFrame(tick);
-                return;
-            }
-            if (now - lastEnemyMove >= 650) {
-                lastEnemyMove = now;
-                moveEnemies();
-            }
-            checkEnemyCollision(now);
-            updateHud();
-        }
-        draw();
-        animationFrame = requestAnimationFrame(tick);
-    }
-
-    function setDirection(name) {
-        if (!running || !overlay.hidden) {
             return;
         }
-        direction = directions[name] ?? null;
+
+        status.textContent = "Geen paar. De kaartjes draaien zo weer om.";
+        updateScoreboard(pairCount);
+        resetTimeout = window.setTimeout(() => {
+            [firstCard, secondCard].forEach((openCard) => {
+                openCard.setAttribute("aria-pressed", "false");
+                openCard.querySelector(".memory-card-inner").setAttribute("aria-hidden", "true");
+                openCard.setAttribute("aria-label", openCard.dataset.kind === "term"
+                    ? "Begripkaartje dicht"
+                    : "Uitlegkaartje dicht");
+            });
+            firstCard = null;
+            secondCard = null;
+            locked = false;
+            status.textContent = "Probeer opnieuw een passend begrip en uitleg te vinden.";
+        }, 900);
     }
 
-    function clearDirection() {
-        direction = null;
-    }
-
-    document.addEventListener("keydown", (event) => {
-        const name = Object.keys(directions).find((key) => directions[key].keys.includes(event.key));
-        if (!name || overlay.hidden === false) {
-            return;
-        }
-        event.preventDefault();
-        setDirection(name);
-    });
-
-    window.addEventListener("blur", clearDirection);
-
-    let swipeStart = null;
-    canvas.addEventListener("pointerdown", (event) => {
-        if (!running || !overlay.hidden || !event.isPrimary) {
-            return;
-        }
-        event.preventDefault();
-        canvas.setPointerCapture(event.pointerId);
-        swipeStart = { x: event.clientX, y: event.clientY };
-    });
-
-    canvas.addEventListener("pointerup", (event) => {
-        if (!swipeStart) {
-            return;
-        }
-        const deltaX = event.clientX - swipeStart.x;
-        const deltaY = event.clientY - swipeStart.y;
-        swipeStart = null;
-        const threshold = 12;
-        if (Math.max(Math.abs(deltaX), Math.abs(deltaY)) < threshold) {
-            return;
-        }
-        const name = Math.abs(deltaX) > Math.abs(deltaY)
-            ? deltaX > 0 ? "right" : "left"
-            : deltaY > 0 ? "down" : "up";
-        setDirection(name);
-    });
-
-    canvas.addEventListener("pointercancel", () => {
-        swipeStart = null;
-    });
-    createBoard();
-    if (mazeRows.length !== rowCount || mazeRows.some((row) => row.length !== columnCount)) {
-        throw new Error("Cell-Man doolhof heeft ongeldige afmetingen.");
-    }
-    player = { ...start };
-    enemies = enemyHomes.map((home) => ({
-        ...home,
-        x: home.x,
-        y: home.y,
-        homeX: home.x,
-        homeY: home.y
-    }));
-    const reachableCells = distancesFrom(start);
-    if (!reachableCells.has(keyFor(exit.x, exit.y))) {
-        throw new Error("Cell-Man configuratie mist een bereikbare uitgang.");
-    }
-    showWelcome();
-    updateHud();
-    draw();
+    levelSelect.addEventListener("change", startGame);
+    restartButton.addEventListener("click", startGame);
+    startGame();
 })();
     </script>
     <script>
