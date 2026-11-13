@@ -4172,7 +4172,51 @@
         </div>
     </main>
 
-    <script src="assets/enquete-resultaten.js"></script>
+    <script>
+        window.enqueteResultaten = {
+            results: {
+                "medische-ziekten": {
+                    counts: { "1": 1, "2": 8, "3": 19, "4": 52, "5": 37 }
+                },
+                "medische-risico-bijwerkingen": {
+                    counts: { "1": 19, "2": 44, "3": 37, "4": 12, "5": 4 }
+                },
+                "medische-onbekende-effecten-niet-ernstig": {
+                    counts: { "1": 33, "2": 45, "3": 27, "4": 7, "5": 4 }
+                },
+                "medische-onbekende-effecten-ernstig": {
+                    counts: { "1": 18, "2": 26, "3": 29, "4": 32, "5": 11 }
+                },
+                "medische-niet-levensbedreigend": {
+                    counts: { "1": 41, "2": 21, "3": 28, "4": 17, "5": 9 }
+                },
+                "embryos-ziekte": {
+                    counts: { "1": 11, "2": 6, "3": 30, "4": 45, "5": 24 }
+                },
+                "embryos-toekomstige-generaties": {
+                    counts: { "1": 12, "2": 18, "3": 53, "4": 24, "5": 9 }
+                },
+                "gelijkheid-betaalbaarheid": {
+                    counts: { "1": 62, "2": 31, "3": 12, "4": 8, "5": 3 }
+                },
+                "niet-medisch-uiterlijk": {
+                    counts: { "1": 92, "2": 12, "3": 6, "4": 3, "5": 3 }
+                },
+                "niet-gevaarlijke-beperkingen": {
+                    counts: { "1": 18, "2": 30, "3": 40, "4": 17, "5": 11 }
+                },
+                "overheid-doeleinden": {
+                    counts: { "1": 1, "2": 3, "3": 16, "4": 24, "5": 72 }
+                },
+                "verbod-niet-medisch-veilig": {
+                    counts: { "1": 1, "2": 10, "3": 25, "4": 27, "5": 53 }
+                },
+                "risico-versus-voordeel": {
+                    counts: { "1": 6, "2": 21, "3": 44, "4": 28, "5": 16 }
+                }
+            }
+        };
+    </script>
     <script>
         (() => {
             const form = document.querySelector("[data-site-search]");
@@ -5087,14 +5131,14 @@
                     console.error("Vergelijking per kennisscore kon niet worden weergegeven.", error);
                     const message = document.createElement("p");
                     message.className = "survey-unavailable";
-                    message.textContent = "De vergelijking per kennisscore is niet beschikbaar. Controleer de gekoppelde aantallen in assets/enquete-resultaten.js.";
+                    message.textContent = "De vergelijking per kennisscore is niet beschikbaar. Controleer de gekoppelde enquêteaantallen.";
                     surveyResultsContent.append(message);
                 }
             } catch (error) {
                 console.error("Enquêteresultaten konden niet worden weergegeven.", error);
                 const message = document.createElement("p");
                 message.className = "survey-unavailable";
-                message.textContent = "De enquêteresultaten konden niet worden weergegeven. Controleer de aantallen en antwoordcategorieën in assets/enquete-resultaten.js.";
+                message.textContent = "De enquêteresultaten konden niet worden weergegeven. Controleer de aantallen en antwoordcategorieën in de enquêtegegevens.";
                 surveyResultsContent.append(message);
             }
         }
