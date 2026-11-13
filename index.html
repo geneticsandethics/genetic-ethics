@@ -1579,21 +1579,31 @@
 
         .decision-options {
             display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
+            grid-template-columns: repeat(5, minmax(0, 1fr));
             gap: 12px;
+        }
+
+        .decision-scale-note {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            margin: 0 0 10px;
+            color: var(--muted);
+            font-size: 12px;
         }
 
         .decision-option {
             position: relative;
-            min-height: 72px;
-            padding: 16px 48px 16px 16px;
+            min-height: 56px;
+            padding: 12px;
             border: 1px solid var(--line);
             border-radius: 5px;
             background: white;
             color: var(--forest);
             font: inherit;
+            font-size: 18px;
             font-weight: 700;
-            text-align: left;
+            text-align: center;
             cursor: pointer;
             transition: border-color .18s ease, background .18s ease, transform .18s ease;
         }
@@ -1610,17 +1620,17 @@
 
         .decision-option[aria-pressed="true"]::after {
             position: absolute;
-            top: 50%;
-            right: 16px;
+            top: 3px;
+            right: 3px;
             display: grid;
-            width: 24px;
-            height: 24px;
+            width: 18px;
+            height: 18px;
             place-items: center;
             border-radius: 50%;
             background: var(--forest);
             color: white;
             content: "✓";
-            transform: translateY(-50%);
+            font-size: 11px;
         }
 
         .decision-next {
@@ -1711,10 +1721,11 @@
             height: 14px;
             overflow: hidden;
             border-radius: 99px;
-            background: white;
+            background: var(--line);
         }
 
         .survey-bar-fill {
+            display: block;
             height: 100%;
             border-radius: inherit;
             background: var(--sage);
@@ -2522,7 +2533,16 @@
             }
 
             .decision-options {
-                grid-template-columns: 1fr;
+                gap: 7px;
+            }
+
+            .decision-option {
+                min-height: 52px;
+                padding: 10px 4px;
+            }
+
+            .decision-scale-note {
+                font-size: 11px;
             }
 
             .crispr-demo {
@@ -3734,23 +3754,30 @@
         <section class="science-quiz" id="beslismodel" aria-labelledby="decision-title">
             <span class="science-number">INTERACTIEF BESLISMODEL</span>
             <h3 id="decision-title">Jouw mening, vergeleken met de enquête.</h3>
-            <p>Beantwoord de vragen met ja of nee. Er zijn geen goede of foute meningen. Na je keuze kun je die vergelijken met de antwoorden uit onze enquête.</p>
+            <p>Geef bij elke stelling aan hoe sterk je het ermee eens bent. Er zijn geen goede of foute meningen. Daarna kun je je antwoord vergelijken met de verdeling in de enquête.</p>
 
             <div class="decision-model" data-decision-model>
                 <div class="decision-progress-row">
-                    <p class="decision-kicker" data-question-progress>VRAAG 1 / 15</p>
-                    <div class="decision-progress-track" role="progressbar" aria-label="Voortgang beslismodel" aria-valuemin="1" aria-valuemax="15" aria-valuenow="1" data-progress-bar>
+                    <p class="decision-kicker" data-question-progress>VRAAG 1 / 13</p>
+                    <div class="decision-progress-track" role="progressbar" aria-label="Voortgang beslismodel" aria-valuemin="1" aria-valuemax="13" aria-valuenow="1" data-progress-bar>
                         <div class="decision-progress-fill" data-progress-fill></div>
                     </div>
                     <button class="decision-restart" type="button" data-restart>Opnieuw starten</button>
                 </div>
                 <p class="decision-category" data-question-category></p>
                 <h4 data-question tabindex="-1"></h4>
-                <p class="decision-question">Wat kies je?</p>
+                <p class="decision-question">Hoe sterk ben je het hiermee eens?</p>
 
-                <div class="decision-options">
-                    <button class="decision-option" type="button" data-choice="0" aria-pressed="false">Ja</button>
-                    <button class="decision-option" type="button" data-choice="1" aria-pressed="false">Nee</button>
+                <p class="decision-scale-note">
+                    <span>1 = Helemaal niet mee eens</span>
+                    <span>5 = Helemaal mee eens</span>
+                </p>
+                <div class="decision-options" role="group" aria-label="Antwoordschaal van 1 tot 5">
+                    <button class="decision-option" type="button" data-choice="0" aria-pressed="false">1</button>
+                    <button class="decision-option" type="button" data-choice="1" aria-pressed="false">2</button>
+                    <button class="decision-option" type="button" data-choice="2" aria-pressed="false">3</button>
+                    <button class="decision-option" type="button" data-choice="3" aria-pressed="false">4</button>
+                    <button class="decision-option" type="button" data-choice="4" aria-pressed="false">5</button>
                 </div>
 
                 <div class="decision-result" data-decision-result role="status" aria-live="polite" hidden>
@@ -3996,7 +4023,6 @@
                 <li><a href="https://www.who.int/publications/i/item/9789240030381" target="_blank" rel="noopener">WHO: aanbevelingen voor onderzoek naar menselijk DNA</a></li>
                 <li><a href="https://medlineplus.gov/genetics/understanding/inheritance/inheritancepatterns/" target="_blank" rel="noopener">MedlinePlus: uitleg over erfelijkheid en kansen per zwangerschap</a></li>
             </ul>
-            <p class="survey-note">Enquête: echte resultaten zijn nog niet toegevoegd. Zodra de antwoorden zijn verzameld en gecontroleerd, kun je de aantallen per dilemma invullen in het bestand assets/enquete-resultaten.js.</p>
             <p class="survey-note">Disclaimer: alle voorbeelden en animaties op deze pagina zijn vereenvoudigd weergegeven en geven de werkelijkheid niet volledig weer.</p>
             <h4>Beeldverantwoording</h4>
             <ul class="image-sources">
@@ -4815,11 +4841,6 @@
                 prompt: "Vind je het verantwoord om genetische modificatie te gebruiken om erfelijke ziekten te behandelen als de kans op ernstige bijwerkingen groot is?"
             },
             {
-                id: "medische-alternatieven",
-                category: "Medische toepassingen en risico's",
-                prompt: "Vind je het verantwoord om genetische modificatie te gebruiken als er ook andere behandelingen bestaan, maar die minder effectief zijn?"
-            },
-            {
                 id: "medische-onbekende-effecten-niet-ernstig",
                 category: "Medische toepassingen en risico's",
                 prompt: "Vind je het verantwoord om genetische modificatie toe te passen als de langetermijneffecten nog niet bekend zijn en de patiënt niet ernstig ziek is?"
@@ -4832,7 +4853,7 @@
             {
                 id: "medische-niet-levensbedreigend",
                 category: "Medische toepassingen en risico's",
-                prompt: "Vind je het verantwoord om genetische modificatie toe te passen bij aandoeningen die niet levensbedreigend zijn?"
+                prompt: "Vind je het verantwoord dat genetische modificatie wordt toegepast bij een lichte aandoening die de kwaliteit van het leven niet beperkt?"
             },
             {
                 id: "embryos-ziekte",
@@ -4845,24 +4866,19 @@
                 prompt: "Vind je het verantwoord om het DNA van embryo's aan te passen als de veranderingen kunnen worden doorgegeven aan toekomstige generaties?"
             },
             {
-                id: "controlevraag-antwoordoptie-3",
-                category: "Controlevraag",
-                prompt: "Om te controleren of je de vraag zorgvuldig leest: moet je bij deze vraag antwoordoptie 3 kiezen?"
-            },
-            {
                 id: "gelijkheid-betaalbaarheid",
                 category: "Gelijkheid en niet-medische toepassingen",
-                prompt: "Vind je het verantwoord dat genetische behandelingen beschikbaar zijn voor mensen die ze kunnen betalen, ook als anderen dat niet kunnen?"
+                prompt: "Ik vind het aanvaardbaar dat toegang tot genetische behandelingen mede afhankelijk is van iemands financiële mogelijkheden."
             },
             {
                 id: "niet-medisch-uiterlijk",
                 category: "Gelijkheid en niet-medische toepassingen",
-                prompt: "Vind je het verantwoord dat ouders genetische modificatie gebruiken om niet-medische eigenschappen van hun kind, zoals oogkleur of lengte, te beïnvloeden?"
+                prompt: "Ik vind het verantwoord dat ouders genetische modificatie gebruiken om eigenschappen van hun toekomstige kind te beïnvloeden die niets met gezondheid te maken hebben, zoals oogkleur of haarkleur."
             },
             {
                 id: "niet-gevaarlijke-beperkingen",
                 category: "Gelijkheid en niet-medische toepassingen",
-                prompt: "Vind je het verantwoord dat ouders genetische modificatie gebruiken om beperkingen te voorkomen die niet medisch gevaarlijk zijn?"
+                prompt: "Vind je het verantwoord om genetische modificatie te gebruiken om bij een toekomstig kind een aangeboren aandoening te voorkomen die niet levensbedreigend is?"
             },
             {
                 id: "overheid-doeleinden",
@@ -4872,18 +4888,23 @@
             {
                 id: "verbod-niet-medisch-veilig",
                 category: "Overheid en ethische afwegingen",
-                prompt: "Vind je dat genetische modificatie voor niet-medische doeleinden verboden moet worden, ook als de techniek veilig is?"
+                prompt: "Ik vind het verantwoord dat de overheid genetische modificatie voor niet-medische doeleinden verbiedt, ook als hierbij geen bekende ernstige gezondheidsrisico's zijn."
             },
             {
                 id: "risico-versus-voordeel",
                 category: "Overheid en ethische afwegingen",
-                prompt: "Denk je dat de risico's van genetische modificatie groter zijn dan de voordelen?"
+                prompt: "Vind je dat de risico's van genetische modificatie in de medische sector zwaarder wegen dan de mogelijke voordelen?"
             }
         ];
-        const decisionChoices = [
-            { id: "ja", label: "Ja" },
-            { id: "nee", label: "Nee" }
-        ];
+        const decisionChoices = [1, 2, 3, 4, 5].map((value) => ({
+            id: String(value),
+            label: String(value),
+            accessibleLabel: value === 1
+                ? "1, helemaal niet mee eens"
+                : value === 5
+                    ? "5, helemaal mee eens"
+                    : String(value)
+        }));
         decisionQuestions.forEach((question) => {
             question.choices = decisionChoices;
         });
@@ -4908,21 +4929,8 @@
             return counts;
         }
 
-        function getRoundedPercentages(counts, choiceIds, total) {
-            const percentages = choiceIds.map((id, index) => {
-                const exact = (counts[id] / total) * 100;
-                return { index, value: Math.floor(exact), remainder: exact - Math.floor(exact) };
-            });
-            const pointsToDistribute = 100 - percentages.reduce((sum, item) => sum + item.value, 0);
-
-            [...percentages]
-                .sort((first, second) => second.remainder - first.remainder || first.index - second.index)
-                .slice(0, pointsToDistribute)
-                .forEach((item) => {
-                    percentages[item.index].value += 1;
-                });
-
-            return percentages.map((item) => item.value);
+        function getPercentages(counts, choiceIds, total) {
+            return choiceIds.map((id) => (counts[id] / total) * 100);
         }
 
         function appendSurveyBars(container, question, counts, total, title) {
@@ -4935,7 +4943,7 @@
                 group.append(heading);
             }
 
-            const percentages = getRoundedPercentages(
+            const percentages = getPercentages(
                 counts,
                 question.choices.map((choice) => choice.id),
                 total
@@ -4957,10 +4965,14 @@
                 track.append(fill);
                 const value = document.createElement("span");
                 value.className = "survey-bar-value";
-                value.textContent = `${percentages[index]}% · ${counts[choice.id]} ${counts[choice.id] === 1 ? "deelnemer" : "deelnemers"}`;
+                const formattedPercentage = `${percentages[index].toLocaleString("nl-NL", {
+                    minimumFractionDigits: 1,
+                    maximumFractionDigits: 1
+                })}%`;
+                value.textContent = `${formattedPercentage} · ${counts[choice.id]} ${counts[choice.id] === 1 ? "deelnemer" : "deelnemers"}`;
                 row.setAttribute(
                     "aria-label",
-                    `${choice.label}: ${percentages[index]} procent, ${counts[choice.id]} ${counts[choice.id] === 1 ? "deelnemer" : "deelnemers"}`
+                    `${choice.label}: ${formattedPercentage}, ${counts[choice.id]} ${counts[choice.id] === 1 ? "deelnemer" : "deelnemers"}`
                 );
                 row.append(label, track, value);
                 list.append(row);
@@ -4968,7 +4980,6 @@
 
             group.append(list);
             container.append(group);
-            return { percentages, maximumCount: Math.max(...question.choices.map((choice) => counts[choice.id])) };
         }
 
         function renderKnowledgeGroups(container, question, overallCounts) {
@@ -5024,7 +5035,7 @@
             container.append(section);
         }
 
-        function renderSurveyResults(question, selectedChoiceId) {
+        function renderSurveyResults(question) {
             surveyResultsContent.replaceChildren();
             const dataFile = window.enqueteResultaten;
             if (!dataFile || !dataFile.results) {
@@ -5039,7 +5050,7 @@
             if (!result) {
                 const message = document.createElement("p");
                 message.className = "survey-unavailable";
-                message.textContent = "De echte enquêtegegevens voor dit dilemma zijn nog niet toegevoegd.";
+                message.textContent = "Er is geen directe enquêtevraag voor dit dilemma in de dataset.";
                 surveyResultsContent.append(message);
                 return;
             }
@@ -5067,18 +5078,9 @@
                 const chart = document.createElement("div");
                 chart.setAttribute("role", "group");
                 chart.setAttribute("aria-label", "Verdeling van enquêteantwoorden");
-                const summary = appendSurveyBars(chart, question, counts, total);
+                appendSurveyBars(chart, question, counts, total);
                 surveyResultsContent.append(chart);
 
-                const selectedCount = counts[selectedChoiceId];
-                const feedback = document.createElement("p");
-                feedback.className = "survey-feedback";
-                if (selectedCount === summary.maximumCount) {
-                    feedback.textContent = "Jouw keuze is een van de meest gekozen antwoorden. Dat is een vergelijking, geen oordeel over welk antwoord juist is.";
-                } else {
-                    feedback.textContent = "Jouw keuze hoort bij een kleinere groep deelnemers. Dat is een vergelijking, geen oordeel over welk antwoord juist is.";
-                }
-                surveyResultsContent.append(feedback);
                 try {
                     renderKnowledgeGroups(surveyResultsContent, question, counts);
                 } catch (error) {
@@ -5088,11 +5090,6 @@
                     message.textContent = "De vergelijking per kennisscore is niet beschikbaar. Controleer de gekoppelde aantallen in assets/enquete-resultaten.js.";
                     surveyResultsContent.append(message);
                 }
-
-                const note = document.createElement("p");
-                note.className = "survey-results-note";
-                note.textContent = "Bron: onze enquête. Deze deelnemers vormen niet noodzakelijk een representatieve afspiegeling van de Nederlandse bevolking. Jouw antwoord wordt niet opgeslagen of aan de enquêtegegevens toegevoegd.";
-                surveyResultsContent.append(note);
             } catch (error) {
                 console.error("Enquêteresultaten konden niet worden weergegeven.", error);
                 const message = document.createElement("p");
@@ -5115,6 +5112,7 @@
 
             choiceButtons.forEach((button, index) => {
                 button.textContent = question.choices[index].label;
+                button.setAttribute("aria-label", question.choices[index].accessibleLabel);
                 button.setAttribute("aria-pressed", "false");
             });
 
@@ -5136,7 +5134,7 @@
                 });
 
                 decisionModel.querySelector("[data-answer-summary]").textContent = `Je antwoord: ${outcome.label}.`;
-                renderSurveyResults(question, outcome.id);
+                renderSurveyResults(question);
                 resultPanel.hidden = false;
                 const isLastQuestion = questionIndex === decisionQuestions.length - 1;
                 nextQuestionButton.hidden = isLastQuestion;
